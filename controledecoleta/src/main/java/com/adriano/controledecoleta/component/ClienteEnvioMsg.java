@@ -18,12 +18,7 @@ public class ClienteEnvioMsg implements DadosEncomenda {
     private String sendMailQueue;
 
     @Override
-    public void sendPrivateMail(PedidoEncomenda encomenda) {
-        rabbitTemplate.convertAndSend(mailExchange, sendMailQueue, encomenda);
-    }
-
-    @Override
-    public void sendPrivateInternalMail(PedidoEncomenda encomenda) {
+    public void enviarDadosEncomendaFila(PedidoEncomenda encomenda) {
         rabbitTemplate.convertAndSend(mailExchange, sendMailQueue, encomenda);
     }
 

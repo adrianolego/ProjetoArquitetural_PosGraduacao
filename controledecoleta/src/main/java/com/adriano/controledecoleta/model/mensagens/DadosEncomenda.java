@@ -4,7 +4,6 @@ import com.adriano.controledecoleta.model.PedidoEncomenda;
 
 public interface DadosEncomenda {
 
-    void sendPrivateMail(PedidoEncomenda encomenda);
+    void enviarDadosEncomendaFila(PedidoEncomenda encomenda);
 
-    void sendPrivateInternalMail(PedidoEncomenda encomenda);
 }

@@ -1,7 +1,5 @@
 package com.adriano.controledecoleta.model;
 
-import com.adriano.controledecoleta.model.mensagens.DadosEncomenda;
-
 public class PedidoEncomenda  {
 
     private String idEncomenda;
