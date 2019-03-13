@@ -1,14 +1,14 @@
-package com.adriano.controledecoleta.component;
+package com.adriano.controledefrete.component;
 
-import com.adriano.controledecoleta.model.PedidoEncomenda;
-import com.adriano.controledecoleta.sender.DadosEncomenda;
+import com.adriano.controledefrete.model.Frete;
+import com.adriano.controledefrete.component.sender.DadosFrete;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ClienteEnvioMsg implements DadosEncomenda {
+public class ClienteEnvioMsg implements DadosFrete {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -18,8 +18,8 @@ public class ClienteEnvioMsg implements DadosEncomenda {
     private String sendMailQueue;
 
     @Override
-    public void enviarDadosEncomendaFila(PedidoEncomenda encomenda) {
-        rabbitTemplate.convertAndSend(mailExchange, sendMailQueue, encomenda);
+    public void enviarDadosFreteFila(Frete frete) {
+        rabbitTemplate.convertAndSend(mailExchange, sendMailQueue, frete);
     }
 
 }
