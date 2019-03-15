@@ -12,9 +12,9 @@ public class ClienteEnvioMsg implements DadosFrete {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${config.mail.exchange}")
+    @Value("${config.frete.exchange}")
     private String mailExchange;
-    @Value("${config.mail.sendQueue}")
+    @Value("${config.frete.sendQueue}")
     private String sendMailQueue;
 
     @Override

@@ -1,28 +1,20 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledecoleta.dto;
 
-public class Frete {
-    
-    private String idEncomenda;
+import java.io.Serializable;
+
+public class FreteDTO implements Serializable {
+
     private Double distanciaKM;
     private String urgencia;
     private String classificacaoEnvio;
     private String classificacaoTransporte;
     private boolean existeCargaRetorno;
 
-    public String getIdEncomenda() {
-        return idEncomenda;
-    }
-
-    public Frete setIdEncomenda(String idEncomenda) {
-        this.idEncomenda = idEncomenda;
-        return this;
-    }
-
     public Double getDistanciaKM() {
         return distanciaKM;
     }
 
-    public Frete setDistanciaKM(Double distanciaKM) {
+    public FreteDTO setDistanciaKM(Double distanciaKM) {
         this.distanciaKM = distanciaKM;
         return this;
     }
@@ -31,7 +23,7 @@ public class Frete {
         return urgencia;
     }
 
-    public Frete setUrgencia(String urgencia) {
+    public FreteDTO setUrgencia(String urgencia) {
         this.urgencia = urgencia;
         return this;
     }
@@ -40,7 +32,7 @@ public class Frete {
         return classificacaoEnvio;
     }
 
-    public Frete setClassificacaoEnvio(String classificacaoEnvio) {
+    public FreteDTO setClassificacaoEnvio(String classificacaoEnvio) {
         this.classificacaoEnvio = classificacaoEnvio;
         return this;
     }
@@ -49,7 +41,7 @@ public class Frete {
         return classificacaoTransporte;
     }
 
-    public Frete setClassificacaoTransporte(String classificacaoTransporte) {
+    public FreteDTO setClassificacaoTransporte(String classificacaoTransporte) {
         this.classificacaoTransporte = classificacaoTransporte;
         return this;
     }
@@ -58,7 +50,7 @@ public class Frete {
         return existeCargaRetorno;
     }
 
-    public Frete setExisteCargaRetorno(boolean existeCargaRetorno) {
+    public FreteDTO setExisteCargaRetorno(boolean existeCargaRetorno) {
         this.existeCargaRetorno = existeCargaRetorno;
         return this;
     }
@@ -66,7 +58,6 @@ public class Frete {
     @Override
     public String toString() {
         return "Frete{" +
-                "idEncomenda='" + idEncomenda + '\'' +
                 ", distanciaKM=" + distanciaKM +
                 ", urgencia='" + urgencia + '\'' +
                 ", classificacaoEnvio='" + classificacaoEnvio + '\'' +

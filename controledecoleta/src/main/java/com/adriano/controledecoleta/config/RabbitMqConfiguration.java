@@ -25,13 +25,6 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
 @EnableRabbit
 public class RabbitMqConfiguration implements RabbitListenerConfigurer {
 
-    @Value("${config.mail.exchange}")
-    private String mailExchange;
-    @Value("${config.mail.sendDLQQueue}")
-    private String sendMailDLQQueue;
-    @Value("${config.mail.sendQueue}")
-    private String sendMailQueue;
-
     @Value("${config.amq.hostname}")
     private String hostAmq;
     @Value("${config.amq.port}")
@@ -52,29 +45,6 @@ public class RabbitMqConfiguration implements RabbitListenerConfigurer {
     @Bean
     public AmqpAdmin amqpAdmin() {
         return new RabbitAdmin(connectionFactory());
-    }
-
-    @Bean
-    public DirectExchange mailExchange() {
-        return new DirectExchange(mailExchange, true, false);
-    }
-
-    @Bean
-    public Queue sendMailQueue() {
-        return QueueBuilder.durable(sendMailQueue)
-                .withArgument("x-dead-letter-exchange", "")
-                .withArgument("x-dead-letter-routing-key", sendMailDLQQueue)
-                .build();
-    }
-
-    @Bean
-    public Queue sendMailDLQQueue() {
-        return new Queue(sendMailDLQQueue, true, false, false);
-    }
-
-    @Bean
-    public Binding sendMailBinding() {
-        return BindingBuilder.bind(sendMailQueue()).to(mailExchange()).with(sendMailQueue);
     }
 
     @Bean

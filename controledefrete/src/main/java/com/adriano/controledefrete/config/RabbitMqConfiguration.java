@@ -25,11 +25,11 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
 @EnableRabbit
 public class RabbitMqConfiguration implements RabbitListenerConfigurer {
 
-    @Value("${config.mail.exchange}")
+    @Value("${config.frete.exchange}")
     private String mailExchange;
-    @Value("${config.mail.sendDLQQueue}")
+    @Value("${config.frete.sendDLQQueue}")
     private String sendMailDLQQueue;
-    @Value("${config.mail.sendQueue}")
+    @Value("${config.frete.sendQueue}")
     private String sendMailQueue;
 
     @Value("${config.amq.hostname}")

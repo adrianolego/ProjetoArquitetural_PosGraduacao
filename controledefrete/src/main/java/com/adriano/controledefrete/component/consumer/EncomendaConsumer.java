@@ -14,7 +14,7 @@ public class EncomendaConsumer {
     @RabbitListener(queues = "${config.mail.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
     public void sendMail(final Frete frete) throws Exception {
         try {
-            mailService.sendFreteMail(frete);
+//            mailService.sendFreteMail(frete);
 
         } catch (Exception e) {
             throw new AmqpRejectAndDontRequeueException(e);

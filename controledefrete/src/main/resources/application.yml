@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+config:
+  #RabbitMQ message
+  amq:
+    hostname: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  frete:
+    exchange: frete.exchange
+    sendDLQQueue: frete.sendDLQQueue
+    sendQueue: frete.sendQueue
+
+

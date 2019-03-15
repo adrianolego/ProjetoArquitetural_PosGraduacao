@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.enuns;
+package com.adriano.controledecoleta.enums;
 
 public enum ClassificacaoTransporteEnum {
     

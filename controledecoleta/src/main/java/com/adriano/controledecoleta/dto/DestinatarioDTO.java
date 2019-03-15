@@ -1,8 +1,9 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledecoleta.dto;
 
-public class Destinatario {
+import java.io.Serializable;
 
-    private String idEncomenda;
+public class DestinatarioDTO implements Serializable {
+
     private String nome;
     private String logradouro;
     private String numero;
@@ -13,20 +14,11 @@ public class Destinatario {
     private String celular;
     private String email;
 
-    public String getIdEncomenda() {
-        return idEncomenda;
-    }
-
-    public Destinatario setIdEncomenda(String idEncomenda) {
-        this.idEncomenda = idEncomenda;
-        return this;
-    }
-
     public String getNome() {
         return nome;
     }
 
-    public Destinatario setNome(String nome) {
+    public DestinatarioDTO setNome(String nome) {
         this.nome = nome;
         return this;
     }
@@ -35,7 +27,7 @@ public class Destinatario {
         return logradouro;
     }
 
-    public Destinatario setLogradouro(String logradouro) {
+    public DestinatarioDTO setLogradouro(String logradouro) {
         this.logradouro = logradouro;
         return this;
     }
@@ -44,7 +36,7 @@ public class Destinatario {
         return numero;
     }
 
-    public Destinatario setNumero(String numero) {
+    public DestinatarioDTO setNumero(String numero) {
         this.numero = numero;
         return this;
     }
@@ -53,7 +45,7 @@ public class Destinatario {
         return bairro;
     }
 
-    public Destinatario setBairro(String bairro) {
+    public DestinatarioDTO setBairro(String bairro) {
         this.bairro = bairro;
         return this;
     }
@@ -62,7 +54,7 @@ public class Destinatario {
         return cidade;
     }
 
-    public Destinatario setCidade(String cidade) {
+    public DestinatarioDTO setCidade(String cidade) {
         this.cidade = cidade;
         return this;
     }
@@ -71,7 +63,7 @@ public class Destinatario {
         return cep;
     }
 
-    public Destinatario setCep(String cep) {
+    public DestinatarioDTO setCep(String cep) {
         this.cep = cep;
         return this;
     }
@@ -80,7 +72,7 @@ public class Destinatario {
         return telefone;
     }
 
-    public Destinatario setTelefone(String telefone) {
+    public DestinatarioDTO setTelefone(String telefone) {
         this.telefone = telefone;
         return this;
     }
@@ -89,7 +81,7 @@ public class Destinatario {
         return celular;
     }
 
-    public Destinatario setCelular(String celular) {
+    public DestinatarioDTO setCelular(String celular) {
         this.celular = celular;
         return this;
     }
@@ -98,7 +90,7 @@ public class Destinatario {
         return email;
     }
 
-    public Destinatario setEmail(String email) {
+    public DestinatarioDTO setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -106,7 +98,6 @@ public class Destinatario {
     @Override
     public String toString() {
         return "Destinatario{" +
-                "idEncomenda='" + idEncomenda + '\'' +
                 ", nome='" + nome + '\'' +
                 ", logradouro='" + logradouro + '\'' +
                 ", numero='" + numero + '\'' +
