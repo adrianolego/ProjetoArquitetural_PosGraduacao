@@ -1,7 +1,6 @@
 # ProjetoArquitetural
 Comandos:
- - Mongo
- docker run -d -p 27017:27017 mongo
+ - Mongo: docker run -d --name mongodb -p 27017:27017 mongo
  https://medium.com/dockerbr/mongodb-no-docker-dd3b72c7efb7
  
 - Rabbit
