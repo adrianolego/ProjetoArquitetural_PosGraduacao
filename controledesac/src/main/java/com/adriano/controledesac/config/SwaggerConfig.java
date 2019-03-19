@@ -1,4 +1,4 @@
-package com.adriano.controledesac.controledesac.config;
+package com.adriano.controledesac.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +30,7 @@ public class SwaggerConfig {
 
         ApiInfo apiInfo = new ApiInfo(
                 "Pedido API REST",
-                "API REST de Pedidos de Transporte",
+                "API REST de Sac",
                 "1.0",
                 "",
                 new Contact("Adriano C. da Silva", "",

@@ -1,4 +1,4 @@
-package com.adriano.controledesac.controledesac;
+package com.adriano.controledesac;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,1 +1,10 @@
-dockerspring.data.mongodb.uri= mongodb: mongo:27000/test
+config:
+  #Mongo
+  mongodb:
+    hostname: localhost
+    port: 27017
+    database: controledelogistica
+
+#Servidor Web
+server:
+  port: 8082

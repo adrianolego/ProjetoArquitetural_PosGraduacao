@@ -1,7 +1,7 @@
-package com.adriano.controledesac.controledesac.resource;
+package com.adriano.controledesac.resource;
 
-import com.adriano.controledesac.controledesac.dto.PedidoEncomendaDTO;
-import com.adriano.controledesac.controledesac.service.EncomendaService;
+import com.adriano.controledesac.dto.PedidoEncomendaDTO;
+import com.adriano.controledesac.service.EncomendaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;

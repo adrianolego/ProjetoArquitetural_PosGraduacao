@@ -1,4 +1,4 @@
-package com.adriano.controledesac.controledesac.dto;
+package com.adriano.controledesac.dto;
 
 import java.io.Serializable;
 

@@ -1,19 +1,19 @@
-package com.adriano.controledesac.controledesac.dto;
+package com.adriano.controledesac.document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-public class PedidoEncomendaDTO implements Serializable {
+@Document
+public class EncomendaDocument implements Serializable {
 
-    @JsonIgnore
+    @Id
     private String idEncomenda;
-    private FreteDTO frete;
-    private RemetenteDTO remetente;
-    private DestinatarioDTO destinatario;
-    @JsonIgnore
+    private Frete frete;
+    private Remetente remetente;
+    private Destinatario destinatario;
     private String dataHoraRecebimento;
-    @JsonIgnore
     private String nomeOperador;
     private String observacao;
 
@@ -21,34 +21,34 @@ public class PedidoEncomendaDTO implements Serializable {
         return idEncomenda;
     }
 
-    public PedidoEncomendaDTO setIdEncomenda(String idEncomenda) {
+    public EncomendaDocument setIdEncomenda(String idEncomenda) {
         this.idEncomenda = idEncomenda;
         return this;
     }
 
-    public FreteDTO getFrete() {
+    public Frete getFrete() {
         return frete;
     }
 
-    public PedidoEncomendaDTO setFrete(FreteDTO frete) {
+    public EncomendaDocument setFrete(Frete frete) {
         this.frete = frete;
         return this;
     }
 
-    public RemetenteDTO getRemetente() {
+    public Remetente getRemetente() {
         return remetente;
     }
 
-    public PedidoEncomendaDTO setRemetente(RemetenteDTO remetente) {
+    public EncomendaDocument setRemetente(Remetente remetente) {
         this.remetente = remetente;
         return this;
     }
 
-    public DestinatarioDTO getDestinatario() {
+    public Destinatario getDestinatario() {
         return destinatario;
     }
 
-    public PedidoEncomendaDTO setDestinatario(DestinatarioDTO destinatario) {
+    public EncomendaDocument setDestinatario(Destinatario destinatario) {
         this.destinatario = destinatario;
         return this;
     }
@@ -57,7 +57,7 @@ public class PedidoEncomendaDTO implements Serializable {
         return dataHoraRecebimento;
     }
 
-    public PedidoEncomendaDTO setDataHoraRecebimento(String dataHoraRecebimento) {
+    public EncomendaDocument setDataHoraRecebimento(String dataHoraRecebimento) {
         this.dataHoraRecebimento = dataHoraRecebimento;
         return this;
     }
@@ -66,7 +66,7 @@ public class PedidoEncomendaDTO implements Serializable {
         return nomeOperador;
     }
 
-    public PedidoEncomendaDTO setNomeOperador(String nomeOperador) {
+    public EncomendaDocument setNomeOperador(String nomeOperador) {
         this.nomeOperador = nomeOperador;
         return this;
     }
@@ -75,14 +75,14 @@ public class PedidoEncomendaDTO implements Serializable {
         return observacao;
     }
 
-    public PedidoEncomendaDTO setObservacao(String observacao) {
+    public EncomendaDocument setObservacao(String observacao) {
         this.observacao = observacao;
         return this;
     }
 
     @Override
     public String toString() {
-        return "PedidoEncomendaDTO{" +
+        return "EncomendaDocument{" +
                 "idEncomenda='" + idEncomenda + '\'' +
                 ", frete=" + frete +
                 ", remetente=" + remetente +

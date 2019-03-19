@@ -1,4 +1,4 @@
-package com.adriano.controledesac.controledesac;
+package com.adriano.controledesac;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

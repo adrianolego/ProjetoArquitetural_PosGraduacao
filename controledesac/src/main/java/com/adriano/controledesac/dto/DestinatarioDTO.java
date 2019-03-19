@@ -1,8 +1,8 @@
-package com.adriano.controledesac.controledesac.dto;
+package com.adriano.controledesac.dto;
 
 import java.io.Serializable;
 
-public class RemetenteDTO implements Serializable {
+public class DestinatarioDTO implements Serializable {
 
     private String nome;
     private String logradouro;
@@ -18,7 +18,7 @@ public class RemetenteDTO implements Serializable {
         return nome;
     }
 
-    public RemetenteDTO setNome(String nome) {
+    public DestinatarioDTO setNome(String nome) {
         this.nome = nome;
         return this;
     }
@@ -27,7 +27,7 @@ public class RemetenteDTO implements Serializable {
         return logradouro;
     }
 
-    public RemetenteDTO setLogradouro(String logradouro) {
+    public DestinatarioDTO setLogradouro(String logradouro) {
         this.logradouro = logradouro;
         return this;
     }
@@ -36,7 +36,7 @@ public class RemetenteDTO implements Serializable {
         return numero;
     }
 
-    public RemetenteDTO setNumero(String numero) {
+    public DestinatarioDTO setNumero(String numero) {
         this.numero = numero;
         return this;
     }
@@ -45,7 +45,7 @@ public class RemetenteDTO implements Serializable {
         return bairro;
     }
 
-    public RemetenteDTO setBairro(String bairro) {
+    public DestinatarioDTO setBairro(String bairro) {
         this.bairro = bairro;
         return this;
     }
@@ -54,7 +54,7 @@ public class RemetenteDTO implements Serializable {
         return cidade;
     }
 
-    public RemetenteDTO setCidade(String cidade) {
+    public DestinatarioDTO setCidade(String cidade) {
         this.cidade = cidade;
         return this;
     }
@@ -63,7 +63,7 @@ public class RemetenteDTO implements Serializable {
         return cep;
     }
 
-    public RemetenteDTO setCep(String cep) {
+    public DestinatarioDTO setCep(String cep) {
         this.cep = cep;
         return this;
     }
@@ -72,7 +72,7 @@ public class RemetenteDTO implements Serializable {
         return telefone;
     }
 
-    public RemetenteDTO setTelefone(String telefone) {
+    public DestinatarioDTO setTelefone(String telefone) {
         this.telefone = telefone;
         return this;
     }
@@ -81,7 +81,7 @@ public class RemetenteDTO implements Serializable {
         return celular;
     }
 
-    public RemetenteDTO setCelular(String celular) {
+    public DestinatarioDTO setCelular(String celular) {
         this.celular = celular;
         return this;
     }
@@ -90,14 +90,14 @@ public class RemetenteDTO implements Serializable {
         return email;
     }
 
-    public RemetenteDTO setEmail(String email) {
+    public DestinatarioDTO setEmail(String email) {
         this.email = email;
         return this;
     }
 
     @Override
     public String toString() {
-        return "Remetente{" +
+        return "Destinatario{" +
                 ", nome='" + nome + '\'' +
                 ", logradouro='" + logradouro + '\'' +
                 ", numero='" + numero + '\'' +
