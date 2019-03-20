@@ -1,7 +1,7 @@
 # ProjetoArquitetural
 Comandos:
  - Mongo: docker run -d --name mongodb -p 27017:27017 mongo       
- docker exec -it mongodb mongo admin          
+ docker exec -it mongodb mongo                                  
  docker start mongodb                               
  http://localhost:27017/                         
  https://medium.com/dockerbr/mongodb-no-docker-dd3b72c7efb7
