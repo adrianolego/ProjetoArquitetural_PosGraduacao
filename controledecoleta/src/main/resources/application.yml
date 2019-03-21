@@ -6,8 +6,13 @@ config:
     username: guest
     password: guest
 
-  frete:
-    exchange: frete.exchange
-    sendDLQQueue: frete.sendDLQQueue
-    sendQueue: frete.sendQueue
+  calcularFrete:
+    exchange: calcularFrete.exchange
+    sendDLQQueue: calcularFrete.sendDLQQueue
+    sendQueue: calcularFrete.sendQueue
+
+  encomenda:
+    exchange: encomenda.exchange
+    sendDLQQueue: encomenda.sendDLQQueue
+    sendQueue: encomenda.sendQueue
 

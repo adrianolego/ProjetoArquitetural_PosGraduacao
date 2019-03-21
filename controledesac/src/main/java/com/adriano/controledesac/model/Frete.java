@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.dto;
+package com.adriano.controledesac.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +11,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FreteDTO implements Serializable {
+public class Frete implements Serializable {
 
     private Double distanciaKM;
     private String urgencia;
     private String classificacaoEnvio;
     private String classificacaoTransporte;
     private boolean existeCargaRetorno;
+
+
 }

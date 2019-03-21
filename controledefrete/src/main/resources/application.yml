@@ -9,9 +9,19 @@ config:
     username: guest
     password: guest
 
-  frete:
-    exchange: frete.exchange
-    sendDLQQueue: frete.sendDLQQueue
-    sendQueue: frete.sendQueue
+  atualizarFrete:
+    exchange: atualizarFrete.exchange
+    sendDLQQueue: atualizarFrete.sendDLQQueue
+    sendQueue: atualizarFrete.sendQueue
+
+  logistica:
+    exchange: logistica.exchange
+    sendDLQQueue: logistica.sendDLQQueue
+    sendQueue: logistica.sendQueue
+
+  calcularFrete:
+    exchange: calcularFrete.exchange
+    sendDLQQueue: calcularFrete.sendDLQQueue
+    sendQueue: calcularFrete.sendQueue
 
 

@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.config;
+package com.adriano.controledefrete.component;
 
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,35 +6,34 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class FreteQueueConfig {
-
-    @Value("${config.calcularFrete.exchange}")
+public class LogisticaQueueConfig {
+    @Value("${config.logistica.exchange}")
     private String exchange;
-    @Value("${config.calcularFrete.sendDLQQueue}")
+    @Value("${config.logistica.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.calcularFrete.sendQueue}")
-    private String queueCalcularFrete;
+    @Value("${config.logistica.sendQueue}")
+    private String queueLogistica;
 
     @Bean
-    public DirectExchange exchangeFrete() {
+    public DirectExchange exchangeLogistica() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueFrete() {
-        return QueueBuilder.durable(queueCalcularFrete)
+    public Queue queueLogistica() {
+        return QueueBuilder.durable(queueLogistica)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueFrete() {
+    public Queue dlqQueueLogistica() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingFrete() {
-        return BindingBuilder.bind(queueFrete()).to(exchangeFrete()).with(queueCalcularFrete);
+    public Binding bindingLogistica() {
+        return BindingBuilder.bind(queueLogistica()).to(exchangeLogistica()).with(queueLogistica);
     }
 }

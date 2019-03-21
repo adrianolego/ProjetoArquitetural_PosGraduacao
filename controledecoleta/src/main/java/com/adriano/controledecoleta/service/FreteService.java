@@ -1,40 +1,35 @@
 package com.adriano.controledecoleta.service;
 
-import com.adriano.controledecoleta.dto.PedidoEncomendaDTO;
 import com.adriano.controledecoleta.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
-public class CalcularFreteService {
+public class FreteService {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${config.frete.exchange}")
+    @Value("${config.calcularFrete.exchange}")
     private String calcularFreteExchange;
-    @Value("${config.frete.sendQueue}")
+    @Value("${config.calcularFrete.sendQueue}")
     private String calcularFreteQueue;
 
-    public String realizarPedido(PedidoEncomendaDTO encomenda) {
+    public PedidoEncomenda realizarPedido(PedidoEncomenda encomenda) {
 
-        String codRastreio = gerarCodigoRastreio();
-
-        PedidoEncomenda pedidoEncomenda = new PedidoEncomenda();
-        pedidoEncomenda.setIdEncomenda(codRastreio);
-        pedidoEncomenda.setObservacao("teste de envio para fila");
+        encomenda.setIdEncomenda(gerarCodigoRastreio());
+        encomenda.setDataHoraRecebimento(LocalDateTime.now());
         rabbitTemplate.convertAndSend(calcularFreteExchange, calcularFreteQueue, encomenda);
 
-        return codRastreio;
-
+        return encomenda;
     }
 
     private String gerarCodigoRastreio() {
         UUID uuid = UUID.randomUUID();
         return uuid.toString();
     }
-
 }

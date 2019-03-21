@@ -1,7 +1,18 @@
 package com.adriano.controledefrete.model;
 
-public class Frete {
-    
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Frete implements Serializable {
+
     private String idEncomenda;
     private Double distanciaKM;
     private String urgencia;

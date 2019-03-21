@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledesac.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Destinatario implements Serializable {
+public class Remetente implements Serializable {
 
     private String nome;
     private String logradouro;
@@ -22,4 +23,5 @@ public class Destinatario implements Serializable {
     private String telefone;
     private String celular;
     private String email;
+
 }

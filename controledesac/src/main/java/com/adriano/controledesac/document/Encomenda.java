@@ -1,28 +1,27 @@
-package com.adriano.controledecoleta.dto;
+package com.adriano.controledesac.document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PedidoEncomendaDTO implements Serializable {
+public class Encomenda implements Serializable {
 
-    @JsonIgnore
     private String idEncomenda;
-    private FreteDTO frete;
-    private RemetenteDTO remetente;
-    private DestinatarioDTO destinatario;
-    @JsonIgnore
+    private Frete frete;
+    private Remetente remetente;
+    private Destinatario destinatario;
+
+
     private LocalDateTime dataHoraRecebimento;
-    @JsonIgnore
     private String nomeOperador;
     private String observacao;
 }

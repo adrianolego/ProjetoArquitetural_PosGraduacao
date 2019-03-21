@@ -5,6 +5,20 @@ config:
     port: 27017
     database: controledelogistica
 
+  #RabbitMQ message
+  amq:
+    hostname: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  encomenda:
+    exchange: encomenda.exchange
+    sendDLQQueue: encomenda.sendDLQQueue
+    sendQueue: encomenda.sendQueue
+
 #Servidor Web
 server:
   port: 8082
+
+

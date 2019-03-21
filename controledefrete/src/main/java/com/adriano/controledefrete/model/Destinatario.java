@@ -1,8 +1,18 @@
 package com.adriano.controledefrete.model;
 
-public class Destinatario {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    private String idEncomenda;
+import java.io.Serializable;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Destinatario implements Serializable {
+
     private String nome;
     private String logradouro;
     private String numero;

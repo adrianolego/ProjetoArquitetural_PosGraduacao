@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.config;
+package com.adriano.controledefrete.component;
 
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,35 +6,35 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class FreteQueueConfig {
+public class AtualizarFreteQueueConfig {
 
-    @Value("${config.calcularFrete.exchange}")
+    @Value("${config.atualizarFrete.exchange}")
     private String exchange;
-    @Value("${config.calcularFrete.sendDLQQueue}")
+    @Value("${config.atualizarFrete.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.calcularFrete.sendQueue}")
-    private String queueCalcularFrete;
+    @Value("${config.atualizarFrete.sendQueue}")
+    private String atualizarFrete;
 
     @Bean
-    public DirectExchange exchangeFrete() {
+    public DirectExchange exchangeAtualizarFrete() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueFrete() {
-        return QueueBuilder.durable(queueCalcularFrete)
+    public Queue queueAtualizarFrete() {
+        return QueueBuilder.durable(atualizarFrete)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueFrete() {
+    public Queue dlqQueueAtualizarFrete() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingFrete() {
-        return BindingBuilder.bind(queueFrete()).to(exchangeFrete()).with(queueCalcularFrete);
+    public Binding bindingAtualizarFrete() {
+        return BindingBuilder.bind(queueAtualizarFrete()).to(exchangeAtualizarFrete()).with(atualizarFrete);
     }
 }

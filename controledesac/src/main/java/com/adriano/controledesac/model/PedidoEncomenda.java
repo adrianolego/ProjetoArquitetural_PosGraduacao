@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.dto;
+package com.adriano.controledesac.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -9,20 +9,23 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PedidoEncomendaDTO implements Serializable {
+public class PedidoEncomenda implements Serializable {
 
     @JsonIgnore
     private String idEncomenda;
-    private FreteDTO frete;
-    private RemetenteDTO remetente;
-    private DestinatarioDTO destinatario;
+    private Frete frete;
+    private Remetente remetente;
+    private Destinatario destinatario;
     @JsonIgnore
     private LocalDateTime dataHoraRecebimento;
     @JsonIgnore
     private String nomeOperador;
     private String observacao;
+
+
 }

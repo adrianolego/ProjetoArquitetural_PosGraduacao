@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledesac.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
