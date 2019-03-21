@@ -21,4 +21,14 @@ public class ConsumerService {
             throw new AmqpRejectAndDontRequeueException(e);
         }
     }
+
+    @RabbitListener(queues = "${config.atualizarFrete.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
+    public void atualizaFrete(final Encomenda encomenda) throws Exception {
+        try {
+//            encomendaService.salvarPedido(encomenda);
+
+        } catch (Exception e) {
+            throw new AmqpRejectAndDontRequeueException(e);
+        }
+    }
 }

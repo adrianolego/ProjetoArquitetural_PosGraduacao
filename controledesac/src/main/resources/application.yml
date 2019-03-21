@@ -17,6 +17,11 @@ config:
     sendDLQQueue: encomenda.sendDLQQueue
     sendQueue: encomenda.sendQueue
 
+  atualizaFrete:
+    exchange: atualizaFrete.exchange
+    sendDLQQueue: atualizaFrete.sendDLQQueue
+    sendQueue: atualizaFrete.sendQueue
+
 #Servidor Web
 server:
   port: 8082
