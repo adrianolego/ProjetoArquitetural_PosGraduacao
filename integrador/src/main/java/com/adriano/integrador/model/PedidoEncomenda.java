@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.model;
+package com.adriano.integrador.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -24,4 +24,5 @@ public class PedidoEncomenda implements Serializable {
     private LocalDateTime dataHoraRecebimento ;
     private String nomeOperador;
     private String observacao;
+    private Boolean expedicao;
 }
