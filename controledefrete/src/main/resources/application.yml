@@ -1,6 +1,14 @@
 server:
   port: 8081
 
+freteExterno:
+  ribbon:
+    listOfServers: http://localhost:7000
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
 config:
   #RabbitMQ message
   amq:

@@ -1,23 +1,48 @@
 package com.adriano.integrador.service;
 
+import com.adriano.integrador.dto.EntradaFreteDTO;
+import com.adriano.integrador.dto.RetornoFreteDTO;
 import com.adriano.integrador.model.Frete;
 import com.adriano.integrador.model.PedidoEncomenda;
 import com.adriano.integrador.model.Veiculo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.*;
+
 @Service
+@Slf4j
 public class IntegradorService {
 
-    public Frete calcularFrete(PedidoEncomenda encomenda) {
-        Frete frete = new Frete();
-        if (encomenda != null) {
-            frete.setClassificacaoEnvio("");
-            frete.setClassificacaoTransporte("");
-            frete.setDistanciaKM(100d);
-            frete.setExisteCargaRetorno(false);
-            frete.setUrgencia("");
+    public RetornoFreteDTO calcularFrete(EntradaFreteDTO frete) {
+        log.info("Recebendo chamado de calculo de frete: {}", frete);
+
+        Integer cepIni = Integer.parseInt(frete.getCepOrigem().substring(0, 2));
+        Integer cepFim = Integer.parseInt(frete.getCepDestino().substring(0, 2));
+
+
+        Double valorFinal = Math.abs(cepFim - cepIni) * 10d;
+        Instant dataEntregaPrevista = frete.getDataColeta()
+                .atStartOfDay(ZoneId.systemDefault()).toInstant().plus(Duration.ofDays(10));
+
+
+        switch (frete.getTipoCarga()) {
+            case GRANEL:
+                break;
+            case LIQUIDA:
+                valorFinal *= 1.05;
+                break;
+            case FRIGORIFICADA:
+                valorFinal *= 2;
+                break;
         }
-        return frete;
+
+        return RetornoFreteDTO.builder()
+                .dataHoraEntregaPrevista(
+                        LocalDateTime.ofInstant(dataEntregaPrevista, ZoneOffset.UTC)
+                )
+                .valor(valorFinal)
+                .build();
     }
 
     public Veiculo agendarVeiculo(PedidoEncomenda encomenda) {
@@ -35,7 +60,8 @@ public class IntegradorService {
     public boolean registrarPedido(PedidoEncomenda encomenda) {
         return encomenda == null;
     }
-    public boolean registrarExpedicao(PedidoEncomenda encomenda){
+
+    public boolean registrarExpedicao(PedidoEncomenda encomenda) {
         return encomenda.getExpedicao();
     }
 }

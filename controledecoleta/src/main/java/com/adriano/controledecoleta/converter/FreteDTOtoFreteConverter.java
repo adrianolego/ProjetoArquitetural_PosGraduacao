@@ -10,11 +10,10 @@ public class FreteDTOtoFreteConverter implements Converter<FreteDTO, Frete> {
     @Override
     public Frete convert(FreteDTO freteDTO) {
         return Frete.builder()
-                .classificacaoEnvio(freteDTO.getClassificacaoEnvio())
-                .classificacaoTransporte(freteDTO.getClassificacaoTransporte())
-                .distanciaKM(freteDTO.getDistanciaKM())
+                .dataColeta(freteDTO.getDataColeta())
+                .prioridadeEnvio(freteDTO.getPrioridadeEnvio())
+                .tipoCarga(freteDTO.getTipoCarga())
                 .existeCargaRetorno(freteDTO.isExisteCargaRetorno())
-                .urgencia(freteDTO.getUrgencia())
                 .build();
     }
 }

@@ -22,9 +22,6 @@ public class PedidoEncomendaDTOToEncomendaConverter implements Converter<PedidoE
     public PedidoEncomenda convert(PedidoEncomendaDTO pedidoDTO) {
 
         return PedidoEncomenda.builder()
-                .idEncomenda(pedidoDTO.getIdEncomenda())
-                .dataHoraRecebimento(pedidoDTO.getDataHoraRecebimento())
-                .observacao(pedidoDTO.getObservacao())
                 .nomeOperador(pedidoDTO.getNomeOperador())
                 .destinatario(destinatarioDTOToDestinatarioConverter.convert(pedidoDTO.getDestinatario()))
                 .remetente(remetenteDTOtoRemetenteConverter.convert(pedidoDTO.getRemetente()))

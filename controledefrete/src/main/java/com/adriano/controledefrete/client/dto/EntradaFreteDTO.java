@@ -1,7 +1,6 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledefrete.client.dto;
 
-import com.adriano.controledecoleta.enums.PrioridadeEnvioEnum;
-import com.adriano.controledecoleta.enums.TipoCargaEnum;
+import com.adriano.controledefrete.enuns.TipoCargaEnum;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -11,18 +10,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Frete  implements Serializable {
+public class EntradaFreteDTO {
 
-    private PrioridadeEnvioEnum prioridadeEnvio;
+    private String cepOrigem;
+    private String cepDestino;
+    private Double pesoKg;
     private TipoCargaEnum tipoCarga;
-    private boolean existeCargaRetorno;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dataColeta;

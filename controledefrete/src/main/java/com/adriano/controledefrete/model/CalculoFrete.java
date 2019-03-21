@@ -1,7 +1,5 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledefrete.model;
 
-import com.adriano.controledecoleta.enums.PrioridadeEnvioEnum;
-import com.adriano.controledecoleta.enums.TipoCargaEnum;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -18,12 +16,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Frete  implements Serializable {
+public class CalculoFrete implements Serializable {
 
-    private PrioridadeEnvioEnum prioridadeEnvio;
-    private TipoCargaEnum tipoCarga;
-    private boolean existeCargaRetorno;
+    private Double valor;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate dataColeta;
+    private LocalDate dataEntregaPrevista;
+    private Boolean interno;
 }
