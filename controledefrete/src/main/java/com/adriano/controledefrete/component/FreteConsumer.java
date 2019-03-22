@@ -24,7 +24,7 @@ public class FreteConsumer {
 
             log.info("Calculando frete: {}", pedido);
             pedido.setCalculoFrete(freteService.calculoFrete(pedido));
-            log.info("Frete calculado: {}", pedido.getCalculoFrete());
+            log.info("Frete calculado: {}", pedido);
 
             log.info("Enviando atualização do SAC com o frete.");
             atualizarCalculoFreteProducer.atualizarFrete(pedido);

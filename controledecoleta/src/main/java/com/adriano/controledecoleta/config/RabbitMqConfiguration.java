@@ -21,7 +21,6 @@ import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 
 @Configuration
-@Profile({"default"})
 @EnableRabbit
 public class RabbitMqConfiguration implements RabbitListenerConfigurer {
 

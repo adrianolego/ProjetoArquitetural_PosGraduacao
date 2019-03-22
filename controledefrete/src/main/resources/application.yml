@@ -33,3 +33,20 @@ config:
     sendQueue: calcularFrete.sendQueue
 
 
+---
+spring:
+  profiles: docker-compose
+
+freteExterno:
+  ribbon:
+    listOfServers: http://integrador:7000
+
+config:
+  #RabbitMQ message
+  amq:
+    hostname: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+

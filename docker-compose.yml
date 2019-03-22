@@ -1,0 +1,57 @@
+version: "3.4"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+     - RABBITMQ_DEFAULT_USER=guest
+     - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - network_pedido
+      
+  mongodb:
+    image: mongo
+    networks:
+      - network_pedido
+
+  controledefrete:
+    build: 
+      context: controledefrete
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido  
+  
+  controledecoleta:
+    build: 
+      context: controledecoleta
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9080:8080"
+    environment:
+      - WAIT_FOR_IT=mongodb:27017 rabbitmq:5672
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido  
+
+  integrador:
+    build: 
+      context: integrador
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    environment:
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido  
+
+networks:
+    network_pedido:

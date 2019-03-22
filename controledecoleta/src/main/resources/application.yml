@@ -16,3 +16,14 @@ config:
     sendDLQQueue: encomenda.sendDLQQueue
     sendQueue: encomenda.sendQueue
 
+---
+spring:
+  profiles: docker-compose
+config:
+  amq:
+    hostname: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+

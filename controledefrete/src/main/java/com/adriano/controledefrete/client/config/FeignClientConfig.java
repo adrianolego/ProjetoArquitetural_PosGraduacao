@@ -9,9 +9,4 @@ import org.springframework.context.annotation.Configuration;
         "com.adriano.controledefrete.client"
 })
 public class FeignClientConfig {
-
-    private static final String HEADER_AUTHORIZATION = "Authorization";
-    private static final String BEARER = "Bearer";
-
-
 }
