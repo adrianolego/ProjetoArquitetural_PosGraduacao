@@ -2,7 +2,6 @@ package com.adriano.integrador.service;
 
 import com.adriano.integrador.dto.EntradaFreteDTO;
 import com.adriano.integrador.dto.RetornoFreteDTO;
-import com.adriano.integrador.model.Frete;
 import com.adriano.integrador.model.PedidoEncomenda;
 import com.adriano.integrador.model.Veiculo;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +11,7 @@ import java.time.*;
 
 @Service
 @Slf4j
-public class IntegradorService {
+public class FreteService {
 
     public RetornoFreteDTO calcularFrete(EntradaFreteDTO frete) {
         log.info("Recebendo chamado de calculo de frete: {}", frete);

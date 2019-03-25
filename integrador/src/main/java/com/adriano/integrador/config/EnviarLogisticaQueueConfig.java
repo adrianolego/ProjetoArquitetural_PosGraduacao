@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.config;
+package com.adriano.integrador.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,34 +6,34 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class LogisticaQueueConfig {
-    @Value("${config.logistica.exchange}")
+public class EnviarLogisticaQueueConfig {
+    @Value("${config.registrarFaturamento.exchange}")
     private String exchange;
-    @Value("${config.logistica.sendDLQQueue}")
+    @Value("${config.registrarFaturamento.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.logistica.sendQueue}")
-    private String queueLogistica;
+    @Value("${config.registrarFaturamento.sendQueue}")
+    private String queueFaturamento;
 
     @Bean
-    public DirectExchange exchangeLogistica() {
+    public DirectExchange exchangeFaturamento() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueLogistica() {
-        return QueueBuilder.durable(queueLogistica)
+    public Queue queueFaturamento() {
+        return QueueBuilder.durable(queueFaturamento)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueLogistica() {
+    public Queue dlqQueueFaturamento() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingLogistica() {
-        return BindingBuilder.bind(queueLogistica()).to(exchangeLogistica()).with(queueLogistica);
+    public Binding bindingFaturamento() {
+        return BindingBuilder.bind(queueFaturamento()).to(exchangeFaturamento()).with(queueFaturamento);
     }
 }
