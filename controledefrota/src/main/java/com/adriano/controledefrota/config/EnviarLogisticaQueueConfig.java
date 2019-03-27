@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CalcularFreteQueueConfig {
+public class EnviarLogisticaQueueConfig {
     @Value("${config.calcularFrete.exchange}")
     private String exchange;
     @Value("${config.calcularFrete.sendDLQQueue}")

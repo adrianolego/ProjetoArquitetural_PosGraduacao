@@ -1,5 +1,8 @@
-package com.adriano.controledefrete.component;
+package com.adriano.controledefrete.consumer;
 
+import com.adriano.controledefrete.component.AtualizarCalculoFreteProducer;
+import com.adriano.controledefrete.component.EnviarExpedicaoProducer;
+import com.adriano.controledefrete.component.RegistrarFaturamentoProducer;
 import com.adriano.controledefrete.model.PedidoEncomenda;
 import com.adriano.controledefrete.service.FreteService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class FreteConsumer {
+public class CalcularFreteConsumer {
 
     @Autowired
     private AtualizarCalculoFreteProducer atualizarCalculoFreteProducer;
