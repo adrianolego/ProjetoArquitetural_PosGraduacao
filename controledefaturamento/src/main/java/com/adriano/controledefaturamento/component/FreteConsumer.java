@@ -1,6 +1,6 @@
-package com.adriano.controledefrota.component;
+package com.adriano.controledefaturamento.component;
 
-import com.adriano.controledefrota.model.PedidoEncomenda;
+import com.adriano.controledefaturamento.model.PedidoEncomenda;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.AmqpRejectAndDontRequeueException;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

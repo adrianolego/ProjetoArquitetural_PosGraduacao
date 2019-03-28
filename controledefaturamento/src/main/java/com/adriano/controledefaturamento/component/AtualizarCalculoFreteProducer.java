@@ -1,4 +1,4 @@
-package com.adriano.controledefrota.component;
+package com.adriano.controledefaturamento.component;
 
 import com.adriano.controledefrota.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

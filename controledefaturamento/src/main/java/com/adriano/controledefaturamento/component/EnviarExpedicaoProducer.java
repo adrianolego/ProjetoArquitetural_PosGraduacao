@@ -1,4 +1,4 @@
-package com.adriano.controledefrota.component;
+package com.adriano.controledefaturamento.component;
 
 import com.adriano.controledefrota.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegistrarFaturamentoProducer {
+public class EnviarExpedicaoProducer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${config.registrarFaturamento.exchange}")
-    private String registrarFaturamentoExchange;
-    @Value("${config.registrarFaturamento.sendQueue}")
-    private String registrarFaturamentoQueue;
+    @Value("${config.enviarExpedicao.exchange}")
+    private String enviarExpedicaoExchange;
+    @Value("${config.enviarExpedicao.sendQueue}")
+    private String enviarExpedicaoQueue;
 
 
     public void registrarFaturamento(PedidoEncomenda encomenda) {
-        rabbitTemplate.convertAndSend(registrarFaturamentoExchange, registrarFaturamentoQueue, encomenda);
+        rabbitTemplate.convertAndSend(enviarExpedicaoExchange, enviarExpedicaoQueue, encomenda);
     }
 }
