@@ -1,6 +1,6 @@
 package com.adriano.controledefrota.client.dto;
 
-import com.adriano.controledefrete.enuns.TipoCargaEnum;
+import com.adriano.controledefrota.enuns.TipoCargaEnum;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;

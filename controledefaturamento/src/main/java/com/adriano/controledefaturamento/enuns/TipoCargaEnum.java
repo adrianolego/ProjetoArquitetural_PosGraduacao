@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.enuns;
+package com.adriano.controledefaturamento.enuns;
 
 public enum TipoCargaEnum {
 

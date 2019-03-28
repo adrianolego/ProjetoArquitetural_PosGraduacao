@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.model;
+package com.adriano.controledefaturamento.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

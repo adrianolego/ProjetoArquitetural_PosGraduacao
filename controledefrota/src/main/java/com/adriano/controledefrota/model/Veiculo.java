@@ -1,4 +1,4 @@
-package com.adriano.integrador.model;
+package com.adriano.controledefrota.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

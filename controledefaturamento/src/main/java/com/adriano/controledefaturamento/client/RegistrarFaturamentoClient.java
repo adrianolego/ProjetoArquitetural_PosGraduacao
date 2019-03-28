@@ -1,7 +1,6 @@
 package com.adriano.controledefaturamento.client;
 
-import com.adriano.controledefrete.model.PedidoEncomenda;
-import org.springframework.cloud.openfeign.FeignClient;
+import com.adriano.controledefaturamento.model.PedidoEncomenda;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

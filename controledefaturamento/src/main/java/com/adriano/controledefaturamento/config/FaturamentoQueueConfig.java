@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.config;
+package com.adriano.controledefaturamento.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Value;
