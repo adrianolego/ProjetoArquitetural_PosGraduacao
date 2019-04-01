@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.model;
+package com.adriano.controledeexpedicao.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -16,19 +16,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PedidoEncomenda implements Serializable {
-
-    private String idEncomenda;
-    private Frete frete;
-    private CalculoFrete calculoFrete;
-    private Remetente remetente;
-    private Destinatario destinatario;
+public class Expedicao implements Serializable {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime dataHoraRecebimento;
-    private String nomeOperador;
-    private String observacao;
-    private Double pesoKg;
-    private Logistica logistica;
-    private Expedicao expedicao;
+    private LocalDateTime dataHoraSaida;
+    private String documentoTransporte;
+    private boolean enviado;
+    private String responsavelEnvio;
+
 }

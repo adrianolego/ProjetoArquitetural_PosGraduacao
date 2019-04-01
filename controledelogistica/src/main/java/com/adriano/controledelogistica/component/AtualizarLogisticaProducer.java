@@ -1,6 +1,6 @@
 package com.adriano.controledelogistica.component;
 
-import com.adriano.controledefrete.model.PedidoEncomenda;
+import com.adriano.controledelogistica.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

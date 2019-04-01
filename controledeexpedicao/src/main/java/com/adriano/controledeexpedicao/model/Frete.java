@@ -1,7 +1,7 @@
-package com.adriano.controledefrete.model;
+package com.adriano.controledeexpedicao.model;
 
-import com.adriano.controledefrete.enuns.PrioridadeEnvioEnum;
-import com.adriano.controledefrete.enuns.TipoCargaEnum;
+import com.adriano.controledeexpedicao.enuns.PrioridadeEnvioEnum;
+import com.adriano.controledeexpedicao.enuns.TipoCargaEnum;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;

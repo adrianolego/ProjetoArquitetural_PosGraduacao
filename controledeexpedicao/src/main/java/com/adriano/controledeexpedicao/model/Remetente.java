@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.model;
+package com.adriano.controledeexpedicao.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

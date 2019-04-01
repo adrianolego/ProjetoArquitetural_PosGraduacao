@@ -1,6 +1,5 @@
-package com.adriano.controledefrota.component;
+package com.adriano.controledelogistica.component;
 
-import com.adriano.controledefrota.model.PedidoEncomenda;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.AmqpRejectAndDontRequeueException;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -8,11 +7,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class FrotaConsumer {
+public class LogisticaConsumer {
 
-    @RabbitListener(queues = "${config.agendarVeiculo.sendQueue}")
-    public void calcularFrete(PedidoEncomenda pedido) {
+    @RabbitListener(queues = "${config.atualizarLogistica.sendQueue}")
+    public void gerarLogistica( ) {
         try {
+
+            log.info("Logistica: {}","");
 
         } catch (Exception e) {
             throw new AmqpRejectAndDontRequeueException(e);

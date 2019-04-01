@@ -17,22 +17,18 @@ config:
     username: guest
     password: guest
 
-  atualizarFrete:
-    exchange: atualizarFrete.exchange
-    sendDLQQueue: atualizarFrete.sendDLQQueue
-    sendQueue: atualizarFrete.sendQueue
+  enviarLogistica:
+    exchange: enviarLogistica.exchange
+    sendDLQQueue: enviarLogistica.sendDLQQueue
+    sendQueue: enviarLogistica.sendQueue
 
-  faturamento:
-    exchange: registrarFaturamento.exchange
-    sendDLQQueue: registrarFaturamento.sendDLQQueue
-    sendQueue: registrarFaturamento.sendQueue
+  atualizarLogistica:
+    exchange: atualizarLogistica.exchange
+    sendDLQQueue: atualizarLogistica.sendDLQQueue
+    sendQueue: atualizarLogistica
+    .sendQueue
 
-  calcularFrete:
-    exchange: calcularFrete.exchange
-    sendDLQQueue: calcularFrete.sendDLQQueue
-    sendQueue: calcularFrete.sendQueue
-
-  expedicao:
+  enviarExpedicao:
     exchange: enviarExpedicao.exchange
     sendDLQQueue: enviarExpedicao.sendDLQQueue
     sendQueue: enviarExpedicao.sendQueue

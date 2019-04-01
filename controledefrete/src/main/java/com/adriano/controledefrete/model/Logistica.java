@@ -16,19 +16,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PedidoEncomenda implements Serializable {
+public class Logistica implements Serializable {
 
-    private String idEncomenda;
-    private Frete frete;
-    private CalculoFrete calculoFrete;
-    private Remetente remetente;
-    private Destinatario destinatario;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime dataHoraRecebimento;
-    private String nomeOperador;
-    private String observacao;
-    private Double pesoKg;
-    private Logistica logistica;
-    private Expedicao expedicao;
+    private LocalDateTime dataHoraPevisaoSaida;
+    private String descricaocaminho;
+    private String responsavelRota;
 }

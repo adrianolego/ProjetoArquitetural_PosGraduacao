@@ -8,11 +8,11 @@
         <version>2.1.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.adriano.controledefrete</groupId>
-    <artifactId>controledefrete</artifactId>
+    <groupId>com.adriano.controledeexpedicao</groupId>
+    <artifactId>controledeexpedicao</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>controledefrete</name>
-    <description>Módulo de Frete</description>
+    <name>controledeexpedicao</name>
+    <description>Módulo de Expedicao</description>
 
     <properties>
         <java.version>1.8</java.version>

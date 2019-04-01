@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.enuns;
+package com.adriano.controledeexpedicao.enuns;
 
 public enum PrioridadeEnvioEnum {
 

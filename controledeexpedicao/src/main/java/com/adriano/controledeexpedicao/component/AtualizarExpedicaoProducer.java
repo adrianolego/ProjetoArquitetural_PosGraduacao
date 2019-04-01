@@ -1,13 +1,14 @@
-package com.adriano.controledefrete.component;
+package com.adriano.controledeexpedicao.component;
 
-import com.adriano.controledefrete.model.PedidoEncomenda;
+import com.adriano.controledeexpedicao.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EnviarExpedicaoProducer {
+public class AtualizarExpedicaoProducer {
+
     @Autowired
     private RabbitTemplate rabbitTemplate;
     @Value("${config.enviarExpedicao.exchange}")
@@ -16,7 +17,7 @@ public class EnviarExpedicaoProducer {
     private String enviarExpedicaoQueue;
 
 
-    public void registrarFaturamento(PedidoEncomenda encomenda) {
+    public void atualizarExpedicao(PedidoEncomenda encomenda) {
         rabbitTemplate.convertAndSend(enviarExpedicaoExchange, enviarExpedicaoQueue, encomenda);
     }
 }

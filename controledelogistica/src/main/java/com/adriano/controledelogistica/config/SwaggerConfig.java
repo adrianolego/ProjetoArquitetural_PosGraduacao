@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.config;
+package com.adriano.controledelogistica.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
