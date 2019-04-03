@@ -25,8 +25,7 @@ config:
   atualizarLogistica:
     exchange: atualizarLogistica.exchange
     sendDLQQueue: atualizarLogistica.sendDLQQueue
-    sendQueue: atualizarLogistica
-    .sendQueue
+    sendQueue: atualizarLogistica.sendQueue
 
   enviarExpedicao:
     exchange: enviarExpedicao.exchange

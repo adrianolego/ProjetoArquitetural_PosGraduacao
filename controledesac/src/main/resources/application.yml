@@ -17,10 +17,26 @@ config:
     sendDLQQueue: encomenda.sendDLQQueue
     sendQueue: encomenda.sendQueue
 
-  atualizaFrete:
-    exchange: atualizaFrete.exchange
-    sendDLQQueue: atualizaFrete.sendDLQQueue
-    sendQueue: atualizaFrete.sendQueue
+  atualizarFrete:
+    exchange: atualizarFrete.exchange
+    sendDLQQueue: atualizarFrete.sendDLQQueue
+    sendQueue: atualizarFrete.sendQueue
+
+  atualizarVeiculo:
+    exchange: atualizarVeiculo.exchange
+    sendDLQQueue: atualizarVeiculo.sendDLQQueue
+    sendQueue: atualizarVeiculo.sendQueue
+
+  atualizarLogistica:
+    exchange: atualizarLogistica.exchange
+    sendDLQQueue: atualizarLogistica.sendDLQQueue
+    sendQueue: atualizarLogistica.sendQueue
+
+  atualizarExpedicao:
+    exchange: atualizarExpedicao.exchange
+    sendDLQQueue: atualizarExpedicao.sendDLQQueue
+    sendQueue: atualizarExpedicao.sendQueue
+
 
 #Servidor Web
 server:

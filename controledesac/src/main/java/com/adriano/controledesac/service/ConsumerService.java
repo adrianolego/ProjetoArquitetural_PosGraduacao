@@ -23,9 +23,35 @@ public class ConsumerService {
     }
 
     @RabbitListener(queues = "${config.atualizarFrete.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
-    public void atualizaFrete(final Encomenda encomenda) throws Exception {
+    public void atualizarFrete(final Encomenda encomenda) throws Exception {
         try {
-//            encomendaService.salvarPedido(encomenda);
+
+        } catch (Exception e) {
+            throw new AmqpRejectAndDontRequeueException(e);
+        }
+    }
+
+    @RabbitListener(queues = "${config.atualizarVeiculo.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
+    public void atualizarVeiculo(final Encomenda encomenda) throws Exception {
+        try {
+
+        } catch (Exception e) {
+            throw new AmqpRejectAndDontRequeueException(e);
+        }
+    }
+
+    @RabbitListener(queues = "${config.atualizarLogistica.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
+    public void atualizarLogistica(final Encomenda encomenda) throws Exception {
+        try {
+
+        } catch (Exception e) {
+            throw new AmqpRejectAndDontRequeueException(e);
+        }
+    }
+
+    @RabbitListener(queues = "${config.atualizarExpedicao.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
+    public void atualizarExpedicao(final Encomenda encomenda) throws Exception {
+        try {
 
         } catch (Exception e) {
             throw new AmqpRejectAndDontRequeueException(e);

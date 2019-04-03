@@ -32,6 +32,7 @@ config:
     sendDLQQueue: agendarVeiculo.sendDLQQueue
     sendQueue: agendarVeiculo.sendQueue
 
+
 ---
 spring:
   profiles: docker-compose
