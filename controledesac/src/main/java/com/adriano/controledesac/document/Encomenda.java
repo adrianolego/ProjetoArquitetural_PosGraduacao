@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Document
 @Data
@@ -16,12 +17,13 @@ import java.time.LocalDateTime;
 public class Encomenda implements Serializable {
 
     private String idEncomenda;
-    private Frete frete;
+    private List<Frete> frete;
     private Remetente remetente;
     private Destinatario destinatario;
-
-
     private LocalDateTime dataHoraRecebimento;
-    private String nomeOperador;
-    private String observacao;
+    private List<String> nomeOperador;
+    private List<String> observacao;
+    private List<Logistica> logistica;
+    private List<Expedicao> expedicao;
+    private List<Veiculo> veiculo;
 }

@@ -12,6 +12,18 @@ public class ConsumerService {
     @Autowired
     private EncomendaService encomendaService;
 
+    @Autowired
+    FreteService freteService;
+
+    @Autowired
+    VeiculoService veiculoService;
+
+    @Autowired
+    LogisticaService logisticaService;
+
+    @Autowired
+    ExpedicaoService expedicaoService;
+
     @RabbitListener(queues = "${config.encomenda.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
     public void salvarPedido(final Encomenda encomenda) throws Exception {
         try {
@@ -25,7 +37,7 @@ public class ConsumerService {
     @RabbitListener(queues = "${config.atualizarFrete.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
     public void atualizarFrete(final Encomenda encomenda) throws Exception {
         try {
-
+            freteService.atualizarFrete(encomenda);
         } catch (Exception e) {
             throw new AmqpRejectAndDontRequeueException(e);
         }
@@ -34,7 +46,7 @@ public class ConsumerService {
     @RabbitListener(queues = "${config.atualizarVeiculo.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
     public void atualizarVeiculo(final Encomenda encomenda) throws Exception {
         try {
-
+            veiculoService.atualizarVeiculo(encomenda);
         } catch (Exception e) {
             throw new AmqpRejectAndDontRequeueException(e);
         }
@@ -43,6 +55,7 @@ public class ConsumerService {
     @RabbitListener(queues = "${config.atualizarLogistica.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
     public void atualizarLogistica(final Encomenda encomenda) throws Exception {
         try {
+            logisticaService.atualizarLogistica(encomenda);
 
         } catch (Exception e) {
             throw new AmqpRejectAndDontRequeueException(e);
@@ -52,7 +65,7 @@ public class ConsumerService {
     @RabbitListener(queues = "${config.atualizarExpedicao.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
     public void atualizarExpedicao(final Encomenda encomenda) throws Exception {
         try {
-
+            expedicaoService.atualizarExpedicao(encomenda);
         } catch (Exception e) {
             throw new AmqpRejectAndDontRequeueException(e);
         }

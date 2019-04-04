@@ -1,35 +1,32 @@
 package com.adriano.controledesac.service;
 
 import com.adriano.controledesac.document.Encomenda;
-import com.adriano.controledesac.document.Frete;
+import com.adriano.controledesac.document.Logistica;
 import com.adriano.controledesac.repository.EncomendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class FreteService {
-
+public class LogisticaService {
     @Autowired
     private EncomendaRepository encomendaRepository;
 
-    public void atualizarFrete(Encomenda encomenda) {
-        Optional<Encomenda> atualizarFrete =
+    public void atualizarLogistica(Encomenda encomenda) {
+        Optional<Encomenda> atualizarLogistica =
                 encomendaRepository.findById(encomenda.getIdEncomenda());
         // valida se a encomenda já foi enviada anteriormente e pode estar sendo reenviada
-        List<Frete> listFrete = atualizarFrete.get().getFrete();
-        if (listFrete != null && !listFrete.isEmpty()) {
-            listFrete.addAll(listFrete);
+        List<Logistica> listLogistica = atualizarLogistica.get().getLogistica();
+        if (listLogistica != null && !listLogistica.isEmpty()) {
+            listLogistica.addAll(listLogistica);
         }
 
         if (encomenda.getFrete() != null) {
-            listFrete.addAll(encomenda.getFrete());
+            listLogistica.addAll(encomenda.getLogistica());
         }
 
-        atualizarFrete.get().setFrete(listFrete);
+        atualizarLogistica.get().setLogistica(listLogistica);
 
-        encomendaRepository.save(atualizarFrete.get());
+        encomendaRepository.save(atualizarLogistica.get());
     }
 }
