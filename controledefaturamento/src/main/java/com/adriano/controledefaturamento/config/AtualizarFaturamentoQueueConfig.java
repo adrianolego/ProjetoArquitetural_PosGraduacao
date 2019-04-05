@@ -6,34 +6,34 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class FaturamentoQueueConfig {
-    @Value("${config.registrarFaturamento.exchange}")
+public class AtualizarFaturamentoQueueConfig {
+    @Value("${config.atualizarFaturamento.exchange}")
     private String exchange;
-    @Value("${config.registrarFaturamento.sendDLQQueue}")
+    @Value("${config.atualizarFaturamento.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.registrarFaturamento.sendQueue}")
-    private String queueFaturamento;
+    @Value("${config.atualizarFaturamento.sendQueue}")
+    private String queueAtualizarFaturamento;
 
     @Bean
-    public DirectExchange exchangeFaturamento() {
+    public DirectExchange exchangeAtualizarFaturamento() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueFaturamento() {
-        return QueueBuilder.durable(queueFaturamento)
+    public Queue queueAtualizarFaturamento() {
+        return QueueBuilder.durable(queueAtualizarFaturamento)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueFaturamento() {
+    public Queue dlqQueueAtualizarFaturamento() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingFaturamento() {
-        return BindingBuilder.bind(queueFaturamento()).to(exchangeFaturamento()).with(queueFaturamento);
+    public Binding bindingAtualizarFaturamento() {
+        return BindingBuilder.bind(queueAtualizarFaturamento()).to(exchangeAtualizarFaturamento()).with(queueAtualizarFaturamento);
     }
 }

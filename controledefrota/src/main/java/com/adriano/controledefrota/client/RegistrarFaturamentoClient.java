@@ -6,9 +6,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "registrarFaturamento", path = "/registrarFaturamento")
+@FeignClient(name = "registrarFaturamento")
 public interface RegistrarFaturamentoClient {
 
-    @PostMapping("/registrarFaturamento")
+    @PostMapping()
     boolean registrarFaturamento(@RequestBody EntradaFreteDTO entrada);
 }

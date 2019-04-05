@@ -5,6 +5,10 @@ freteExterno:
   ribbon:
     listOfServers: http://localhost:7000
 
+integrador:
+  ribbon:
+    listOfServers: http://localhost:7000
+
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
@@ -31,7 +35,6 @@ config:
     exchange: agendarVeiculo.exchange
     sendDLQQueue: agendarVeiculo.sendDLQQueue
     sendQueue: agendarVeiculo.sendQueue
-
 
 ---
 spring:

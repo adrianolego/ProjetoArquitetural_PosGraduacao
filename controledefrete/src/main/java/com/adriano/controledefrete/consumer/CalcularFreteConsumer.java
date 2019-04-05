@@ -26,13 +26,13 @@ public class CalcularFreteConsumer {
     private FreteService freteService;
 
     @Autowired
-    RegistrarFaturamentoProducer registrarFaturamento;
+    private RegistrarFaturamentoProducer registrarFaturamento;
 
     @Autowired
-    EnviarExpedicaoProducer enviarExpedicaoProducer;
+    private EnviarExpedicaoProducer enviarExpedicaoProducer;
 
     @Autowired
-    EnviarFrotaProducer enviarFrotaProducer;
+    private EnviarFrotaProducer enviarFrotaProducer;
 
     @RabbitListener(queues = "${config.calcularFrete.sendQueue}")
     public void calcularFrete(PedidoEncomenda pedido) {

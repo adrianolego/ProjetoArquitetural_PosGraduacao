@@ -1,7 +1,7 @@
 server:
-  port: 8081
+  port: 8089
 
-freteExterno:
+integrador:
   ribbon:
     listOfServers: http://localhost:7000
 
@@ -17,26 +17,16 @@ config:
     username: guest
     password: guest
 
-  atualizarFrete:
-    exchange: atualizarFrete.exchange
-    sendDLQQueue: atualizarFrete.sendDLQQueue
-    sendQueue: atualizarFrete.sendQueue
 
-  faturamento:
+  registrarFaturamento:
     exchange: registrarFaturamento.exchange
     sendDLQQueue: registrarFaturamento.sendDLQQueue
     sendQueue: registrarFaturamento.sendQueue
 
-  calcularFrete:
-    exchange: calcularFrete.exchange
-    sendDLQQueue: calcularFrete.sendDLQQueue
-    sendQueue: calcularFrete.sendQueue
-
-  expedicao:
-    exchange: enviarExpedicao.exchange
-    sendDLQQueue: enviarExpedicao.sendDLQQueue
-    sendQueue: enviarExpedicao.sendQueue
-
+  atualizarFaturamento:
+    exchange: atualizarFaturamento.exchange
+    sendDLQQueue: atualizarFaturamento.sendDLQQueue
+    sendQueue: atualizarFaturamento.sendQueue
 
 ---
 spring:
