@@ -1,8 +1,6 @@
-package com.adriano.controledefrete.model;
+package com.adriano.controledefrota.client.dto;
 
-import com.adriano.controledefrete.enuns.PrioridadeEnvioEnum;
-import com.adriano.controledefrete.enuns.TipoCargaEnum;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.adriano.controledefrota.enuns.TipoCargaEnum;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -19,13 +17,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Frete implements Serializable {
+public class EntradaFreteDTO implements Serializable {
 
-    private PrioridadeEnvioEnum prioridadeEnvio;
+    private String cepOrigem;
+    private String cepDestino;
+    private Double pesoKg;
     private TipoCargaEnum tipoCarga;
-    private boolean existeCargaRetorno;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dataColeta;
-    private Double pesoKg;
 }

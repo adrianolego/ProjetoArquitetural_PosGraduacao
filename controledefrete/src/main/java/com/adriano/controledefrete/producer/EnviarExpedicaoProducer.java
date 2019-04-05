@@ -1,4 +1,4 @@
-package com.adriano.controledefrete.component;
+package com.adriano.controledefrete.producer;
 
 import com.adriano.controledefrete.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -15,8 +15,7 @@ public class EnviarExpedicaoProducer {
     @Value("${config.enviarExpedicao.sendQueue}")
     private String enviarExpedicaoQueue;
 
-
-    public void registrarFaturamento(PedidoEncomenda encomenda) {
+    public void enviarExpedicao(PedidoEncomenda encomenda) {
         rabbitTemplate.convertAndSend(enviarExpedicaoExchange, enviarExpedicaoQueue, encomenda);
     }
 }

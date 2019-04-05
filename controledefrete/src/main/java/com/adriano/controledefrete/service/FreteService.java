@@ -17,7 +17,7 @@ public class FreteService {
     @Autowired
     private CalcularFreteClient calcularFreteClient;
 
-    public CalculoFrete calculoFrete(PedidoEncomenda pedidoEncomenda) {
+    public CalculoFrete calculoFrete(PedidoEncomenda pedidoEncomenda) throws Exception {
 
         CalculoFrete interno = calcularFreteInterno(pedidoEncomenda);
         CalculoFrete externo = calcularFreteExterno(pedidoEncomenda);
@@ -30,7 +30,7 @@ public class FreteService {
     }
 
 
-    private CalculoFrete calcularFreteExterno(PedidoEncomenda pedidoEncomenda) {
+    private CalculoFrete calcularFreteExterno(PedidoEncomenda pedidoEncomenda) throws Exception {
         EntradaFreteDTO req = EntradaFreteDTO.builder()
                 .cepDestino(pedidoEncomenda.getDestinatario().getCep())
                 .cepOrigem(pedidoEncomenda.getRemetente().getCep())
@@ -39,8 +39,13 @@ public class FreteService {
                 .dataColeta(pedidoEncomenda.getFrete().getDataColeta())
                 .build();
 
-        RetornoFreteDTO resp = calcularFreteClient.calcularFreteExterno(req);
+        RetornoFreteDTO resp = null;
 
+        try {
+            resp = calcularFreteClient.calcularFreteExterno(req);
+        } catch (Exception e) {
+            throw new Exception("Não foi possivel consultar frete externo");
+        }
         return CalculoFrete.builder()
                 .dataEntregaPrevista(resp.getDataHoraEntregaPrevista().toLocalDate())
                 .valor(resp.getValor() * 1.1)
@@ -50,7 +55,6 @@ public class FreteService {
 
     private CalculoFrete calcularFreteInterno(PedidoEncomenda pedidoEncomenda) {
 
-
         Remetente remetente = pedidoEncomenda.getRemetente();
         Destinatario destinatario = pedidoEncomenda.getDestinatario();
         Frete frete = pedidoEncomenda.getFrete();
@@ -59,12 +63,14 @@ public class FreteService {
         Integer cepFim = Integer.parseInt(destinatario.getCep().substring(0, 2));
 
 
-        Double valorFinal = Math.abs(cepFim - cepIni) * 10d;
+        Double valorFinal = Math.abs(2 * cepFim - cepIni) * 10d;
         Instant dataEntregaPrevista = frete.getDataColeta()
                 .atStartOfDay(ZoneId.systemDefault()).toInstant().plus(Duration.ofDays(10));
 
         switch (frete.getPrioridadeEnvio()) {
             case NORMAL:
+                dataEntregaPrevista.minus(Duration.ofDays(2));
+                valorFinal *= 1.0;
                 break;
             case RAPIDA: {
                 dataEntregaPrevista.minus(Duration.ofDays(2));
@@ -97,8 +103,6 @@ public class FreteService {
                         .valor(valorFinal)
                         .interno(Boolean.TRUE)
                         .build();
-
-
     }
 
 }

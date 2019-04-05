@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 public class PedidoEncomendaDTOToEncomendaConverter implements Converter<PedidoEncomenda, Encomenda> {
 
@@ -24,11 +26,11 @@ public class PedidoEncomendaDTOToEncomendaConverter implements Converter<PedidoE
         return Encomenda.builder()
                 .idEncomenda(pedidoDTO.getIdEncomenda())
                 .dataHoraRecebimento(pedidoDTO.getDataHoraRecebimento())
-                .observacao(pedidoDTO.getObservacao())
-                .nomeOperador(pedidoDTO.getNomeOperador())
+                .observacao(Arrays.asList(pedidoDTO.getObservacao()))
+                .nomeOperador(Arrays.asList(pedidoDTO.getNomeOperador()))
                 .destinatario(destinatarioDTOToDestinatarioConverter.convert(pedidoDTO.getDestinatario()))
                 .remetente(remetenteDTOtoRemetenteConverter.convert(pedidoDTO.getRemetente()))
-                .frete(freteDTOtoFreteConverter.convert(pedidoDTO.getFrete()))
+                .frete(Arrays.asList(freteDTOtoFreteConverter.convert(pedidoDTO.getFrete())))
                 .build();
     }
 }

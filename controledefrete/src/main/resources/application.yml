@@ -22,7 +22,7 @@ config:
     sendDLQQueue: atualizarFrete.sendDLQQueue
     sendQueue: atualizarFrete.sendQueue
 
-  faturamento:
+  registrarFaturamento:
     exchange: registrarFaturamento.exchange
     sendDLQQueue: registrarFaturamento.sendDLQQueue
     sendQueue: registrarFaturamento.sendQueue
@@ -32,10 +32,15 @@ config:
     sendDLQQueue: calcularFrete.sendDLQQueue
     sendQueue: calcularFrete.sendQueue
 
-  expedicao:
+  enviarExpedicao:
     exchange: enviarExpedicao.exchange
     sendDLQQueue: enviarExpedicao.sendDLQQueue
     sendQueue: enviarExpedicao.sendQueue
+
+  agendarVeiculo:
+    exchange: agendarVeiculo.exchange
+    sendDLQQueue: agendarVeiculo.sendDLQQueue
+    sendQueue: agendarVeiculo.sendQueue
 
 
 ---

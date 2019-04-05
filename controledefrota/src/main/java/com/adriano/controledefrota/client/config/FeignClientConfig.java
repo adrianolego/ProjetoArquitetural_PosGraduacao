@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableFeignClients(basePackages = {
-        "com.adriano.controledefrete.client"
+        "com.adriano.controledefrota.client"
 })
 public class FeignClientConfig {
 }

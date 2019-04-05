@@ -20,16 +20,17 @@ public class FreteService {
         Integer cepFim = Integer.parseInt(frete.getCepDestino().substring(0, 2));
 
 
-        Double valorFinal = Math.abs(cepFim - cepIni) * 10d;
+        Double valorFinal = Math.abs(2* cepFim - cepIni) * 10d;
         Instant dataEntregaPrevista = frete.getDataColeta()
                 .atStartOfDay(ZoneId.systemDefault()).toInstant().plus(Duration.ofDays(10));
 
 
         switch (frete.getTipoCarga()) {
             case GRANEL:
+                valorFinal *= 1.05;
                 break;
             case LIQUIDA:
-                valorFinal *= 1.05;
+                valorFinal *= 1.1;
                 break;
             case FRIGORIFICADA:
                 valorFinal *= 2;
@@ -42,18 +43,6 @@ public class FreteService {
                 )
                 .valor(valorFinal)
                 .build();
-    }
-
-    public Veiculo agendarVeiculo(PedidoEncomenda encomenda) {
-        Veiculo veiculo = new Veiculo();
-        if (encomenda != null) {
-            veiculo.setCodigo("CARR-CDJ-2154");
-            veiculo.setDescricao("Carreta");
-            veiculo.setPesoMaximoKg(1000d);
-            veiculo.setPlaca("CJD-2154");
-            veiculo.setQuantidadeEixos(8);
-        }
-        return veiculo;
     }
 
     public boolean registrarPedido(PedidoEncomenda encomenda) {

@@ -11,14 +11,14 @@ public class AtualizarFrotaProducer {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${config.atualizarFrete.exchange}")
-    private String atualizarFreteExchange;
-    @Value("${config.atualizarFrete.sendQueue}")
-    private String atualizarFreteQueue;
+    @Value("${config.atualizarVeiculo.exchange}")
+    private String atualizarVeiculoExchange;
+    @Value("${config.atualizarVeiculo.sendQueue}")
+    private String atualizarVeiculoQueue;
 
 
     public void atualizarVeiculo(PedidoEncomenda encomenda) {
-        rabbitTemplate.convertAndSend(atualizarFreteExchange, atualizarFreteQueue, encomenda);
+        rabbitTemplate.convertAndSend(atualizarVeiculoExchange, atualizarVeiculoQueue, encomenda);
     }
 }
 

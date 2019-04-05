@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AgendarVeiculoQueueConfig {
-    @Value("${config.enviarFrota.exchange}")
+    @Value("${config.agendarVeiculo.exchange}")
     private String exchange;
-    @Value("${config.enviarFrota.sendDLQQueue}")
+    @Value("${config.agendarVeiculo.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.enviarFrota.sendQueue}")
+    @Value("${config.agendarVeiculo.sendQueue}")
     private String queueFrota;
 
     @Bean

@@ -8,33 +8,33 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AtualizarVeiculoQueueConfig {
 
-    @Value("${config.atualizarFrete.exchange}")
+    @Value("${config.atualizarVeiculo.exchange}")
     private String exchange;
-    @Value("${config.atualizarFrete.sendDLQQueue}")
+    @Value("${config.atualizarVeiculo.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.atualizarFrete.sendQueue}")
-    private String atualizarFrete;
+    @Value("${config.atualizarVeiculo.sendQueue}")
+    private String atualizarVeiculo;
 
     @Bean
-    public DirectExchange exchangeAtualizarFrete() {
+    public DirectExchange exchangeAtualizarVeiculo() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueAtualizarFrete() {
-        return QueueBuilder.durable(atualizarFrete)
+    public Queue queueAtualizarVeiculo() {
+        return QueueBuilder.durable(atualizarVeiculo)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueAtualizarFrete() {
+    public Queue dlqQueueAtualizarVeiculo() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingAtualizarFrete() {
-        return BindingBuilder.bind(queueAtualizarFrete()).to(exchangeAtualizarFrete()).with(atualizarFrete);
+    public Binding bindingAtualizarVeiculo() {
+        return BindingBuilder.bind(queueAtualizarVeiculo()).to(exchangeAtualizarVeiculo()).with(atualizarVeiculo);
     }
 }

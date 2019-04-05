@@ -4,10 +4,12 @@ import com.adriano.controledesac.document.Encomenda;
 import com.adriano.controledesac.document.Logistica;
 import com.adriano.controledesac.repository.EncomendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class LogisticaService {
     @Autowired
     private EncomendaRepository encomendaRepository;

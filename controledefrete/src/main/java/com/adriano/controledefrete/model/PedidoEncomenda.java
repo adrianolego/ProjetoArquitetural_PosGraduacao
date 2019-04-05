@@ -1,5 +1,6 @@
 package com.adriano.controledefrete.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -29,6 +30,7 @@ public class PedidoEncomenda implements Serializable {
     private String nomeOperador;
     private String observacao;
     private Double pesoKg;
+    private Veiculo veiculo;
     private Logistica logistica;
     private Expedicao expedicao;
 }

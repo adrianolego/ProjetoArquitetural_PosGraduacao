@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Remetente {
 
-    private String idEncomenda;
     private String nome;
     private String logradouro;
     private String numero;

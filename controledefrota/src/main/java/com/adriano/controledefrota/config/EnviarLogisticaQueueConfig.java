@@ -7,33 +7,33 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class EnviarLogisticaQueueConfig {
-    @Value("${config.calcularFrete.exchange}")
+    @Value("${config.enviarLogistica.exchange}")
     private String exchange;
-    @Value("${config.calcularFrete.sendDLQQueue}")
+    @Value("${config.enviarLogistica.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.calcularFrete.sendQueue}")
-    private String calcularFrete;
+    @Value("${config.enviarLogistica.sendQueue}")
+    private String enviarLogistica;
 
     @Bean
-    public DirectExchange exchangeCalcularFrete() {
+    public DirectExchange exchangeEnviarLogistica() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueCalcularFrete() {
-        return QueueBuilder.durable(calcularFrete)
+    public Queue queueEnviarLogistica() {
+        return QueueBuilder.durable(enviarLogistica)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueCalcularFrete() {
+    public Queue dlqQueueEnviarLogistica() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingCalcularFrete() {
-        return BindingBuilder.bind(queueCalcularFrete()).to(exchangeCalcularFrete()).with(calcularFrete);
+    public Binding bindingEnviarLogistica() {
+        return BindingBuilder.bind(queueEnviarLogistica()).to(exchangeEnviarLogistica()).with(enviarLogistica);
     }
 }

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 public class EnviarLogisticaProducer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${config.enviarExpedicao.exchange}")
-    private String enviarExpedicaoExchange;
-    @Value("${config.enviarExpedicao.sendQueue}")
-    private String enviarExpedicaoQueue;
+    @Value("${config.enviarLogistica.exchange}")
+    private String enviarLogisticaExchange;
+    @Value("${config.enviarLogistica.sendQueue}")
+    private String enviarLogisticaQueue;
 
 
-    public void registrarFaturamento(PedidoEncomenda encomenda) {
-        rabbitTemplate.convertAndSend(enviarExpedicaoExchange, enviarExpedicaoQueue, encomenda);
+    public void enviarLogistica(PedidoEncomenda encomenda) {
+        rabbitTemplate.convertAndSend(enviarLogisticaExchange, enviarLogisticaQueue, encomenda);
     }
 }
