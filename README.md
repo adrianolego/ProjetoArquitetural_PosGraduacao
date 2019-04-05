@@ -14,40 +14,39 @@ docker run -d -p 16672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
  - Swagger: http://localhost:8080/swagger-ui.html
  - Docker: https://www.digitalocean.com/community/tutorials/como-instalar-e-usar-o-docker-no-ubuntu-18-04-pt
  - Json encomenda:
-{
-  "dataHoraRecebimento": "2019-03-20T11:50:15.379Z",
-  "destinatario": {
-    "bairro": "Centro",
-    "celular": "19 99999-9999",
-    "cep": "13480-000",
-    "cidade": "Limeira",
-    "email": "teste@teste.com",
-    "logradouro": "R: Tiradentes",
-    "nome": "Teste",
-    "numero": "123",
-    "telefone": ""
-  },
-  "frete": {
-    "classificacaoEnvio": "Normal",
-    "classificacaoTransporte": "Granel",
-    "distanciaKM": 100,
-    "existeCargaRetorno": false,
-    "urgencia": "Normal"
-  },
-  "idEncomenda": "123456789",
-  "nomeOperador": "Fulano",
-  "observacao": "",
-  "remetente": {
-    "bairro": "Centro",
-    "celular": "19 98888-8888",
-    "cep": "13481-000",
-    "cidade": "Campinas",
-    "email": "teste2@teste.com",
-    "logradouro": "Av: Amoreiras",
-    "nome": "João de teste",
-    "numero": "123",
-    "telefone": "19 3444-4444"
-  }
+{  
+   "dataHoraRecebimento":"2019-03-20T11:50:15.379Z",
+   "destinatario":{  
+      "bairro":"Centro",
+      "celular":"19 99999-9999",
+      "cep":"13480-001",
+      "cidade":"Limeira",
+      "email":"teste@teste.com",
+      "logradouro":"R: Tiradentes",
+      "nome":"Teste",
+      "numero":"123",
+      "telefone":""
+   },
+   "frete":{  
+      "existeCargaRetorno":true,
+      "prioridadeEnvio":"NORMAL",
+      "tipoCarga":"GRANEL",
+      "pesoKg":"100"
+   },
+   "idEncomenda":"123456789",
+   "nomeOperador":"Fulano",
+   "observacao":"",
+   "remetente":{  
+      "bairro":"Centro",
+      "celular":"19 98888-8888",
+      "cep":"13481-000",
+      "cidade":"Campinas",
+      "email":"teste2@teste.com",
+      "logradouro":"Av: Amoreiras",
+      "nome":"João de teste",
+      "numero":"123",
+      "telefone":"19 3444-4444"
+   }
 }
 
 Json Encomenda-Sac:
