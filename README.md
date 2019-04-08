@@ -13,6 +13,17 @@ docker run -d -p 16672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
  - Filas do rabbit: http://localhost:16672/#/queues
  - Swagger: http://localhost:8080/swagger-ui.html
  - Docker: https://www.digitalocean.com/community/tutorials/como-instalar-e-usar-o-docker-no-ubuntu-18-04-pt
+ 
+ Módulos e Portas
+ Controle de coleta: 8081
+ Controle de Frete: 8082
+ Controle de Faturamento: 8083
+ Controle de Frota: 8084
+ Controle de Logística: 8085
+ Controle de expedição : 8086
+ Controle de Sac: 8087
+ Integrador: 7000
+ 
  - Json encomenda:
 {  
    "dataHoraRecebimento":"2019-03-20T11:50:15.379Z",
