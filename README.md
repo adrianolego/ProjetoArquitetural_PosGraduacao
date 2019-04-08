@@ -95,3 +95,9 @@ Json Encomenda-Sac:
   }
 }
 
+
+
+Comando do mongoDB
+ - use controledelogistica
+ - db.encomenda.find() (lista documentos)
+
