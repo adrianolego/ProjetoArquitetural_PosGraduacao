@@ -16,7 +16,7 @@ public class EnviarExpedicaoProducer {
     private String enviarExpedicaoQueue;
 
 
-    public void registrarFaturamento(PedidoEncomenda encomenda) {
+    public void enviarExpedicao(PedidoEncomenda encomenda) {
         rabbitTemplate.convertAndSend(enviarExpedicaoExchange, enviarExpedicaoQueue, encomenda);
     }
 }

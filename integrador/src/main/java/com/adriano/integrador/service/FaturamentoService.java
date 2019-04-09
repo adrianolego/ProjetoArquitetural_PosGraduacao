@@ -1,6 +1,7 @@
 package com.adriano.integrador.service;
 
 import com.adriano.integrador.dto.EntradaFreteDTO;
+import com.adriano.integrador.dto.FaturamentoDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class FaturamentoService {
         return entradaFreteDTO != null;
     }
 
-    public boolean atualizarFaturamento(EntradaFreteDTO entradaFreteDTO) {
+    public boolean atualizarFaturamento(FaturamentoDTO faturamentoDTO) {
         log.info("Faturamento atualizado com sucesso");
-        return entradaFreteDTO != null;
+        return faturamentoDTO != null;
     }
 }

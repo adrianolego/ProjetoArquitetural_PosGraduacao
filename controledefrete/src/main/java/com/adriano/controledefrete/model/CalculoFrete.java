@@ -23,4 +23,5 @@ public class CalculoFrete implements Serializable {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dataEntregaPrevista;
     private Boolean interno;
+    private Double pesoKg;
 }

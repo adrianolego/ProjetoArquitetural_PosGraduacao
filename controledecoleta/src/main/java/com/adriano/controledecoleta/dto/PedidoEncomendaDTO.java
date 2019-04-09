@@ -17,5 +17,4 @@ public class PedidoEncomendaDTO implements Serializable {
     private RemetenteDTO remetente;
     private DestinatarioDTO destinatario;
     private String nomeOperador;
-    private Double pesoKg;
 }

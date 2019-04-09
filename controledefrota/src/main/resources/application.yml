@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8084
 
 freteExterno:
   ribbon:
@@ -43,6 +43,10 @@ spring:
 freteExterno:
   ribbon:
     listOfServers: http://integrador:7000
+
+integrador:
+  ribbon:
+    listOfServers: http://localhost:7000
 
 config:
   #RabbitMQ message

@@ -1,6 +1,6 @@
 package com.adriano.controledesac.service;
 
-import com.adriano.controledesac.document.Encomenda;
+import com.adriano.controledesac.model.PedidoEncomenda;
 import org.springframework.amqp.AmqpRejectAndDontRequeueException;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +13,19 @@ public class ConsumerService {
     private EncomendaService encomendaService;
 
     @Autowired
-    FreteService freteService;
+    private FreteService freteService;
 
     @Autowired
-    VeiculoService veiculoService;
+    private VeiculoService veiculoService;
 
     @Autowired
-    LogisticaService logisticaService;
+    private LogisticaService logisticaService;
 
     @Autowired
-    ExpedicaoService expedicaoService;
+    private ExpedicaoService expedicaoService;
 
-    @RabbitListener(queues = "${config.encomenda.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
-    public void salvarPedido(final Encomenda encomenda) throws Exception {
+    @RabbitListener(queues = "${config.registrarEncomenda.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
+    public void salvarPedido(final PedidoEncomenda encomenda) throws Exception {
         try {
             encomendaService.salvarPedido(encomenda);
 
@@ -35,7 +35,7 @@ public class ConsumerService {
     }
 
     @RabbitListener(queues = "${config.atualizarFrete.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
-    public void atualizarFrete(final Encomenda encomenda) throws Exception {
+    public void atualizarFrete(final PedidoEncomenda encomenda) throws Exception {
         try {
             freteService.atualizarFrete(encomenda);
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class ConsumerService {
     }
 
     @RabbitListener(queues = "${config.atualizarVeiculo.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
-    public void atualizarVeiculo(final Encomenda encomenda) throws Exception {
+    public void atualizarVeiculo(final PedidoEncomenda encomenda) throws Exception {
         try {
             veiculoService.atualizarVeiculo(encomenda);
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class ConsumerService {
     }
 
     @RabbitListener(queues = "${config.atualizarLogistica.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
-    public void atualizarLogistica(final Encomenda encomenda) throws Exception {
+    public void atualizarLogistica(final PedidoEncomenda encomenda) throws Exception {
         try {
             logisticaService.atualizarLogistica(encomenda);
 
@@ -63,7 +63,7 @@ public class ConsumerService {
     }
 
     @RabbitListener(queues = "${config.atualizarExpedicao.sendQueue}", containerFactory = "rabbitListenerContainerFactory")
-    public void atualizarExpedicao(final Encomenda encomenda) throws Exception {
+    public void atualizarExpedicao(final PedidoEncomenda encomenda) throws Exception {
         try {
             expedicaoService.atualizarExpedicao(encomenda);
         } catch (Exception e) {

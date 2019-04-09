@@ -5,9 +5,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "atualizarFaturamento", path = "/atualizarFaturamento")
-public interface AtualizarFaturamentoClient {
+@FeignClient(name = "integrador", path = "/faturamento")
+public interface AtualizarExpedicaoClient {
 
-    @PostMapping()
-    void atualizarFaturamento(@RequestBody FaturamentoDTO faturamento);
+    @PostMapping("/atualizarFaturamento")
+    boolean atualizarFaturamento(@RequestBody FaturamentoDTO faturamento);
 }

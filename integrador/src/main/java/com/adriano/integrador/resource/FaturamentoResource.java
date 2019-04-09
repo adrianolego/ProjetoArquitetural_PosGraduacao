@@ -1,6 +1,7 @@
 package com.adriano.integrador.resource;
 
 import com.adriano.integrador.dto.EntradaFreteDTO;
+import com.adriano.integrador.dto.FaturamentoDTO;
 import com.adriano.integrador.service.FaturamentoService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class FaturamentoResource {
 
 
     @PostMapping("/atualizarFaturamento")
-    public boolean atualizarFaturamento(@RequestBody EntradaFreteDTO entradaFreteDTO) {
-        return faturamentoService.atualizarFaturamento(entradaFreteDTO);
+    public boolean atualizarFaturamento(@RequestBody FaturamentoDTO faturamentoDTO) {
+        return faturamentoService.atualizarFaturamento(faturamentoDTO);
     }
 }

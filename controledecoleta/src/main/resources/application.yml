@@ -1,3 +1,7 @@
+#Servidor Web
+server:
+  port: 8081
+
 config:
 #RabbitMQ message
   amq:
@@ -11,10 +15,10 @@ config:
     sendDLQQueue: calcularFrete.sendDLQQueue
     sendQueue: calcularFrete.sendQueue
 
-  encomenda:
-    exchange: encomenda.exchange
-    sendDLQQueue: encomenda.sendDLQQueue
-    sendQueue: encomenda.sendQueue
+  registrarEncomenda:
+    exchange: registrarEncomenda.exchange
+    sendDLQQueue: registrarEncomenda.sendDLQQueue
+    sendQueue: registrarEncomenda.sendQueue
 
 ---
 spring:

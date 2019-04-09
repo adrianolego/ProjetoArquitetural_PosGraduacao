@@ -1,16 +1,4 @@
 server:
   port: 7000
 
-config:
-  #RabbitMQ message
-  amq:
-    hostname: localhost
-    port: 5672
-    username: guest
-    password: guest
-
-  faturamento:
-    exchange: registrarFaturamento.exchange
-    sendDLQQueue: registrarFaturamento.sendDLQQueue
-    sendQueue: registrarFaturamento.sendQueue
 

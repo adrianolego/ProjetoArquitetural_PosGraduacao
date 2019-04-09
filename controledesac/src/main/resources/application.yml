@@ -12,10 +12,10 @@ config:
     username: guest
     password: guest
 
-  encomenda:
-    exchange: encomenda.exchange
-    sendDLQQueue: encomenda.sendDLQQueue
-    sendQueue: encomenda.sendQueue
+  registrarEncomenda:
+    exchange: registrarEncomenda.exchange
+    sendDLQQueue: registrarEncomenda.sendDLQQueue
+    sendQueue: registrarEncomenda.sendQueue
 
   atualizarFrete:
     exchange: atualizarFrete.exchange
@@ -40,6 +40,6 @@ config:
 
 #Servidor Web
 server:
-  port: 8082
+  port: 8087
 
 

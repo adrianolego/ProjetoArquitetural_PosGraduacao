@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 public class EncomendaService {
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${config.encomenda.exchange}")
+    @Value("${config.registrarEncomenda.exchange}")
     private String pedidoExchange;
-    @Value("${config.encomenda.sendQueue}")
+    @Value("${config.registrarEncomenda.sendQueue}")
     private String pedidoQueue;
 
-    public void realizarPedido(PedidoEncomenda encomenda) {
+    public void registrarEncomenda(PedidoEncomenda encomenda) {
          rabbitTemplate.convertAndSend(pedidoExchange, pedidoQueue, encomenda);
     }
 }

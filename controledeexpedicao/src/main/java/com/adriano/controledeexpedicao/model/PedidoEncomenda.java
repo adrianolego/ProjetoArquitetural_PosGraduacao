@@ -20,7 +20,6 @@ public class PedidoEncomenda implements Serializable {
 
     private String idEncomenda;
     private Frete frete;
-    private CalculoFrete calculoFrete;
     private Remetente remetente;
     private Destinatario destinatario;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -28,7 +27,7 @@ public class PedidoEncomenda implements Serializable {
     private LocalDateTime dataHoraRecebimento;
     private String nomeOperador;
     private String observacao;
-    private Double pesoKg;
+    private Veiculo veiculo;
     private Logistica logistica;
     private Expedicao expedicao;
 }

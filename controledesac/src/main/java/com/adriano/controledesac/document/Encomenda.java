@@ -1,5 +1,9 @@
 package com.adriano.controledesac.document;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +24,8 @@ public class Encomenda implements Serializable {
     private List<Frete> frete;
     private Remetente remetente;
     private Destinatario destinatario;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime dataHoraRecebimento;
     private List<String> nomeOperador;
     private List<String> observacao;

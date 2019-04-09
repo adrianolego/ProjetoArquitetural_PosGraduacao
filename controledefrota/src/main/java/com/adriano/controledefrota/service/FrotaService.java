@@ -22,7 +22,7 @@ public class FrotaService {
         EntradaFreteDTO req = EntradaFreteDTO.builder()
                 .cepDestino(pedido.getDestinatario().getCep())
                 .cepOrigem(pedido.getRemetente().getCep())
-                .pesoKg(pedido.getPesoKg())
+                .pesoKg(pedido.getFrete().getPesoKg())
                 .tipoCarga(pedido.getFrete().getTipoCarga())
                 .dataColeta(pedido.getFrete().getDataColeta())
                 .build();
@@ -41,6 +41,5 @@ public class FrotaService {
                 .placa(resp.getPlaca())
                 .quantidadeEixos(resp.getQuantidadeEixos())
                 .build();
-
     }
 }

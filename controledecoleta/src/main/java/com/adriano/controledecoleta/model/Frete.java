@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Frete  implements Serializable {
+public class Frete implements Serializable {
 
     private PrioridadeEnvioEnum prioridadeEnvio;
     private TipoCargaEnum tipoCarga;
@@ -27,4 +27,5 @@ public class Frete  implements Serializable {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dataColeta;
     private Double pesoKg;
+
 }

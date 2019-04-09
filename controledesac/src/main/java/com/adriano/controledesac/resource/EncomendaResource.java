@@ -30,10 +30,7 @@ public class EncomendaResource {
 
     @ApiOperation(value = "Entrada de pedido de transporte")
     @PostMapping()
-    public Encomenda registrarPedido(@RequestBody PedidoEncomenda pedidoEncomenda) {
-
-        Encomenda encomenda = conversionService.convert(pedidoEncomenda, Encomenda.class);
-
-        return encomendaService.salvarPedido(encomenda);
+    public void registrarPedido(@RequestBody PedidoEncomenda pedidoEncomenda) {
+        encomendaService.salvarPedido(pedidoEncomenda);
     }
 }

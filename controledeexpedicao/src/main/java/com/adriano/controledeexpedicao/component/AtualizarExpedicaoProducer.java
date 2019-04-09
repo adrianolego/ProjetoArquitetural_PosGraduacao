@@ -11,13 +11,13 @@ public class AtualizarExpedicaoProducer {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${config.enviarExpedicao.exchange}")
-    private String enviarExpedicaoExchange;
-    @Value("${config.enviarExpedicao.sendQueue}")
-    private String enviarExpedicaoQueue;
+    @Value("${config.atualizarExpedicao.exchange}")
+    private String atualizarExpedicaoExchange;
+    @Value("${config.atualizarExpedicao.sendQueue}")
+    private String atualizarExpedicaoQueue;
 
 
     public void atualizarExpedicao(PedidoEncomenda encomenda) {
-        rabbitTemplate.convertAndSend(enviarExpedicaoExchange, enviarExpedicaoQueue, encomenda);
+        rabbitTemplate.convertAndSend(atualizarExpedicaoExchange, atualizarExpedicaoQueue, encomenda);
     }
 }

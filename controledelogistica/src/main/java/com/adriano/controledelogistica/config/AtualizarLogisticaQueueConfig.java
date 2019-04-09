@@ -6,34 +6,35 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CalcularFreteQueueConfig {
-    @Value("${config.calcularFrete.exchange}")
+public class AtualizarLogisticaQueueConfig {
+
+    @Value("${config.atualizarLogistica.exchange}")
     private String exchange;
-    @Value("${config.calcularFrete.sendDLQQueue}")
+    @Value("${config.atualizarLogistica.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.calcularFrete.sendQueue}")
-    private String calcularFrete;
+    @Value("${config.atualizarLogistica.sendQueue}")
+    private String atualizarLogistica;
 
     @Bean
-    public DirectExchange exchangeCalcularFrete() {
+    public DirectExchange exchangeAtualizarLogistica() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueCalcularFrete() {
-        return QueueBuilder.durable(calcularFrete)
+    public Queue queueAtualizarLogistica() {
+        return QueueBuilder.durable(atualizarLogistica)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueCalcularFrete() {
+    public Queue dlqQueueAtualizarLogistica() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingCalcularFrete() {
-        return BindingBuilder.bind(queueCalcularFrete()).to(exchangeCalcularFrete()).with(calcularFrete);
+    public Binding bindingAtualizarLogistica() {
+        return BindingBuilder.bind(queueAtualizarLogistica()).to(exchangeAtualizarLogistica()).with(atualizarLogistica);
     }
 }

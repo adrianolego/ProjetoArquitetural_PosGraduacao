@@ -5,14 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Remetente implements Serializable {
+public class Remetente {
 
     private String nome;
     private String logradouro;
@@ -23,5 +20,4 @@ public class Remetente implements Serializable {
     private String telefone;
     private String celular;
     private String email;
-
 }

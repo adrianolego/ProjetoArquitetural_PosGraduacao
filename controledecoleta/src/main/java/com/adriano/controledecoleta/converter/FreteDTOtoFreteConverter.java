@@ -14,6 +14,7 @@ public class FreteDTOtoFreteConverter implements Converter<FreteDTO, Frete> {
                 .prioridadeEnvio(freteDTO.getPrioridadeEnvio())
                 .tipoCarga(freteDTO.getTipoCarga())
                 .existeCargaRetorno(freteDTO.isExisteCargaRetorno())
+                .pesoKg(freteDTO.getPesoKg())
                 .build();
     }
 }

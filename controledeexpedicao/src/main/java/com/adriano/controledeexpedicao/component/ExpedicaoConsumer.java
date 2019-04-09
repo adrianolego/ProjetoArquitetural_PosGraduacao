@@ -1,7 +1,5 @@
 package com.adriano.controledeexpedicao.component;
 
-import com.adriano.controledeexpedicao.client.AtualizarFaturamentoClient;
-import com.adriano.controledeexpedicao.client.dto.FaturamentoDTO;
 import com.adriano.controledeexpedicao.model.PedidoEncomenda;
 import com.adriano.controledeexpedicao.service.ExpedicaoService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ExpedicaoConsumer {
     @Autowired
-    ExpedicaoService expedicaoService;
+    private ExpedicaoService expedicaoService;
 
     @RabbitListener(queues = "${config.enviarExpedicao.sendQueue}")
     public void gerarExpedicao(PedidoEncomenda pedido) {

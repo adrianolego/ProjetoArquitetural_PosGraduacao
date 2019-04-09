@@ -1,4 +1,4 @@
-package com.adriano.controledeexpedicao.client.dto;
+package com.adriano.integrador.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

@@ -20,4 +20,5 @@ public class FreteDTO implements Serializable {
     private TipoCargaEnum tipoCarga;
     private boolean existeCargaRetorno;
     private LocalDate dataColeta;
+    private Double pesoKg;
 }

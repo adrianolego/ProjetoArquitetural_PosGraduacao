@@ -6,34 +6,35 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class FaturamentoQueueConfig {
-    @Value("${config.registrarFaturamento.exchange}")
+public class EnviarExpedicaoQueueConfig {
+
+    @Value("${config.enviarExpedicao.exchange}")
     private String exchange;
-    @Value("${config.registrarFaturamento.sendDLQQueue}")
+    @Value("${config.enviarExpedicao.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.registrarFaturamento.sendQueue}")
-    private String queueFaturamento;
+    @Value("${config.enviarExpedicao.sendQueue}")
+    private String enviarExpedicao;
 
     @Bean
-    public DirectExchange exchangeFaturamento() {
+    public DirectExchange exchangeEnviarExpedicao() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueFaturamento() {
-        return QueueBuilder.durable(queueFaturamento)
+    public Queue queueEnviarExpedicao() {
+        return QueueBuilder.durable(enviarExpedicao)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueFaturamento() {
+    public Queue dlqQueueEnviarExpedicao() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingFaturamento() {
-        return BindingBuilder.bind(queueFaturamento()).to(exchangeFaturamento()).with(queueFaturamento);
+    public Binding bindingEnviarExpedicao() {
+        return BindingBuilder.bind(queueEnviarExpedicao()).to(exchangeEnviarExpedicao()).with(enviarExpedicao);
     }
 }

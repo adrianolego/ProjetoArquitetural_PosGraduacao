@@ -1,4 +1,4 @@
-package com.adriano.controledeexpedicao.client.dto;
+package com.adriano.controledesac.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -16,13 +16,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FaturamentoDTO implements Serializable {
+public class Logistica implements Serializable {
 
-    private String idEncomenda;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime dataHoraSaida;
-    private boolean enviado;
-    private String responsavelEnvio;
-
+    private LocalDateTime dataHoraPevisaoSaida;
+    private String descricaocaminho;
+    private String responsavelRota;
 }

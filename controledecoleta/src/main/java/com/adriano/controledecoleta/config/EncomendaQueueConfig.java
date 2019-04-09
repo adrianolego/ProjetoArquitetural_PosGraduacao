@@ -7,33 +7,33 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class EncomendaQueueConfig {
-    @Value("${config.encomenda.exchange}")
+    @Value("${config.registrarEncomenda.exchange}")
     private String exchange;
-    @Value("${config.encomenda.sendDLQQueue}")
+    @Value("${config.registrarEncomenda.sendDLQQueue}")
     private String dlqQueue;
-    @Value("${config.encomenda.sendQueue}")
-    private String queueEncomenda;
+    @Value("${config.registrarEncomenda.sendQueue}")
+    private String queueRegistrarEncomenda;
 
     @Bean
-    public DirectExchange exchangeEncomenda() {
+    public DirectExchange exchangeRegistrarEncomenda() {
         return new DirectExchange(exchange, true, false);
     }
 
     @Bean
-    public Queue queueEncomenda() {
-        return QueueBuilder.durable(queueEncomenda)
+    public Queue queueRegistrarEncomenda() {
+        return QueueBuilder.durable(queueRegistrarEncomenda)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
     }
 
     @Bean
-    public Queue dlqQueueEncomenda() {
+    public Queue dlqQueueRegistrarEncomenda() {
         return new Queue(dlqQueue, true, false, false);
     }
 
     @Bean
-    public Binding bindingEncomenda() {
-        return BindingBuilder.bind(queueEncomenda()).to(exchangeEncomenda()).with(queueEncomenda);
+    public Binding bindingRegistrarEncomenda() {
+        return BindingBuilder.bind(queueRegistrarEncomenda()).to(exchangeRegistrarEncomenda()).with(queueRegistrarEncomenda);
     }
 }

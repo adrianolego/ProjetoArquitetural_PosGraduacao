@@ -1,8 +1,8 @@
-package com.adriano.controledefrota.service;
+package com.adriano.controledefrete.service;
 
-import com.adriano.controledefrota.client.RegistrarFaturamentoClient;
-import com.adriano.controledefrota.client.dto.EntradaFreteDTO;
-import com.adriano.controledefrota.model.PedidoEncomenda;
+import com.adriano.controledefrete.client.RegistrarFaturamentoClient;
+import com.adriano.controledefrete.client.dto.EntradaFreteDTO;
+import com.adriano.controledefrete.model.PedidoEncomenda;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class FaturamentoService {
     @Autowired
-    RegistrarFaturamentoClient registrarFaturamentoClient;
+    private RegistrarFaturamentoClient registrarFaturamentoClient;
 
     public boolean registrarFaturamento(PedidoEncomenda pedido) throws Exception {
 
         EntradaFreteDTO req = EntradaFreteDTO.builder()
                 .cepDestino(pedido.getDestinatario().getCep())
                 .cepOrigem(pedido.getRemetente().getCep())
-                .pesoKg(pedido.getPesoKg())
+                .pesoKg(pedido.getFrete().getPesoKg())
                 .tipoCarga(pedido.getFrete().getTipoCarga())
                 .dataColeta(pedido.getFrete().getDataColeta())
                 .build();

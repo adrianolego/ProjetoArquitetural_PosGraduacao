@@ -37,7 +37,7 @@ public class EncomendaResource {
     public String registrarPedido(@RequestBody PedidoEncomendaDTO encomendaDTO) {
         PedidoEncomenda encomenda = conversionService.convert(encomendaDTO, PedidoEncomenda.class);
         PedidoEncomenda pedido = calcularFreteService.realizarPedido(encomenda);
-        encomendaService.realizarPedido(pedido);
+        encomendaService.registrarEncomenda(pedido);
         return pedido.getIdEncomenda();
     }
 }

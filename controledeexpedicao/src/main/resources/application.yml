@@ -1,7 +1,7 @@
 server:
-  port: 8081
+  port: 8086
 
-freteExterno:
+integrador:
   ribbon:
     listOfServers: http://localhost:7000
 
@@ -17,22 +17,22 @@ config:
     username: guest
     password: guest
 
-  atualizarExpedicao:
-    exchange: atualizarExpedicao.exchange
-    sendDLQQueue: atualizarExpedicao.sendDLQQueue
-    sendQueue: atualizarExpedicao.sendQueue
-
   enviarExpedicao:
     exchange: enviarExpedicao.exchange
     sendDLQQueue: enviarExpedicao.sendDLQQueue
     sendQueue: enviarExpedicao.sendQueue
+
+  atualizarExpedicao:
+    exchange: atualizarExpedicao.exchange
+    sendDLQQueue: atualizarExpedicao.sendDLQQueue
+    sendQueue: atualizarExpedicao.sendQueue
 
 
 ---
 spring:
   profiles: docker-compose
 
-freteExterno:
+integrador:
   ribbon:
     listOfServers: http://integrador:7000
 

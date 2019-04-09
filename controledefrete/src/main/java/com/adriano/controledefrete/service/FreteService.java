@@ -34,7 +34,7 @@ public class FreteService {
         EntradaFreteDTO req = EntradaFreteDTO.builder()
                 .cepDestino(pedidoEncomenda.getDestinatario().getCep())
                 .cepOrigem(pedidoEncomenda.getRemetente().getCep())
-                .pesoKg(pedidoEncomenda.getPesoKg())
+                .pesoKg(pedidoEncomenda.getFrete().getPesoKg())
                 .tipoCarga(pedidoEncomenda.getFrete().getTipoCarga())
                 .dataColeta(pedidoEncomenda.getFrete().getDataColeta())
                 .build();

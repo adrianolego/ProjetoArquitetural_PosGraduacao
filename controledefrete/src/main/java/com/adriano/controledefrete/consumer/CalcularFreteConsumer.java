@@ -1,10 +1,13 @@
 package com.adriano.controledefrete.consumer;
 
+import com.adriano.controledefrete.client.RegistrarFaturamentoClient;
+import com.adriano.controledefrete.model.CalculoFrete;
 import com.adriano.controledefrete.producer.AtualizarCalculoFreteProducer;
 import com.adriano.controledefrete.producer.EnviarExpedicaoProducer;
 import com.adriano.controledefrete.producer.EnviarFrotaProducer;
 import com.adriano.controledefrete.producer.RegistrarFaturamentoProducer;
 import com.adriano.controledefrete.model.PedidoEncomenda;
+import com.adriano.controledefrete.service.FaturamentoService;
 import com.adriano.controledefrete.service.FreteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.AmqpRejectAndDontRequeueException;
@@ -26,7 +29,7 @@ public class CalcularFreteConsumer {
     private FreteService freteService;
 
     @Autowired
-    private RegistrarFaturamentoProducer registrarFaturamento;
+    private RegistrarFaturamentoClient registrarFaturamentoClient;
 
     @Autowired
     private EnviarExpedicaoProducer enviarExpedicaoProducer;
@@ -34,19 +37,22 @@ public class CalcularFreteConsumer {
     @Autowired
     private EnviarFrotaProducer enviarFrotaProducer;
 
+    @Autowired
+    private FaturamentoService faturamentoService;
+
     @RabbitListener(queues = "${config.calcularFrete.sendQueue}")
     public void calcularFrete(PedidoEncomenda pedido) {
         try {
 
             log.info("Calculando frete: {}", pedido);
             pedido.getFrete().setDataColeta(LocalDate.now().plusDays(2));
-            pedido.setCalculoFrete(freteService.calculoFrete(pedido));
+            CalculoFrete calculoFrete = freteService.calculoFrete(pedido);
             log.info("Frete calculado: {}", pedido);
 
             log.info("Enviando atualização do SAC com o frete.");
             atualizarCalculoFreteProducer.atualizarFrete(pedido);
 
-            if (pedido.getCalculoFrete().getInterno()) {
+            if (calculoFrete.getInterno()) {
                 log.info("Enviando para fila de frota o pedido.");
                 enviarFrotaProducer.agendarVeiculo(pedido);
             } else {
@@ -55,9 +61,10 @@ public class CalcularFreteConsumer {
             }
 
             log.info("Enviando pedido para fila de faturamento.");
-            registrarFaturamento.registrarFaturamento(pedido);
+            faturamentoService.registrarFaturamento(pedido);
 
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             throw new AmqpRejectAndDontRequeueException(e);
         }
     }
