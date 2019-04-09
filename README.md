@@ -1,6 +1,6 @@
 # ProjetoArquitetural
 Comandos:
- - docker-compose up --build      
+ - docker-compose up --build  (docker exec -it projetoarquitetural_mongodb_1 mongo)    
  - maven:mvn spring-boot:run                        
  - Mongo: docker run -d --name mongodb -p 27017:27017 mongo       
  docker exec -it mongodb mongo                                  
@@ -45,7 +45,6 @@ docker run -d -p 16672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
       "tipoCarga":"GRANEL",
       "pesoKg":"100"
    },
-   "idEncomenda":"123456789",
    "nomeOperador":"Fulano",
    "observacao":"",
    "remetente":{  
@@ -61,44 +60,10 @@ docker run -d -p 16672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
    }
 }
 
-Json Encomenda-Sac:
-
-{
-  "destinatario": {
-    "bairro": "Centro",
-    "celular": "19 99999-9999",
-    "cep": "13480-000",
-    "cidade": "Limeira",
-    "email": "teste@teste.com",
-    "logradouro": "R: Tiradentes",
-    "nome": "Teste",
-    "numero": "123",
-    "telefone": ""
-  },
-  "frete": {
-    "classificacaoEnvio": "Normal",
-    "classificacaoTransporte": "Granel",
-    "distanciaKM": 100,
-    "existeCargaRetorno": false,
-    "urgencia": "Normal"
-  },
-  "observacao": "string",
-  "remetente": {
-    "bairro": "Centro",
-    "celular": "19 98888-8888",
-    "cep": "13481-000",
-    "cidade": "Campinas",
-    "email": "teste2@teste.com",
-    "logradouro": "Av: Amoreiras",
-    "nome": "João de teste",
-    "numero": "123",
-    "telefone": "19 3444-4444"
-  }
-}
-
-
 
 Comando do mongoDB
+ - show dbs
  - use controledelogistica
  - db.encomenda.find() (lista documentos)
+ - db.encomenda.remove({}) (remove todos documentos)
 
