@@ -1,5 +1,6 @@
 # ProjetoArquitetural
 Comandos:
+ - docker-compose up --build      
  - maven:mvn spring-boot:run                        
  - Mongo: docker run -d --name mongodb -p 27017:27017 mongo       
  docker exec -it mongodb mongo                                  
