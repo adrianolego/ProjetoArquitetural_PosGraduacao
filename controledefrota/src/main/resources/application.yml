@@ -46,7 +46,7 @@ freteExterno:
 
 integrador:
   ribbon:
-    listOfServers: http://localhost:7000
+    listOfServers: http://integrador:7000
 
 config:
   #RabbitMQ message

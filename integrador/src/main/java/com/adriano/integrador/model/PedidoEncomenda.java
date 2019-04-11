@@ -18,10 +18,11 @@ public class PedidoEncomenda implements Serializable {
 
     private String idEncomenda;
     private Frete frete;
+    private CalculoFrete calculoFrete;
     private Remetente remetente;
     private Destinatario destinatario;
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime dataHoraRecebimento ;
+    private LocalDateTime dataHoraRecebimento;
     private String nomeOperador;
     private String observacao;
     private Boolean expedicao;

@@ -1,4 +1,4 @@
-package com.adriano.controledelogistica.component;
+package com.adriano.controledelogistica.producer;
 
 import com.adriano.controledelogistica.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

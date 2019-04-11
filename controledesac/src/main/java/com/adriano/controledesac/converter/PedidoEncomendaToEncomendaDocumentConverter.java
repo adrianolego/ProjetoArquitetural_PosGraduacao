@@ -13,6 +13,7 @@ public class PedidoEncomendaToEncomendaDocumentConverter implements Converter<Pe
     public Encomenda convert(PedidoEncomenda e) {
 
         Frete frete = null;
+        CalculoFrete calculoFrete = null;
         Veiculo veiculo = null;
         Logistica logistica = null;
         Expedicao expedicao = null;
@@ -24,6 +25,14 @@ public class PedidoEncomendaToEncomendaDocumentConverter implements Converter<Pe
                     .pesoKg(e.getFrete().getPesoKg())
                     .prioridadeEnvio(e.getFrete().getPrioridadeEnvio())
                     .tipoCarga(e.getFrete().getTipoCarga())
+                    .build();
+        }
+        if (e.getCalculoFrete() != null) {
+            calculoFrete = CalculoFrete.builder()
+                    .dataEntregaPrevista(e.getCalculoFrete().getDataEntregaPrevista())
+                    .interno(e.getCalculoFrete().getInterno())
+                    .pesoKg(e.getCalculoFrete().getPesoKg())
+                    .valor(e.getCalculoFrete().getValor())
                     .build();
         }
 
@@ -82,6 +91,7 @@ public class PedidoEncomendaToEncomendaDocumentConverter implements Converter<Pe
                 .veiculo(Arrays.asList(veiculo))
                 .expedicao(Arrays.asList(expedicao))
                 .frete(Arrays.asList(frete))
+                .calculoFrete(Arrays.asList(calculoFrete))
                 .logistica(Arrays.asList(logistica))
                 .nomeOperador(Arrays.asList(e.getNomeOperador()))
                 .build();

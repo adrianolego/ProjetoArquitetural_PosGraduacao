@@ -11,7 +11,7 @@
     <groupId>com.adriano.controledefaturamento</groupId>
     <artifactId>controledefaturamento</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>controledefrete</name>
+    <name>controledefaturamento</name>
     <description>Módulo de Faturamento</description>
 
     <properties>

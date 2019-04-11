@@ -1,7 +1,7 @@
 package com.adriano.controledelogistica.service;
 
-import com.adriano.controledelogistica.component.AtualizarLogisticaProducer;
-import com.adriano.controledelogistica.component.EnviarExpedicaoProducer;
+import com.adriano.controledelogistica.producer.AtualizarLogisticaProducer;
+import com.adriano.controledelogistica.producer.EnviarExpedicaoProducer;
 import com.adriano.controledelogistica.model.Logistica;
 import com.adriano.controledelogistica.model.PedidoEncomenda;
 import lombok.extern.slf4j.Slf4j;

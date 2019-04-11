@@ -6,9 +6,8 @@ import com.adriano.controledesac.model.PedidoEncomenda;
 import com.adriano.controledesac.repository.EncomendaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -18,28 +17,27 @@ public class FreteService {
     private EncomendaRepository encomendaRepository;
 
     @Autowired
+    private MongoTemplate mongoTemplate;
+
+    @Autowired
     private PedidoEncomendaToEncomendaDocumentConverter converter;
 
     public void atualizarFrete(PedidoEncomenda encomenda) {
-        Optional<Encomenda> atualizarFrete =
-                encomendaRepository.findById(encomenda.getIdEncomenda());
+        Encomenda enc = encomendaRepository.findByIdEncomenda(encomenda.getIdEncomenda());
 
         // valida se a encomenda já foi enviada anteriormente e pode estar sendo reenviada
-        if (atualizarFrete.isPresent()) {
-
-            Encomenda enc = atualizarFrete.get();
+        if (enc != null) {
 
             Encomenda persistencia = converter.convert(encomenda);
 
-            if (persistencia.getFrete() != null) {
-                enc.getFrete().addAll(persistencia.getFrete());
+            if (persistencia.getCalculoFrete() != null) {
+                if (enc.getCalculoFrete().get(0) != null) {
+                    enc.getCalculoFrete().addAll(persistencia.getCalculoFrete());
+                } else {
+                    enc.setCalculoFrete(persistencia.getCalculoFrete());
+                }
             }
-
-            try {
-                encomendaRepository.save(atualizarFrete.get());
-            } catch (Exception e) {
-                log.error(e.getMessage(), e);
-            }
+            encomendaRepository.save(enc);
 
         } else {
             log.info("Pedido não encontrado: {}", encomenda.getIdEncomenda());

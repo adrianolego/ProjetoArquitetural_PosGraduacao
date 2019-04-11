@@ -1,4 +1,4 @@
-package com.adriano.controledefaturamento.component;
+package com.adriano.controledefaturamento.consumer;
 
 import com.adriano.controledefaturamento.client.dto.EntradaFreteDTO;
 import com.adriano.controledefaturamento.model.PedidoEncomenda;
@@ -32,6 +32,7 @@ public class FaturamentoConsumer {
             return faturamentoService.registrarFaturamento(req);
 
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             throw new AmqpRejectAndDontRequeueException(e);
         }
     }
@@ -53,6 +54,7 @@ public class FaturamentoConsumer {
             return faturamentoService.atualizarFaturamento(req);
 
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             throw new AmqpRejectAndDontRequeueException(e);
         }
     }

@@ -19,4 +19,6 @@ public class Frete implements Serializable {
     private String classificacaoTransporte;
     private boolean existeCargaRetorno;
     private Double pesoKg;
+    private Double valor;
+    private boolean interno;
 }

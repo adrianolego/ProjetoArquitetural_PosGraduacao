@@ -42,4 +42,22 @@ config:
 server:
   port: 8087
 
+---
+spring:
+  profiles: docker-compose
+
+config:
+  #Mongo
+  mongodb:
+    hostname: mongodb
+    port: 27017
+    database: controledelogistica
+
+  #RabbitMQ message
+  amq:
+    hostname: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
 

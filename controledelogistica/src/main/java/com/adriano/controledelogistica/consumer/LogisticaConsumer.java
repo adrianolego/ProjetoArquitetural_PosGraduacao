@@ -23,6 +23,7 @@ public class LogisticaConsumer {
             logisticaService.gerarLogistica(encomenda);
 
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             throw new AmqpRejectAndDontRequeueException(e);
         }
     }

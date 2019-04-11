@@ -5,7 +5,6 @@ import com.adriano.controledefrete.model.CalculoFrete;
 import com.adriano.controledefrete.producer.AtualizarCalculoFreteProducer;
 import com.adriano.controledefrete.producer.EnviarExpedicaoProducer;
 import com.adriano.controledefrete.producer.EnviarFrotaProducer;
-import com.adriano.controledefrete.producer.RegistrarFaturamentoProducer;
 import com.adriano.controledefrete.model.PedidoEncomenda;
 import com.adriano.controledefrete.service.FaturamentoService;
 import com.adriano.controledefrete.service.FreteService;
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Component
 @Slf4j
@@ -46,13 +44,13 @@ public class CalcularFreteConsumer {
 
             log.info("Calculando frete: {}", pedido);
             pedido.getFrete().setDataColeta(LocalDate.now().plusDays(2));
-            CalculoFrete calculoFrete = freteService.calculoFrete(pedido);
+            pedido.setCalculoFrete(freteService.calculoFrete(pedido));
             log.info("Frete calculado: {}", pedido);
 
             log.info("Enviando atualização do SAC com o frete.");
             atualizarCalculoFreteProducer.atualizarFrete(pedido);
 
-            if (calculoFrete.getInterno()) {
+            if (pedido.getCalculoFrete().getInterno()) {
                 log.info("Enviando para fila de frota o pedido.");
                 enviarFrotaProducer.agendarVeiculo(pedido);
             } else {

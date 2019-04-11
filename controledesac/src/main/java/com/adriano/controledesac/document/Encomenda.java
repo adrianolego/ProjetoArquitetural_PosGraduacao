@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,8 +21,10 @@ import java.util.List;
 @Builder
 public class Encomenda implements Serializable {
 
+    @Id
     private String idEncomenda;
     private List<Frete> frete;
+    private List<CalculoFrete> calculoFrete;
     private Remetente remetente;
     private Destinatario destinatario;
     @JsonSerialize(using = LocalDateTimeSerializer.class)

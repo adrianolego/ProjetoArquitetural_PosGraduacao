@@ -1,7 +1,5 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledesac.document;
 
-import com.adriano.controledecoleta.enums.PrioridadeEnvioEnum;
-import com.adriano.controledecoleta.enums.TipoCargaEnum;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -10,24 +8,22 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Frete implements Serializable {
+public class CalculoFrete implements Serializable {
 
-    private PrioridadeEnvioEnum prioridadeEnvio;
-    private TipoCargaEnum tipoCarga;
-    private boolean existeCargaRetorno;
+    private Double valor;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate dataColeta;
+    private LocalDate dataEntregaPrevista;
+    private Boolean interno;
     private Double pesoKg;
-    private Double valor;
-    private boolean interno;
-
 }

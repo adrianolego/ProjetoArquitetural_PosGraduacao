@@ -50,11 +50,6 @@ config:
 ---
 spring:
   profiles: docker-compose
-
-freteExterno:
-  ribbon:
-    listOfServers: http://integrador:7000
-
 config:
   #RabbitMQ message
   amq:
@@ -62,5 +57,13 @@ config:
     port: 5672
     username: guest
     password: guest
+
+freteExterno:
+  ribbon:
+    listOfServers: http://integrador:7000
+
+integrador:
+  ribbon:
+    listOfServers: http://integrador:7000
 
 

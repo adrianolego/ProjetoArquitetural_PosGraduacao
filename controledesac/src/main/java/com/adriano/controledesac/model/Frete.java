@@ -27,5 +27,6 @@ public class Frete implements Serializable {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dataColeta;
     private Double pesoKg;
+    private Double valor;
 
 }

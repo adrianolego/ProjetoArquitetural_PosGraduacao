@@ -1,4 +1,4 @@
-package com.adriano.controledecoleta.model;
+package com.adriano.controledeexpedicao.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

@@ -1,7 +1,7 @@
 package com.adriano.controledefrota.consumer;
 
-import com.adriano.controledefrota.component.AtualizarFrotaProducer;
-import com.adriano.controledefrota.component.EnviarLogisticaProducer;
+import com.adriano.controledefrota.producer.AtualizarFrotaProducer;
+import com.adriano.controledefrota.producer.EnviarLogisticaProducer;
 import com.adriano.controledefrota.model.PedidoEncomenda;
 import com.adriano.controledefrota.service.FrotaService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +34,7 @@ public class FrotaConsumer {
             enviarLogisticaProducer.enviarLogistica(pedido);
 
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             throw new AmqpRejectAndDontRequeueException(e);
         }
     }

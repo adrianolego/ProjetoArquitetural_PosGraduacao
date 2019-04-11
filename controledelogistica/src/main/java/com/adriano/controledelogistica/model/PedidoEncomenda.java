@@ -20,6 +20,7 @@ public class PedidoEncomenda implements Serializable {
 
     private String idEncomenda;
     private Frete frete;
+    private CalculoFrete calculoFrete;
     private Remetente remetente;
     private Destinatario destinatario;
     @JsonSerialize(using = LocalDateTimeSerializer.class)

@@ -18,11 +18,11 @@ public class EncomendaService {
     private PedidoEncomendaToEncomendaDocumentConverter converter;
 
     public void salvarPedido(PedidoEncomenda encomenda) {
-        try {
-            Encomenda e = converter.convert(encomenda);
-            encomendaRepository.save(e);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
+        Encomenda e = converter.convert(encomenda);
+        encomendaRepository.save(e);
+    }
+
+    public Encomenda consultarEncomenda(String idEncomenda) {
+        return encomendaRepository.findByIdEncomenda(idEncomenda);
     }
 }

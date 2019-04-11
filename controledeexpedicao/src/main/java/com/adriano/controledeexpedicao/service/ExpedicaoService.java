@@ -2,7 +2,7 @@ package com.adriano.controledeexpedicao.service;
 
 import com.adriano.controledeexpedicao.client.AtualizarExpedicaoClient;
 import com.adriano.controledeexpedicao.client.dto.FaturamentoDTO;
-import com.adriano.controledeexpedicao.component.AtualizarExpedicaoProducer;
+import com.adriano.controledeexpedicao.producer.AtualizarExpedicaoProducer;
 import com.adriano.controledeexpedicao.model.Expedicao;
 import com.adriano.controledeexpedicao.model.PedidoEncomenda;
 import lombok.extern.slf4j.Slf4j;

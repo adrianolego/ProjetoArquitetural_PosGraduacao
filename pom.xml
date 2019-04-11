@@ -13,6 +13,11 @@
         <module>integrador</module>
         <module>controledefrete</module>
         <module>controledecoleta</module>
+        <module>controledefaturamento</module>
+        <module>controledefrota</module>
+        <module>controledelogistica</module>
+        <module>controledeexpedicao</module>
+        <module>controledesac</module>
     </modules>
 
 </project>

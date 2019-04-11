@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EncomendaRepository extends MongoRepository<Encomenda, String> {
+
+    Encomenda findByIdEncomenda(String idEncomenda);
 }

@@ -26,9 +26,7 @@ public class FreteService {
         log.info("Frete externo: {}", externo);
 
         return (externo.getValor() <= interno.getValor()) ? externo : interno;
-
     }
-
 
     private CalculoFrete calcularFreteExterno(PedidoEncomenda pedidoEncomenda) throws Exception {
         EntradaFreteDTO req = EntradaFreteDTO.builder()
@@ -50,6 +48,7 @@ public class FreteService {
                 .dataEntregaPrevista(resp.getDataHoraEntregaPrevista().toLocalDate())
                 .valor(resp.getValor() * 1.1)
                 .interno(Boolean.FALSE)
+                .pesoKg(req.getPesoKg())
                 .build();
     }
 
@@ -102,6 +101,7 @@ public class FreteService {
                         )
                         .valor(valorFinal)
                         .interno(Boolean.TRUE)
+                        .pesoKg(frete.getPesoKg())
                         .build();
     }
 

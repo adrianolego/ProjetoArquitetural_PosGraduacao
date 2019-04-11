@@ -3,8 +3,6 @@ package com.adriano.controledefrota.service;
 import com.adriano.controledefrota.client.AgendarVeiculoClient;
 import com.adriano.controledefrota.client.dto.EntradaFreteDTO;
 import com.adriano.controledefrota.client.dto.VeiculoDTO;
-import com.adriano.controledefrota.component.AtualizarFrotaProducer;
-import com.adriano.controledefrota.component.EnviarLogisticaProducer;
 import com.adriano.controledefrota.model.PedidoEncomenda;
 import com.adriano.controledefrota.model.Veiculo;
 import lombok.extern.slf4j.Slf4j;

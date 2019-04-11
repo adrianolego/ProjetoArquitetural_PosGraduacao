@@ -1,4 +1,4 @@
-package com.adriano.controledeexpedicao.component;
+package com.adriano.controledeexpedicao.consumer;
 
 import com.adriano.controledeexpedicao.model.PedidoEncomenda;
 import com.adriano.controledeexpedicao.service.ExpedicaoService;
@@ -22,6 +22,7 @@ public class ExpedicaoConsumer {
             expedicaoService.gerarExpedicao(pedido);
 
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             throw new AmqpRejectAndDontRequeueException(e);
         }
     }
