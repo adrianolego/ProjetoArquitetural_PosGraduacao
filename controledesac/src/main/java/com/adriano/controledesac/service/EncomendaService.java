@@ -1,11 +1,11 @@
 package com.adriano.controledesac.service;
 
-import com.adriano.controledesac.converter.PedidoEncomendaToEncomendaDocumentConverter;
 import com.adriano.controledesac.document.Encomenda;
 import com.adriano.controledesac.model.PedidoEncomenda;
 import com.adriano.controledesac.repository.EncomendaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,11 +14,12 @@ public class EncomendaService {
 
     @Autowired
     private EncomendaRepository encomendaRepository;
+
     @Autowired
-    private PedidoEncomendaToEncomendaDocumentConverter converter;
+    private ConversionService conversionService;
 
     public void salvarPedido(PedidoEncomenda encomenda) {
-        Encomenda e = converter.convert(encomenda);
+        Encomenda e = conversionService.convert(encomenda, Encomenda.class);
         encomendaRepository.save(e);
     }
 

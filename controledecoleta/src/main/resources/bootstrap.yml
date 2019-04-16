@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: coleta
+
+    cloud:
+        config:
+            discovery: enabled
+#            uri: http://localhost:8888
+            fail-fast: true
