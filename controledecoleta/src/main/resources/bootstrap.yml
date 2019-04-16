@@ -4,6 +4,4 @@ spring:
 
     cloud:
         config:
-            discovery: enabled
-#            uri: http://localhost:8888
-            fail-fast: true
+            uri: http://localhost:8888
