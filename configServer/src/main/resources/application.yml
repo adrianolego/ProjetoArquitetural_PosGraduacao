@@ -6,10 +6,12 @@ spring:
   application:
     name: configServer
 
-#  cloud:
-#    config:
-#      server:
-#        native: search-locations
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://example.com/my/repo
+          timeout: 4
 
 eureka:
   client:
