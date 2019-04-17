@@ -1,0 +1,31 @@
+##Servidor Web
+server:
+ port: 8081
+
+config:
+  #RabbitMQ message
+  amq:
+    hostname: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  calcularFrete:
+    exchange: calcularFrete.exchange
+    sendDLQQueue: calcularFrete.sendDLQQueue
+    sendQueue: calcularFrete.sendQueue
+
+  registrarEncomenda:
+    exchange: registrarEncomenda.exchange
+    sendDLQQueue: registrarEncomenda.sendDLQQueue
+    sendQueue: registrarEncomenda.sendQueue
+
+---
+spring:
+ profiles: docker-compose
+config:
+ amq:
+   hostname: rabbitmq
+   port: 5672
+   username: guest
+   password: guest

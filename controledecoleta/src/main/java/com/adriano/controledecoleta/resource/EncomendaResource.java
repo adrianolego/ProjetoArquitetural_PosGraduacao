@@ -35,7 +35,7 @@ public class EncomendaResource {
     @ApiOperation(value = "Entrada de pedido de transporte")
     @PostMapping()
     public String registrarPedido(@RequestBody PedidoEncomendaDTO encomendaDTO) {
-        PedidoEncomenda encomenda = conversionService.convert(encomendaDTO, PedidoEncomenda.class);
+        PedidoEncomenda encomenda =  conversionService.convert(encomendaDTO, PedidoEncomenda.class);
         PedidoEncomenda pedido = calcularFreteService.realizarPedido(encomenda);
         encomendaService.registrarEncomenda(pedido);
         return pedido.getIdEncomenda();

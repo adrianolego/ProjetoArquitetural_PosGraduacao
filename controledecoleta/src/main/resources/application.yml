@@ -1,7 +1,7 @@
 ##Servidor Web
 #server:
 #  port: 8081
-#
+
 #config:
 #  #RabbitMQ message
 #  amq:
@@ -19,7 +19,7 @@
 #    exchange: registrarEncomenda.exchange
 #    sendDLQQueue: registrarEncomenda.sendDLQQueue
 #    sendQueue: registrarEncomenda.sendQueue
-#
+
 #---
 #spring:
 #  profiles: docker-compose
