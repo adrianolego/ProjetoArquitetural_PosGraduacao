@@ -25,9 +25,10 @@ services:
     ports:
       - "9081:8081"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888
+      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
       - URI_CONFIG_SERVER=http://configServer:8888 
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido  
 
@@ -41,8 +42,10 @@ services:
     ports:
       - "9082:8082"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888
+      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configServer:8888
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido
 
@@ -56,8 +59,10 @@ services:
     ports:
       - "9083:8083"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888
+      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configServer:8888
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido
 
@@ -71,8 +76,10 @@ services:
     ports:
       - "9084:8084"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888
+      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configServer:8888
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido
 
@@ -86,8 +93,10 @@ services:
     ports:
       - "9085:8085"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888
+      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configServer:8888
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido
 
@@ -101,8 +110,10 @@ services:
     ports:
       - "9086:8086"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888
+      - WAIT_FOR_IT=rabbitmq:5672 configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configServer:8888
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido
 
@@ -116,8 +127,10 @@ services:
     ports:
       - "9087:8087"
     environment:
-      - WAIT_FOR_IT=mongodb:27017 rabbitmq:5672 configServer:8888
+      - WAIT_FOR_IT=mongodb:27017 rabbitmq:5672 configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configServer:8888
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido
 
@@ -131,9 +144,40 @@ services:
     ports:
       - "9000:7000"
     environment:
+      - WAIT_FOR_IT=configServer:8888 eurekaServer:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configServer:8888
+      - URI_EUREKA_SERVER=http://eurekaServer:8761
     networks:
       - network_pedido  
+
+configServer:
+    build: 
+      context: configServer
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9888:8888"
+    environment:
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido
+
+eurekaServer:
+    build: 
+      context: eurekaServer
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9761:8761"
+    environment:
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido
 
 networks:
     network_pedido:

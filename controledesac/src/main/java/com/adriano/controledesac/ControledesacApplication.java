@@ -2,12 +2,14 @@ package com.adriano.controledesac;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class ControledesacApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ControledesacApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ControledesacApplication.class, args);
+    }
 
 }
