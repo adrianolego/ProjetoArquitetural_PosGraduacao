@@ -26,6 +26,12 @@ public class PedidoEncomendaDTOToEncomendaConverter implements Converter<PedidoE
                 .destinatario(destinatarioDTOToDestinatarioConverter.convert(pedidoDTO.getDestinatario()))
                 .remetente(remetenteDTOtoRemetenteConverter.convert(pedidoDTO.getRemetente()))
                 .frete(freteDTOtoFreteConverter.convert(pedidoDTO.getFrete()))
+                .dataHoraRecebimento(null)
+                .expedicao(null)
+                .logistica(null)
+                .veiculo(null)
+                .calculoFrete(null)
+                .observacao(null)
                 .build();
     }
 }

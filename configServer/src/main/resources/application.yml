@@ -9,8 +9,8 @@ spring:
     config:
       server:
         git:
-#          uri: https://github.com/adrianolego/Config.git
-          uri: https://github.com/adrianolego/Config.git
+          uri: https://github.com/adrianolego/ProjetoArquitetural.git
+          search-paths: configs
 
 #eureka:
 #  client:

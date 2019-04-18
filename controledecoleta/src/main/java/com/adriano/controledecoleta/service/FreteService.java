@@ -1,9 +1,11 @@
 package com.adriano.controledecoleta.service;
 
+import com.adriano.controledecoleta.dto.PedidoEncomendaDTO;
 import com.adriano.controledecoleta.model.PedidoEncomenda;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,7 +21,12 @@ public class FreteService {
     @Value("${config.calcularFrete.sendQueue}")
     private String calcularFreteQueue;
 
-    public PedidoEncomenda realizarPedido(PedidoEncomenda encomenda) {
+    @Autowired
+    private ConversionService conversionService;
+
+    public PedidoEncomenda realizarPedido(PedidoEncomendaDTO encomendaDTO) {
+
+        PedidoEncomenda encomenda = conversionService.convert(encomendaDTO, PedidoEncomenda.class);
 
         encomenda.setIdEncomenda(gerarCodigoRastreio());
         encomenda.setDataHoraRecebimento(LocalDateTime.now());

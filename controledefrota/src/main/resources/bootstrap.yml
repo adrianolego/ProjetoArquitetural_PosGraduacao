@@ -1,0 +1,7 @@
+spring:
+    application:
+        name: frota
+
+    cloud:
+        config:
+            uri: ${URI_CONFIG_SERVER:http://localhost:8888}
