@@ -1,8 +1,10 @@
-##Servidor Web
-server:
- port: 8081
-
 config:
+  #Mongo
+  mongodb:
+    hostname: localhost
+    port: 27017
+    database: controledelogistica
+
   #RabbitMQ message
   amq:
     hostname: localhost
@@ -10,22 +12,52 @@ config:
     username: guest
     password: guest
 
-  calcularFrete:
-    exchange: calcularFrete.exchange
-    sendDLQQueue: calcularFrete.sendDLQQueue
-    sendQueue: calcularFrete.sendQueue
-
   registrarEncomenda:
     exchange: registrarEncomenda.exchange
     sendDLQQueue: registrarEncomenda.sendDLQQueue
     sendQueue: registrarEncomenda.sendQueue
 
+  atualizarFrete:
+    exchange: atualizarFrete.exchange
+    sendDLQQueue: atualizarFrete.sendDLQQueue
+    sendQueue: atualizarFrete.sendQueue
+
+  atualizarVeiculo:
+    exchange: atualizarVeiculo.exchange
+    sendDLQQueue: atualizarVeiculo.sendDLQQueue
+    sendQueue: atualizarVeiculo.sendQueue
+
+  atualizarLogistica:
+    exchange: atualizarLogistica.exchange
+    sendDLQQueue: atualizarLogistica.sendDLQQueue
+    sendQueue: atualizarLogistica.sendQueue
+
+  atualizarExpedicao:
+    exchange: atualizarExpedicao.exchange
+    sendDLQQueue: atualizarExpedicao.sendDLQQueue
+    sendQueue: atualizarExpedicao.sendQueue
+
+
+#Servidor Web
+server:
+  port: 8087
+
 ---
 spring:
- profiles: docker-compose
+  profiles: docker-compose
+
 config:
- amq:
-   hostname: rabbitmq
-   port: 5672
-   username: guest
-   password: guest
+  #Mongo
+  mongodb:
+    hostname: mongodb
+    port: 27017
+    database: controledelogistica
+
+  #RabbitMQ message
+  amq:
+    hostname: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+

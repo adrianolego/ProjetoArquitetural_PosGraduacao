@@ -1,6 +1,13 @@
-##Servidor Web
 server:
- port: 8081
+  port: 8083
+
+integrador:
+  ribbon:
+    listOfServers: http://localhost:7000
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
 
 config:
   #RabbitMQ message
@@ -10,22 +17,31 @@ config:
     username: guest
     password: guest
 
-  calcularFrete:
-    exchange: calcularFrete.exchange
-    sendDLQQueue: calcularFrete.sendDLQQueue
-    sendQueue: calcularFrete.sendQueue
 
-  registrarEncomenda:
-    exchange: registrarEncomenda.exchange
-    sendDLQQueue: registrarEncomenda.sendDLQQueue
-    sendQueue: registrarEncomenda.sendQueue
+  registrarFaturamento:
+    exchange: registrarFaturamento.exchange
+    sendDLQQueue: registrarFaturamento.sendDLQQueue
+    sendQueue: registrarFaturamento.sendQueue
+
+  atualizarFaturamento:
+    exchange: atualizarFaturamento.exchange
+    sendDLQQueue: atualizarFaturamento.sendDLQQueue
+    sendQueue: atualizarFaturamento.sendQueue
 
 ---
 spring:
- profiles: docker-compose
+  profiles: docker-compose
+
+freteExterno:
+  ribbon:
+    listOfServers: http://integrador:7000
+
 config:
- amq:
-   hostname: rabbitmq
-   port: 5672
-   username: guest
-   password: guest
+  #RabbitMQ message
+  amq:
+    hostname: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+
