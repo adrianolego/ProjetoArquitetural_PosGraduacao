@@ -18,6 +18,8 @@
         <module>controledelogistica</module>
         <module>controledeexpedicao</module>
         <module>controledesac</module>
+        <module>configServer</module>
+        <module>eurekaServer</module>
     </modules>
 
 </project>
