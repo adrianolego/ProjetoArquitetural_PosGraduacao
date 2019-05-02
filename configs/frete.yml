@@ -46,6 +46,10 @@ config:
     sendDLQQueue: agendarVeiculo.sendDLQQueue
     sendQueue: agendarVeiculo.sendQueue
 
+spring: 
+  main: 
+    allow-bean-definition-overriding: true
+
 
 ---
 spring:
