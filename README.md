@@ -66,4 +66,7 @@ Comando do mongoDB
  - use controledelogistica
  - db.encomenda.find() (lista documentos)
  - db.encomenda.remove({}) (remove todos documentos)
+ 
+ Eureka
+ http://localhost:8761/
 
