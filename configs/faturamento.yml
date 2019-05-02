@@ -32,7 +32,7 @@ config:
 spring:
   profiles: docker-compose
 
-freteExterno:
+integrador:
   ribbon:
     listOfServers: http://integrador:7000
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(value = "API REST Cálculo de frete externo")
 @RestController
-@RequestMapping("/freteExterno")
+@RequestMapping("/frete")
 public class FreteResource {
 
     @Autowired

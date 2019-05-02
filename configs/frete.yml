@@ -1,9 +1,9 @@
 server:
   port: 8082
 
-freteExterno:
-  ribbon:
-    listOfServers: http://localhost:7000
+# freteExterno:
+#   ribbon:
+#     listOfServers: http://localhost:7000
 
 integrador:
   ribbon:
@@ -58,9 +58,9 @@ config:
     username: guest
     password: guest
 
-freteExterno:
-  ribbon:
-    listOfServers: http://integrador:7000
+# freteExterno:
+#   ribbon:
+#     listOfServers: http://integrador:7000
 
 integrador:
   ribbon:
