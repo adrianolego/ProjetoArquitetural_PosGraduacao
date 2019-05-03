@@ -18,7 +18,7 @@ public class FreteResource {
     @Autowired
     private FreteService freteService;
 
-    @PostMapping()
+    @PostMapping("/freteExterno")
     public RetornoFreteDTO calcularFrete(@RequestBody EntradaFreteDTO entradaFreteDTO) {
         return freteService.calcularFrete(entradaFreteDTO);
     }

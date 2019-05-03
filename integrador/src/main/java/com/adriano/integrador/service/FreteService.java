@@ -3,7 +3,6 @@ package com.adriano.integrador.service;
 import com.adriano.integrador.dto.EntradaFreteDTO;
 import com.adriano.integrador.dto.RetornoFreteDTO;
 import com.adriano.integrador.model.PedidoEncomenda;
-import com.adriano.integrador.model.Veiculo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

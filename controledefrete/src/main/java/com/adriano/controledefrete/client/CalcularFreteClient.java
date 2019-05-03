@@ -9,10 +9,11 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@FeignClient(name = "integrador", path = "/frete")
+@FeignClient("integrador.frete")
 public interface CalcularFreteClient {
 
-    @PostMapping()
+    @RequestMapping("/freteExterno")
     RetornoFreteDTO calcularFreteExterno(@RequestBody EntradaFreteDTO entradaFreteDTO);
 }
