@@ -1,11 +1,11 @@
 server:
   port: 8082
 
-integrador.frete:
+integrador-frete:
   ribbon:
     listOfServers: http://localhost:7000
 
-integrador.faturamento:
+integrador-faturamento:
   ribbon:
     listOfServers: http://localhost:7000
 
@@ -59,11 +59,11 @@ config:
     password: guest
 
 
-integrador.frete:
+integrador-frete:
   ribbon:
     listOfServers: http://integrador:7000
 
-integrador.faturamento:
+integrador-faturamento:
   ribbon:
     listOfServers: http://localhost:7000
 

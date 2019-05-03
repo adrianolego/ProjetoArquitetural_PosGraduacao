@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@FeignClient("integrador.frete")
+@FeignClient("integrador-frete")
 public interface CalcularFreteClient {
 
     @RequestMapping("/freteExterno")
