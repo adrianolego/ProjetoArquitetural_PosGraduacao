@@ -32,10 +32,6 @@ config:
 spring:
   profiles: docker-compose
 
-integrador:
-  ribbon:
-    listOfServers: http://integrador:7000
-
 config:
   #RabbitMQ message
   amq:
