@@ -15,6 +15,15 @@ services:
     networks:
       - network_pedido
 
+
+  swaggerui:
+    build: .
+    ports:
+      - 9000:8000
+    hostname: swaggerui
+    volumes:
+      - ./swagger.json:/app/swagger/swagger.json
+
   controledecoleta:
     build: 
       context: controledecoleta
