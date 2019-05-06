@@ -19,11 +19,13 @@ services:
   swagger:
     image: swaggerapi/swagger-ui
     expose:
-      - 8080
+      - 7001
     ports:
       - 9090:9090
     environment:
-      API_URL: http://localhost:9090
+      SWAGGER_JSON: /openapi.json
+    volumes:
+      - ./swagger/openapi.json:/openapi.json
 
   controledecoleta:
     build: 
