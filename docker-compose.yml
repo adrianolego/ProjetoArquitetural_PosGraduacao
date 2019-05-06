@@ -16,11 +16,15 @@ services:
       - network_pedido
 
 
-  swagger-editor:
-    image: swaggerapi/swagger-editor
-    container_name: "swagger-editor"
+   swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: "swagger-ui"
     ports:
       - "7001:8090"
+    volumes:
+      - ./swagger/openapi.json:/openapi.json
+    environment:
+      SWAGGER_JSON: /openapi.json
     networks:
         - network_pedido
 
