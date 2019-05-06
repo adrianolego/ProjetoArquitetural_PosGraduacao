@@ -22,8 +22,6 @@ services:
       - 8080
     ports:
       - 9000:8000
-    links:
-      - postgrest:postgrest
     environment:
       API_URL: http://localhost:9000
 
