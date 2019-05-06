@@ -18,10 +18,10 @@ services:
 
   swagger:
     image: swaggerapi/swagger-ui
-    expose:
-      - 7001
+    # expose:
+    #   - 7001
     ports:
-      - 9090:9090
+      - 9090:7001
     environment:
       SWAGGER_JSON: /openapi.json
     volumes:
