@@ -1,11 +1,7 @@
 server:
   port: 8082
 
-frete:
-  ribbon:
-    listOfServers: http://localhost:7000
-
-faturamento:
+integrador:
   ribbon:
     listOfServers: http://localhost:7000
 
@@ -57,14 +53,3 @@ config:
     port: 5672
     username: guest
     password: guest
-
-
-frete:
-  ribbon:
-    listOfServers: http://integrador:7000
-
-faturamento:
-  ribbon:
-    listOfServers: http://localhost:7000
-
-
