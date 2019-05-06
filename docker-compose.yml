@@ -16,16 +16,13 @@ services:
       - network_pedido
 
 
-  swagger:
-    image: swaggerapi/swagger-ui
-    # expose:
-    #   - 7001
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    container_name: "swagger-editor"
     ports:
-      - 9090:7001
-    environment:
-      SWAGGER_JSON: /openapi.json
-    volumes:
-      - ./swagger/openapi.json:/openapi.json
+      - "7001:8090"
+    networks:
+        - network_pedido
 
   controledecoleta:
     build: 
@@ -37,10 +34,10 @@ services:
     ports:
       - "9081:8081"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888 
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido  
 
@@ -54,10 +51,10 @@ services:
     ports:
       - "9082:8082"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888 
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido
 
@@ -71,10 +68,10 @@ services:
     ports:
       - "9083:8083"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888 
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido
 
@@ -88,10 +85,10 @@ services:
     ports:
       - "9084:8084"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888 
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido
 
@@ -105,10 +102,10 @@ services:
     ports:
       - "9085:8085"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888 
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido
 
@@ -122,10 +119,10 @@ services:
     ports:
       - "9086:8086"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888 
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido
 
@@ -139,10 +136,10 @@ services:
     ports:
       - "9087:8087"
     environment:
-      - WAIT_FOR_IT=mongodb:27017 rabbitmq:5672 configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido
 
@@ -156,10 +153,10 @@ services:
     ports:
       - "9000:7000"
     environment:
-      - WAIT_FOR_IT=configserver:9888 eurekaserver:9761
+      - WAIT_FOR_IT=eurekaserver:9761 configserver:9888
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888 
       - URI_EUREKA_SERVER=http://eurekaserver:9761
+      - URI_CONFIG_SERVER=http://configserver:9888 
     networks:
       - network_pedido  
 
