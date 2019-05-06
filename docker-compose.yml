@@ -153,7 +153,7 @@ services:
 
   configserver:
     build: 
-      context: configServer
+      context: configserver
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -167,7 +167,7 @@ services:
 
   eurekaserver:
       build: 
-        context: eurekaServer
+        context: eurekaserver
         dockerfile: src/main/docker/Dockerfile
         args:
           JAR_FILE: target/app.jar
