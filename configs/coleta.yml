@@ -2,13 +2,6 @@
 server:
  port: 8081
 
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: ${URI_EUREKA_SERVER:http://localhost:8761/eureka/}
-#  instance:
-#    preferIpAddress: true
-
 config:
   #RabbitMQ message
   amq:
@@ -37,9 +30,3 @@ config:
    username: guest
    password: guest
 
-# eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: ${URI_EUREKA_SERVER:http://localhost:9761/eureka/}
-#  instance:
-#    preferIpAddress: true
