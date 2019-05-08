@@ -11,7 +11,7 @@ services:
      - RABBITMQ_DEFAULT_PASS=guest
     networks:
       - network_pedido
-      -
+
 #Mongo DB
   mongodb:
     image: mongo
