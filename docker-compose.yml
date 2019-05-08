@@ -53,10 +53,10 @@ services:
     ports:
       - "9081:8081"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888 eurekaserver:9761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_EUREKA_SERVER=http://eurekaserver:9761
       - URI_CONFIG_SERVER=http://configserver:9888 
+      - URI_EUREKA_SERVER=http://eurekaserver:9761
     networks:
       - network_pedido  
 
