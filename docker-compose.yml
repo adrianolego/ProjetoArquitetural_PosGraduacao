@@ -49,7 +49,7 @@ services:
         - network_pedido
 
   #Coleta
-  controledecoleta:
+  coleta:
     build: 
       context: controledecoleta
       dockerfile: src/main/docker/Dockerfile
