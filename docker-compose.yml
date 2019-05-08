@@ -51,7 +51,7 @@ services:
   #Coleta
   coleta:
     build: 
-      context: coleta
+      context: controledecoleta
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
