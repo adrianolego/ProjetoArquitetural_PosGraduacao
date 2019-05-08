@@ -34,19 +34,19 @@ services:
       - network_pedido
 
   #Eureka Server
-#  eurekaserver:
-#      build:
-#        context: eurekaServer
-#        dockerfile: src/main/docker/Dockerfile
-#        args:
-#          JAR_FILE: target/app.jar
-#          UTIL_DIR: src/main/docker/
-#      ports:
-#        - "9761:8761"
-#      environment:
-#        - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      networks:
-#        - network_pedido
+  eurekaserver:
+      build:
+        context: eurekaServer
+        dockerfile: src/main/docker/Dockerfile
+        args:
+          JAR_FILE: target/app.jar
+          UTIL_DIR: src/main/docker/
+      ports:
+        - "9761:8761"
+      environment:
+        - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      networks:
+        - network_pedido
 
   #Coleta
   controledecoleta:
@@ -65,7 +65,7 @@ services:
 #      - URI_EUREKA_SERVER=http://eurekaserver:9761
     networks:
       - network_pedido  
-#
+
 #  controledefrete:
 #    build:
 #      context: controledefrete
@@ -78,7 +78,7 @@ services:
 #    environment:
 #      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
 #      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      # - URI_EUREKA_SERVER=http://eurekaserver:9761
+#       - URI_EUREKA_SERVER=http://eurekaserver:9761
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
@@ -95,7 +95,7 @@ services:
 #    environment:
 #      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
 #      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      # - URI_EUREKA_SERVER=http://eurekaserver:9761
+#       - URI_EUREKA_SERVER=http://eurekaserver:9761
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
@@ -112,7 +112,7 @@ services:
 #    environment:
 #      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
 #      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      # - URI_EUREKA_SERVER=http://eurekaserver:9761
+#       - URI_EUREKA_SERVER=http://eurekaserver:9761
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
@@ -129,7 +129,7 @@ services:
 #    environment:
 #      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
 #      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      # - URI_EUREKA_SERVER=http://eurekaserver:9761
+#       - URI_EUREKA_SERVER=http://eurekaserver:9761
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
@@ -146,7 +146,7 @@ services:
 #    environment:
 #      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
 #      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      # - URI_EUREKA_SERVER=http://eurekaserver:9761
+#       - URI_EUREKA_SERVER=http://eurekaserver:9761
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
@@ -163,11 +163,11 @@ services:
 #    environment:
 #      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
 #      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      # - URI_EUREKA_SERVER=http://eurekaserver:9761
+#       - URI_EUREKA_SERVER=http://eurekaserver:9761
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
-
+#
 #  integrador:
 #    build:
 #      context: integrador
@@ -180,7 +180,7 @@ services:
 #    environment:
 #      - WAIT_FOR_IT= configserver:9888
 #      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      # - URI_EUREKA_SERVER=http://eurekaserver:9761
+#       - URI_EUREKA_SERVER=http://eurekaserver:9761
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
