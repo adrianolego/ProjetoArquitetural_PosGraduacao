@@ -3,11 +3,11 @@ server:
  port: 8081
 
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761
-  instance:
-    preferIpAddress: true
+   client:
+     serviceUrl:
+        defaultZone: ${URI_EUREKA_SERVER:http://localhost:9761}
+   instance:
+      preferIpAddress: true
 
 config:
   #RabbitMQ message
