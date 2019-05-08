@@ -33,6 +33,7 @@ config:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${URI_EUREKA_SERVER}
+      defaultZone: 
+        eurekaServer: http://localhost:9761/eureka
   instance:
     preferIpAddress: true
