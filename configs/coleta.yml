@@ -37,9 +37,9 @@ config:
    username: guest
    password: guest
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://eurekaserver:8761
-  instance:
-    preferIpAddress: true
+  eureka:
+   client:
+     serviceUrl:
+        defaultZone: http://localhost:8761
+   instance:
+      preferIpAddress: true
