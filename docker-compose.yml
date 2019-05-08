@@ -37,7 +37,7 @@ services:
           JAR_FILE: target/app.jar
           UTIL_DIR: src/main/docker/
       ports:
-        - "9761:8761"
+        - "8761:8761"
       environment:
         - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
       networks:
