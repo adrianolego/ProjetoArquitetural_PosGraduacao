@@ -43,22 +43,22 @@ services:
       networks:
         - network_pedido
 
-  controledecoleta:
-    build: 
-      context: controledecoleta
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9081:8081"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      # - URI_EUREKA_SERVER=http://eurekaserver:9761/eureka
-      - URI_CONFIG_SERVER=http://configserver:9888 
-    networks:
-      - network_pedido  
+  # controledecoleta:
+  #   build: 
+  #     context: controledecoleta
+  #     dockerfile: src/main/docker/Dockerfile
+  #     args:
+  #       JAR_FILE: target/app.jar
+  #       UTIL_DIR: src/main/docker/
+  #   ports:
+  #     - "9081:8081"
+  #   environment:
+  #     - WAIT_FOR_IT=rabbitmq:5672 eurekaserver:9761 configserver:9888 
+  #     - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+  #     # - URI_EUREKA_SERVER=http://eurekaserver:9761/eureka
+  #     - URI_CONFIG_SERVER=http://configserver:9888 
+  #   networks:
+  #     - network_pedido  
 
   controledefrete:
     build: 
