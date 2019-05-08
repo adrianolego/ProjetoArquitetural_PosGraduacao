@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b466c130-21bb-407d-a6b4-a0b51d683ee4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/coleta.yml" beforeDir="false" afterPath="$PROJECT_DIR$/coleta.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-    </list>
+    <list default="true" id="b466c130-21bb-407d-a6b4-a0b51d683ee4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/coleta.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="9" selection-end-column="25" />
+              <caret line="4" selection-start-line="4" selection-start-column="1" selection-end-line="9" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -156,7 +153,7 @@
     <entry file="file://$PROJECT_DIR$/coleta.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="9" selection-end-column="25" />
+          <caret line="4" selection-start-line="4" selection-start-column="1" selection-end-line="9" selection-end-column="26" />
         </state>
       </provider>
     </entry>
