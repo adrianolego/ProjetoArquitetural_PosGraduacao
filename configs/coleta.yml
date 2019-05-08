@@ -29,3 +29,10 @@ config:
    port: 5672
    username: guest
    password: guest
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${URI_EUREKA_SERVER:http://eurekaserver:9761/eureka}
+  instance:
+    preferIpAddress: true
