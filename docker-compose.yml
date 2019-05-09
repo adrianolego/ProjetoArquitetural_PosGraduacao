@@ -29,9 +29,9 @@ services:
     ports:
       - "9081:8081"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:9888
+      - URI_CONFIG_SERVER=http://configserver:8888
 #      - URI_EUREKA_SERVER=http://eurekaserver:9761
     networks:
       - network_pedido  
@@ -164,7 +164,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9888:8888"
+      - "8888:8888"
     environment:
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
     networks:
@@ -179,7 +179,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9761:8761"
+      - "8761:8761"
     environment:
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
     networks:
