@@ -5,6 +5,13 @@ config:
     port: 27017
     database: controledelogistica
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    preferIpAddress: false
+
   #RabbitMQ message
   amq:
     hostname: localhost
@@ -59,5 +66,12 @@ config:
     port: 5672
     username: guest
     password: guest
+
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka
+    instance:
+      preferIpAddress: true
 
 

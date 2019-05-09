@@ -1,9 +1,23 @@
 server:
   port: 7000
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    preferIpAddress: false
+
 
 ---
 spring:
   profiles: docker-compose
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    preferIpAddress: true
 
 
