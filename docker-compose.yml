@@ -52,107 +52,101 @@ services:
     networks:
       - network_pedido
 
-#  controledefaturamento:
-#    build:
-#      context: controledefaturamento
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9083:8083"
-#    environment:
-#      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#       - URI_EUREKA_SERVER=http://eurekaserver:9761
-#      - URI_CONFIG_SERVER=http://configserver:9888
-#    networks:
-#      - network_pedido
-#
-#  controledefrota:
-#    build:
-#      context: controledefrota
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9084:8084"
-#    environment:
-#      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#       - URI_EUREKA_SERVER=http://eurekaserver:9761
-#      - URI_CONFIG_SERVER=http://configserver:9888
-#    networks:
-#      - network_pedido
-#
-#  controledelogistica:
-#    build:
-#      context: controledelogistica
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9085:8085"
-#    environment:
-#      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#       - URI_EUREKA_SERVER=http://eurekaserver:9761
-#      - URI_CONFIG_SERVER=http://configserver:9888
-#    networks:
-#      - network_pedido
-#
-#  controledeexpedicao:
-#    build:
-#      context: controledeexpedicao
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9086:8086"
-#    environment:
-#      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#       - URI_EUREKA_SERVER=http://eurekaserver:9761
-#      - URI_CONFIG_SERVER=http://configserver:9888
-#    networks:
-#      - network_pedido
-#
-#  controledesac:
-#    build:
-#      context: controledesac
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9087:8087"
-#    environment:
-#      - WAIT_FOR_IT=rabbitmq:5672 configserver:9888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#       - URI_EUREKA_SERVER=http://eurekaserver:9761
-#      - URI_CONFIG_SERVER=http://configserver:9888
-#    networks:
-#      - network_pedido
-#
-#  integrador:
-#    build:
-#      context: integrador
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9000:7000"
-#    environment:
-#      - WAIT_FOR_IT= configserver:9888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#       - URI_EUREKA_SERVER=http://eurekaserver:9761
-#      - URI_CONFIG_SERVER=http://configserver:9888
-#    networks:
-#      - network_pedido
+  controledefaturamento:
+    build:
+      context: controledefaturamento
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9083:8083"
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
+  controledefrota:
+    build:
+      context: controledefrota
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9084:8084"
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
+  controledelogistica:
+    build:
+      context: controledelogistica
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9085:8085"
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
+  controledeexpedicao:
+    build:
+      context: controledeexpedicao
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9086:8086"
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
+  controledesac:
+    build:
+      context: controledesac
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9087:8087"
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672  configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
+  integrador:
+    build:
+      context: integrador
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9000:7000"
+    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
 
   #Config Server
   configserver:
