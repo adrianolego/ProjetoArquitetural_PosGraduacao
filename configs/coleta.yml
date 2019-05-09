@@ -1,6 +1,13 @@
 ##Servidor Web
 server:
- port: 8081
+  port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka/
+  instance:
+    preferIpAddress: false
 
 config:
   #RabbitMQ message
@@ -22,11 +29,18 @@ config:
 
 ---
 spring:
- profiles: docker-compose
+  profiles: docker-compose
 config:
- amq:
-   hostname: rabbitmq
-   port: 5672
-   username: guest
-   password: guest
+  amq:
+    hostname: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka
+    instance:
+      preferIpAddress: true
 
