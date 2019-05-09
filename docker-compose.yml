@@ -18,36 +18,6 @@ services:
     networks:
       - network_pedido
 
-#Config Server
-  configserver:
-    build:
-      context: configServer
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9888:8888"
-    environment:
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-    networks:
-      - network_pedido
-
-  #Eureka Server
-  eurekaserver:
-      build:
-        context: eurekaServer
-        dockerfile: src/main/docker/Dockerfile
-        args:
-          JAR_FILE: target/app.jar
-          UTIL_DIR: src/main/docker/
-      ports:
-        - "9761:8761"
-      environment:
-        - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      networks:
-        - network_pedido
-
   #Coleta
   controledecoleta:
     build: 
@@ -184,6 +154,36 @@ services:
 #      - URI_CONFIG_SERVER=http://configserver:9888
 #    networks:
 #      - network_pedido
+
+  #Config Server
+  configserver:
+    build:
+      context: configServer
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9888:8888"
+    environment:
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido
+
+  #Eureka Server
+  eurekaserver:
+    build:
+      context: eurekaServer
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9761:8761"
+    environment:
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido
 
 
 networks:
