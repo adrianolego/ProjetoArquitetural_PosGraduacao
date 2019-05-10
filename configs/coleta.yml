@@ -14,8 +14,22 @@ eureka:
     auth-server-url: http://127.0.0.1:8080/auth
     ssl-required: external
     #resource: demoapp
-    credentials.secret: 11111111-1111-1111-1111-111111111111
+    credentials:
+      secret: 11111111-1111-1111-1111-111111111111
     use-resource-role-mappings: true
+
+#    securityConstraints[0]:
+#      authRoles[0]: admin
+#      authRoles[1]: user
+#      securityCollections[0]:
+#        name: insecure stuff
+#        patterns[0]: /insecure
+#
+#    securityConstraints[1]:
+#      authRoles[0]: admin
+#      securityCollections[0]:
+#        name: admin stuff
+#        patterns[0]: /admin
 
 config:
   #RabbitMQ message
