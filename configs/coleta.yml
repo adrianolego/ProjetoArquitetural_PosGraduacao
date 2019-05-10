@@ -9,11 +9,11 @@ eureka:
   instance:
     preferIpAddress: false
 
-  keycloak:
-    auth-server-url: http://localhost:8080/auth/
-    resource: controledecoleta
-    realm: Keycloak
-    public-client: true
+#  keycloak:
+#    auth-server-url: http://localhost:8080/auth/
+#    resource: controledecoleta
+#    realm: Keycloak
+#    public-client: true
 
 config:
   #RabbitMQ message
@@ -50,10 +50,10 @@ config:
     instance:
       preferIpAddress: true
 
-  keycloak:
-    auth-server-url: http://localhost:9090/auth/
-    resource: controledecoleta
-    realm: Keycloak
-    public-client: true
+#  keycloak:
+#    auth-server-url: http://localhost:9090/auth/
+#    resource: controledecoleta
+#    realm: Keycloak
+#    public-client: true
 
 
