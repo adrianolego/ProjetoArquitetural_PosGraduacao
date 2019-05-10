@@ -21,7 +21,7 @@ services:
   #COLETA
   controledecoleta:
     build: 
-      context: COLETA
+      context: controledecoleta
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -38,7 +38,7 @@ services:
   #FRETE
   controledefrete:
     build:
-      context: FRETE
+      context: controledefrete
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -55,7 +55,7 @@ services:
   #FATURAMENTO
   controledefaturamento:
     build:
-      context: FATURAMENTO
+      context: controledefaturamento
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -72,7 +72,7 @@ services:
   #FROTA
   controledefrota:
     build:
-      context: FROTA
+      context: controledefrota
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -89,7 +89,7 @@ services:
   #LOGISTICA
   controledelogistica:
     build:
-      context: LOGISTICA
+      context: controledelogistica
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -106,7 +106,7 @@ services:
   #EXPEDICAO
   controledeexpedicao:
     build:
-      context: EXPEDICAO
+      context: controledeexpedicao
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -123,7 +123,7 @@ services:
   #SAC
   controledesac:
     build:
-      context: SAC
+      context: controledesac
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -140,7 +140,7 @@ services:
   #INTEGRADOR
   integrador:
     build:
-      context: INTEGRADOR
+      context: integrador
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -157,7 +157,7 @@ services:
   #CONFIG SERVER
   configserver:
     build:
-      context: CONFIG-SERVER
+      context: configServer
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -172,7 +172,7 @@ services:
   #EUREKA SERVER
   eurekaserver:
     build:
-      context: EUREKA-SERVER
+      context: eurekaServer
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
