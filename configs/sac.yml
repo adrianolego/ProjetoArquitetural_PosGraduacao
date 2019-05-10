@@ -1,3 +1,7 @@
+#Servidor Web
+server:
+  port: 8087
+
 config:
   #Mongo
   mongodb:
@@ -44,10 +48,6 @@ eureka:
     sendDLQQueue: atualizarExpedicao.sendDLQQueue
     sendQueue: atualizarExpedicao.sendQueue
 
-
-#Servidor Web
-server:
-  port: 8087
 
 ---
 spring:
