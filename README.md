@@ -69,4 +69,9 @@ Comando do mongoDB
  
  Eureka
  http://localhost:8761/
+ 
+ 
+ 
+ KeyCloak
+docker run -d -p 9001:8080 keycloak 
 
