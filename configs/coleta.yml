@@ -49,5 +49,11 @@ config:
         defaultZone: http://localhost:8761/eureka
     instance:
       preferIpAddress: true
+      
+  keycloak:
+    auth-server-url: http://localhost:8081/auth/
+    resource: controledecoleta
+    realm: Keycloak
+    public-client: true
 
 
