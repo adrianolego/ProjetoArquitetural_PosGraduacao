@@ -9,6 +9,14 @@ eureka:
   instance:
     preferIpAddress: false
 
+  keycloak:
+    realm: logisticaKeyCloak
+    auth-server-url: http://127.0.0.1:8080/auth
+    ssl-required: external
+    #resource: demoapp
+    credentials.secret: 11111111-1111-1111-1111-111111111111
+    use-resource-role-mappings: true
+
 config:
   #RabbitMQ message
   amq:
@@ -43,4 +51,12 @@ config:
         defaultZone: http://localhost:8761/eureka
     instance:
       preferIpAddress: true
+
+  keycloak:
+    realm: logisticaKeyCloak
+    auth-server-url: http://127.0.0.1:8080/auth
+    ssl-required: external
+    #resource: demoapp
+    credentials.secret: 11111111-1111-1111-1111-111111111111
+    use-resource-role-mappings: true
 

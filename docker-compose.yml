@@ -1,188 +1,206 @@
 version: "3.4"
 services:
 
-  #RABIITMQ
-  rabbitmq:
-    image: rabbitmq:3-management
+#  #RABIITMQ
+#  rabbitmq:
+#    image: rabbitmq:3-management
+#    ports:
+#     - "16672:15672"
+#    environment:
+#     - RABBITMQ_DEFAULT_USER=guest
+#     - RABBITMQ_DEFAULT_PASS=guest
+#    networks:
+#      - network_pedido
+#
+#  #MONGO DB
+#  mongodb:
+#    image: mongo
+#    networks:
+#      - network_pedido
+
+  #KEAYCLOAK
+  keycloak:
+    container_name: keycloak
+    image: jboss/keycloak
     ports:
-     - "16672:15672"
+      - "9990:8080"
     environment:
-     - RABBITMQ_DEFAULT_USER=guest
-     - RABBITMQ_DEFAULT_PASS=guest
+      DB_VENDOR: "h2"
+#      DB_ADDR: mongodb
+#      DB_PORT: 27017
+#      DB_USER: keycloak
+#      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    restart: always
     networks:
       - network_pedido
 
-  #MONGO DB
-  mongodb:
-    image: mongo
-    networks:
-      - network_pedido
-
-  #COLETA
-  controledecoleta:
-    build: 
-      context: controledecoleta
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9081:8081"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido  
-
-  #FRETE
-  controledefrete:
-    build:
-      context: controledefrete
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9082:8082"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido
-
-  #FATURAMENTO
-  controledefaturamento:
-    build:
-      context: controledefaturamento
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9083:8083"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido
-
-  #FROTA
-  controledefrota:
-    build:
-      context: controledefrota
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9084:8084"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido
-
-  #LOGISTICA
-  controledelogistica:
-    build:
-      context: controledelogistica
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9085:8085"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido
-
-  #EXPEDICAO
-  controledeexpedicao:
-    build:
-      context: controledeexpedicao
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9086:8086"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido
-
-  #SAC
-  controledesac:
-    build:
-      context: controledesac
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9087:8087"
-    environment:
-      - WAIT_FOR_IT=rabbitmq:5672 mongodb:27017 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido
-
-  #INTEGRADOR
-  integrador:
-    build:
-      context: integrador
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9000:7000"
-    environment:
-      - WAIT_FOR_IT= configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
-    networks:
-      - network_pedido
-
-  #CONFIG SERVER
-  configserver:
-    build:
-      context: configServer
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9888:8888"
-    environment:
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-    networks:
-      - network_pedido
-
-  #EUREKA SERVER
-  eurekaserver:
-    build:
-      context: eurekaServer
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "8761:8761"
-    environment:
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-    networks:
-      - network_pedido
+#  #COLETA
+#  controledecoleta:
+#    build:
+#      context: controledecoleta
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9081:8081"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #FRETE
+#  controledefrete:
+#    build:
+#      context: controledefrete
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9082:8082"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #FATURAMENTO
+#  controledefaturamento:
+#    build:
+#      context: controledefaturamento
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9083:8083"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #FROTA
+#  controledefrota:
+#    build:
+#      context: controledefrota
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9084:8084"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #LOGISTICA
+#  controledelogistica:
+#    build:
+#      context: controledelogistica
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9085:8085"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #EXPEDICAO
+#  controledeexpedicao:
+#    build:
+#      context: controledeexpedicao
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9086:8086"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #SAC
+#  controledesac:
+#    build:
+#      context: controledesac
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9087:8087"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 mongodb:27017 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #INTEGRADOR
+#  integrador:
+#    build:
+#      context: integrador
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9000:7000"
+#    environment:
+#      - WAIT_FOR_IT= configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
+#
+#  #CONFIG SERVER
+#  configserver:
+#    build:
+#      context: configServer
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9888:8888"
+#    environment:
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#    networks:
+#      - network_pedido
+#
+#  #EUREKA SERVER
+#  eurekaserver:
+#    build:
+#      context: eurekaServer
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "8761:8761"
+#    environment:
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#    networks:
+#      - network_pedido
 
 
 networks:
