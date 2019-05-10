@@ -12,7 +12,7 @@ public class AtualizarExpedicaoQueueConfig {
     @Value("${config.atualizarExpedicao.sendDLQQueue}")
     private String dlqQueue;
     @Value("${config.atualizarExpedicao.sendQueue}")
-    private String queueAtualizarExpedicao;
+    private String atualizarExpedicao;
 
     @Bean
     public DirectExchange exchangeAtualizarExpedicao() {
@@ -21,7 +21,7 @@ public class AtualizarExpedicaoQueueConfig {
 
     @Bean
     public Queue queueAtualizarExpedicao() {
-        return QueueBuilder.durable(queueAtualizarExpedicao)
+        return QueueBuilder.durable(atualizarExpedicao)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
@@ -34,6 +34,6 @@ public class AtualizarExpedicaoQueueConfig {
 
     @Bean
     public Binding bindingAtualizarExpedicao() {
-        return BindingBuilder.bind(queueAtualizarExpedicao()).to(exchangeAtualizarExpedicao()).with(queueAtualizarExpedicao);
+        return BindingBuilder.bind(queueAtualizarExpedicao()).to(exchangeAtualizarExpedicao()).with(atualizarExpedicao);
     }
 }

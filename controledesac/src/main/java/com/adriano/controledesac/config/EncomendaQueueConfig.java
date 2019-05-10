@@ -12,7 +12,7 @@ public class EncomendaQueueConfig {
     @Value("${config.registrarEncomenda.sendDLQQueue}")
     private String dlqQueue;
     @Value("${config.registrarEncomenda.sendQueue}")
-    private String queueRegistrarEncomenda;
+    private String registrarEncomenda;
 
     @Bean
     public DirectExchange exchangeRegistrarEncomenda() {
@@ -21,7 +21,7 @@ public class EncomendaQueueConfig {
 
     @Bean
     public Queue queueRegistrarEncomenda() {
-        return QueueBuilder.durable(queueRegistrarEncomenda)
+        return QueueBuilder.durable(registrarEncomenda)
                 .withArgument("x-dead-letter-exchange", "")
                 .withArgument("x-dead-letter-routing-key", dlqQueue)
                 .build();
@@ -34,6 +34,6 @@ public class EncomendaQueueConfig {
 
     @Bean
     public Binding bindingRegistrarEncomenda() {
-        return BindingBuilder.bind(queueRegistrarEncomenda()).to(exchangeRegistrarEncomenda()).with(queueRegistrarEncomenda);
+        return BindingBuilder.bind(queueRegistrarEncomenda()).to(exchangeRegistrarEncomenda()).with(registrarEncomenda);
     }
 }

@@ -1,7 +1,7 @@
 version: "3.4"
 services:
 
-#RabbitMQ
+  #RABIITMQ
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -12,16 +12,16 @@ services:
     networks:
       - network_pedido
 
-#Mongo DB
+  #MONGO DB
   mongodb:
     image: mongo
     networks:
       - network_pedido
 
-  #Coleta
+  #COLETA
   controledecoleta:
     build: 
-      context: controledecoleta
+      context: COLETA
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -35,10 +35,10 @@ services:
     networks:
       - network_pedido  
 
-  #Frete
+  #FRETE
   controledefrete:
     build:
-      context: controledefrete
+      context: FRETE
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -52,9 +52,10 @@ services:
     networks:
       - network_pedido
 
+  #FATURAMENTO
   controledefaturamento:
     build:
-      context: controledefaturamento
+      context: FATURAMENTO
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -68,9 +69,10 @@ services:
     networks:
       - network_pedido
 
+  #FROTA
   controledefrota:
     build:
-      context: controledefrota
+      context: FROTA
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -84,9 +86,10 @@ services:
     networks:
       - network_pedido
 
+  #LOGISTICA
   controledelogistica:
     build:
-      context: controledelogistica
+      context: LOGISTICA
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -100,9 +103,10 @@ services:
     networks:
       - network_pedido
 
+  #EXPEDICAO
   controledeexpedicao:
     build:
-      context: controledeexpedicao
+      context: EXPEDICAO
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -116,9 +120,10 @@ services:
     networks:
       - network_pedido
 
+  #SAC
   controledesac:
     build:
-      context: controledesac
+      context: SAC
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -132,9 +137,10 @@ services:
     networks:
       - network_pedido
 
+  #INTEGRADOR
   integrador:
     build:
-      context: integrador
+      context: INTEGRADOR
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -148,10 +154,10 @@ services:
     networks:
       - network_pedido
 
-  #Config Server
+  #CONFIG SERVER
   configserver:
     build:
-      context: configServer
+      context: CONFIG-SERVER
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
@@ -163,10 +169,10 @@ services:
     networks:
       - network_pedido
 
-  #Eureka Server
+  #EUREKA SERVER
   eurekaserver:
     build:
-      context: eurekaServer
+      context: EUREKA-SERVER
       dockerfile: src/main/docker/Dockerfile
       args:
         JAR_FILE: target/app.jar
