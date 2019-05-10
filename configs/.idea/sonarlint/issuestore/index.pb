@@ -2,3 +2,17 @@
 :
 
 coleta.yml,b/5/b5390d875f0b2b1b122d224dcd1ac8f468180188
+=
+logistica.yml,5/2/523d0fc792e83187846d7abab4a1b24c7b89fbb2
+7
+sac.yml,2/6/260048aa80c6e14142cd84008613e625244edfcc
+=
+expedicao.yml,e/5/e509ccdb1e8c2ee1a0520ed1e4fdddbb5776ff90
+?
+faturamento.yml,8/6/86b70f6e684e62a6be3399d2c23116b66270b373
+9
+	frete.yml,2/4/24e1a1ae98b53c6735cbeaaf59495582c1b31616
+9
+	frota.yml,f/7/f78af40077f266b858eb10e58431e56d2da44c1f
+>
+integrador.yml,5/6/56f7d23ec875f074a68195ef0f9e8e28e9129243
