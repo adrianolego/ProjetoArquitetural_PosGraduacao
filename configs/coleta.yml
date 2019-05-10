@@ -10,7 +10,7 @@ eureka:
     preferIpAddress: false
 
   keycloak:
-    auth-server-url: http://localhost:8081/auth/
+    auth-server-url: http://localhost:8080/auth/
     resource: controledecoleta
     realm: Keycloak
     public-client: true
@@ -49,9 +49,9 @@ config:
         defaultZone: http://localhost:8761/eureka
     instance:
       preferIpAddress: true
-      
+
   keycloak:
-    auth-server-url: http://localhost:8081/auth/
+    auth-server-url: http://localhost:9090/auth/
     resource: controledecoleta
     realm: Keycloak
     public-client: true
