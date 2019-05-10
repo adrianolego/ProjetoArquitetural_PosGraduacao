@@ -9,12 +9,12 @@ config:
     port: 27017
     database: controledelogistica
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://eurekaserver:8761/eureka/
-  instance:
-    preferIpAddress: false
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://eurekaserver:8761/eureka/
+#  instance:
+#    preferIpAddress: false
 
   #RabbitMQ message
   amq:
