@@ -2,6 +2,14 @@
 server:
   port: 8087
 
+#Eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: false
+
 config:
   #Mongo
   mongodb:
@@ -47,14 +55,6 @@ config:
    port: 6379
    enabled: false
 
-#Eureka
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    preferIpAddress: false
-
 ---
 spring:
   profiles: docker-compose
@@ -79,8 +79,8 @@ config:
     port: 6379
     enabled: false
 
-#Eureka
-eureka:
+  #Eureka
+  eureka:
     client:
       serviceUrl:
         defaultZone: http://eureka:8761/eureka
