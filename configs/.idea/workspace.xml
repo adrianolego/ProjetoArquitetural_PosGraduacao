@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sac.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="485">
+              <caret line="51" column="2" lean-forward="true" selection-start-line="51" selection-start-column="2" selection-end-line="55" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -284,8 +284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sac.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="485">
+          <caret line="51" column="2" lean-forward="true" selection-start-line="51" selection-start-column="2" selection-end-line="55" selection-end-column="17" />
         </state>
       </provider>
     </entry>
