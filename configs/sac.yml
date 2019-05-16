@@ -49,9 +49,9 @@ config:
       preferIpAddress: false
 
   #Redis
-  redis:
-    hostname: localhost
-    port: 6379
+redis:
+  hostname: localhost
+  port: 6379
 
 ---
 spring:
