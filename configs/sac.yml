@@ -2,6 +2,12 @@
 server:
   port: 8087
 
+#Redis
+redis:
+  hostname: localhost
+  port: 6379
+  enabled: true
+
 config:
   #Mongo
   mongodb:
@@ -49,11 +55,6 @@ config:
     instance:
       preferIpAddress: false
 
-  #Redis
-  redis:
-    hostname: localhost
-    port: 6379
-    enabled: true
 
 ---
 spring:
@@ -73,6 +74,7 @@ config:
     username: guest
     password: guest
 
+  #Eureka
   eureka:
     client:
       serviceUrl:
