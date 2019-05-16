@@ -79,13 +79,13 @@ config:
     port: 6379
     enabled: false
 
-  #Eureka
-  eureka:
+#Eureka
+eureka:
     client:
       serviceUrl:
-        defaultZone: http://localhost:8761/eureka/
+        defaultZone: http://localhost:8761/eureka
     instance:
-      preferIpAddress: false
+      preferIpAddress: true
 
 
 
