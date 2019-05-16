@@ -1,5 +1,6 @@
 package com.adriano.controledesac.service;
 
+import com.adriano.controledesac.document.Encomenda;
 import com.adriano.controledesac.repository.EncomendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,14 +17,14 @@ public class CacheService {
 
     @Cacheable(value = "encomenda", key = "#idEncomenda")
     @CachePut
-    public void inserirCache(String idEncomenda) {
-        encomendaRepository.findByIdEncomenda(idEncomenda);
+    public Encomenda inserirCache(String idEncomenda) {
+        return encomendaRepository.findByIdEncomenda(idEncomenda);
 
     }
 
-    @Cacheable(value = "encomenda", key = "#idEncomenda")
-    @CachePut
-    public void atualizarCache(String idEncomenda) {
-        encomendaRepository.findByIdEncomenda(idEncomenda);
-    }
+//    @Cacheable(value = "encomenda", key = "#idEncomenda")
+//    @CachePut
+//    public Encomenda atualizarCache(String idEncomenda) {
+//        return encomendaRepository.findByIdEncomenda(idEncomenda);
+//    }
 }

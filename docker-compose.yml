@@ -24,8 +24,6 @@ services:
   #Redis
   redis:
     image: 'redis:latest'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - '26379:6379'
     hostname: redis
