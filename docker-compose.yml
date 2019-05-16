@@ -13,21 +13,17 @@ services:
     networks:
       - network_pedido
 
-
   #MONGO DB
   mongodb:
     image: mongo
     networks:
       - network_pedido
 
-
   #Redis
   redis:
     image: 'redis:latest'
     networks:
       - network_pedido
-
-
 
   #KEAYCLOAK
 #  keycloak:
@@ -38,7 +34,6 @@ services:
 #    expose:
 #      - 9090
 
-
   #COLETA
   controledecoleta:
     build:
@@ -48,7 +43,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9081:8081"
+      - "8081:8081"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
