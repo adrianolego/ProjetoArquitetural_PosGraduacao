@@ -41,6 +41,7 @@ config:
     sendDLQQueue: atualizarExpedicao.sendDLQQueue
     sendQueue: atualizarExpedicao.sendQueue
 
+  #Eureka
   eureka:
    client:
       serviceUrl:
@@ -49,9 +50,10 @@ config:
       preferIpAddress: false
 
   #Redis
-redis:
-  hostname: localhost
-  port: 6379
+  redis:
+    hostname: localhost
+    port: 6379
+    enabled: true
 
 ---
 spring:

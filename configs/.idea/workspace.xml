@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b466c130-21bb-407d-a6b4-a0b51d683ee4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/sac.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sac.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../controledesac/src/main/java/com/adriano/controledesac/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../controledesac/src/main/java/com/adriano/controledesac/config/RedisConfig.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sac.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="53" column="2" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+            <state relative-caret-position="735">
+              <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -283,8 +284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sac.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="53" column="2" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+        <state relative-caret-position="735">
+          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
         </state>
       </provider>
     </entry>
