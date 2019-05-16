@@ -48,6 +48,16 @@ eureka:
   instance:
     preferIpAddress: false
 
+#Redis
+redis:
+  image: 'redis:latest'
+  environment:
+    - ALLOW_EMPTY_PASSWORD=yes
+  ports:
+        - '26379:6379'
+  hostname: localhost
+  enabled: true
+
 ---
 spring:
   profiles: docker-compose
@@ -72,5 +82,15 @@ config:
         defaultZone: http://localhost:8761/eureka
     instance:
       preferIpAddress: true
+
+  #Redis
+  redis:
+    image: 'redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '26379:6379'
+    hostname: redis
+    enabled: true
 
 
