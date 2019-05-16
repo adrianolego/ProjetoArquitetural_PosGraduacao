@@ -25,7 +25,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import static org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair.fromSerializer;
 
 @Configuration
-//@Profile({"default", "docker-compose"})
+@Profile({"default", "docker-compose"})
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport implements CachingConfigurer {
 
