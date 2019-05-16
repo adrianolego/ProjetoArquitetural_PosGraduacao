@@ -18,9 +18,14 @@ public class EncomendaService {
     @Autowired
     private ConversionService conversionService;
 
+    @Autowired
+    CacheService cacheService;
+
     public void salvarPedido(PedidoEncomenda encomenda) {
         Encomenda e = conversionService.convert(encomenda, Encomenda.class);
         encomendaRepository.save(e);
+
+        cacheService.inserirCache(e.getIdEncomenda());
     }
 
     public Encomenda consultarEncomenda(String idEncomenda) {
