@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 @Service
 public class CacheService {
 
-    @Value("${encomenda.redis.enabled}")
+    @Value("${config.redis.enabled}")
 
     @Cacheable(value = "encomenda", key = "#encomenda.idEncomenda")
     @CachePut

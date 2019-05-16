@@ -29,10 +29,10 @@ import static org.springframework.data.redis.serializer.RedisSerializationContex
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport implements CachingConfigurer {
 
-    @Value("${encomenda.redis.hostname}")
+    @Value("${config.redis.hostname}")
     private String redisHostName;
 
-    @Value("${encomenda.redis.port}")
+    @Value("${config.redis.port}")
     private int redisPort;
 
     @Bean

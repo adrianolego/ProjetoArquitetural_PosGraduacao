@@ -41,22 +41,22 @@ config:
     sendDLQQueue: atualizarExpedicao.sendDLQQueue
     sendQueue: atualizarExpedicao.sendQueue
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    preferIpAddress: false
+  eureka:
+   client:
+      serviceUrl:
+       defaultZone: http://localhost:8761/eureka/
+    instance:
+      preferIpAddress: false
 
-#Redis
-redis:
-  image: 'redis:latest'
-  environment:
-    - ALLOW_EMPTY_PASSWORD=yes
-  ports:
-        - '26379:6379'
-  hostname: localhost
-  enabled: true
+  #Redis
+  redis:
+    image: 'redis:latest'
+   environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+   ports:
+     - '26379:6379'
+   hostname: localhost
+   enabled: true
 
 ---
 spring:
