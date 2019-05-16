@@ -19,11 +19,11 @@ services:
     networks:
       - network_pedido
 
-#  #Redis
-#  redis:
-#    image: redis
-#    networks:
-#      - network_pedido
+  #Redis
+  redis:
+    image: redis
+    networks:
+      - network_pedido
 
   #KEAYCLOAK
 #  keycloak:
