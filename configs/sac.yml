@@ -50,13 +50,8 @@ config:
 
   #Redis
   redis:
-    image: 'redis:latest'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-     - '26379:6379'
     hostname: localhost
-    enabled: true
+    port: 6379
 
 ---
 spring:
@@ -85,12 +80,7 @@ config:
 
   #Redis
   redis:
-    image: 'redis:latest'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - '26379:6379'
-    hostname: redis
-    enabled: true
+    hostname: localhost
+    port: 6379
 
 
