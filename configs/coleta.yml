@@ -9,6 +9,16 @@ eureka:
   instance:
     preferIpAddress: false
 
+#Redis
+ redis:
+   image: 'redis:latest'
+   environment:
+     - ALLOW_EMPTY_PASSWORD=yes
+     ports:
+       - '26379:6379'
+     hostname: localhost
+   enabled: true
+
 #  keycloak:
 #    auth-server-url: http://localhost:8080/auth/
 #    resource: controledecoleta
@@ -33,6 +43,7 @@ config:
     sendDLQQueue: registrarEncomenda.sendDLQQueue
     sendQueue: registrarEncomenda.sendQueue
 
+
 ---
 spring:
   profiles: docker-compose
@@ -49,6 +60,16 @@ config:
         defaultZone: http://localhost:8761/eureka
     instance:
       preferIpAddress: true
+
+  #Redis
+  redis:
+    image: 'redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '26379:6379'
+    hostname: redis
+    enabled: true
 
 #  keycloak:
 #    auth-server-url: http://localhost:9090/auth/

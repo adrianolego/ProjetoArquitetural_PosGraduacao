@@ -87,11 +87,12 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-spring-boot-2-starter</artifactId>
-            <version>4.0.0.Final</version>
-        </dependency>
+
+        <!--        <dependency>-->
+<!--            <groupId>org.keycloak</groupId>-->
+<!--            <artifactId>keycloak-spring-boot-2-starter</artifactId>-->
+<!--            <version>4.0.0.Final</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 

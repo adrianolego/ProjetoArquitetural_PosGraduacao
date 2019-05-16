@@ -1,78 +1,62 @@
 version: "3.4"
+
 services:
 
-#  #RABIITMQ
-#  rabbitmq:
-#    image: rabbitmq:3-management
-#    ports:
-#     - "16672:15672"
-#    environment:
-#     - RABBITMQ_DEFAULT_USER=guest
-#     - RABBITMQ_DEFAULT_PASS=guest
-#    networks:
-#      - network_pedido
-#
-#  #MONGO DB
-#  mongodb:
-#    image: mongo
-#    networks:
-#      - network_pedido
-
-  #KEAYCLOAK
-  keycloak:
-    image: jboss/keycloak:4.0.0.Final
-    restart: on-failure
-    command:
-      - "-b"
-      - "0.0.0.0"
-      - "-Dkeycloak.migration.action=import"
-      - "-Dkeycloak.migration.provider=dir"
-      - "-Dkeycloak.migration.dir=/config/"
-      - "-Dkeycloak.migration.strategy=IGNORE_EXISTING"
-    volumes:
-      - ./config:/config/
-    environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=password
-      - DB_VENDOR=postgres
-      - DB_USER=admin
-      - DB_PASSWORD=password
-      - DB_ADDR=keycloak-db
-      - DB_PORT=5432
-      - DB_DATABASE=keycloakdb
+  #RABIITMQ
+  rabbitmq:
+    image: rabbitmq:3-management
     ports:
-      - "9090:8080"
-#    depends_on:
-#      - keycloak-db
-
-#    keycloak-db:
-#      image: postgres:10
-#      environment:
-#        POSTGRES_USER: admin
-#        POSTGRES_PASSWORD: password
-#        POSTGRES_DB: keycloakdb
-#      volumes:
-#        - pgdata:/var/lib/postgresql/data
-#
-#  volumes:
-#    pgdata:
-
-  #COLETA
-  controledecoleta:
-    build:
-      context: controledecoleta
-      dockerfile: src/main/docker/Dockerfile
-      args:
-        JAR_FILE: target/app.jar
-        UTIL_DIR: src/main/docker/
-    ports:
-      - "9081:8081"
+     - "16672:15672"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-      - URI_CONFIG_SERVER=http://configserver:8888
+     - RABBITMQ_DEFAULT_USER=guest
+     - RABBITMQ_DEFAULT_PASS=guest
     networks:
       - network_pedido
+      
+
+  #MONGO DB
+  mongodb:
+    image: mongo
+    networks:
+      - network_pedido
+
+
+  #Redis
+  redis:
+    image: 'redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '26379:6379'
+    hostname: redis
+
+
+  #KEAYCLOAK
+#  keycloak:
+#    image: jboss/keycloak:4.0.0.Final
+#    environment:
+#      - KEYCLOAK_USER=admin
+#      - KEYCLOAK_PASSWORD=admin
+#    expose:
+#      - 9090
+
+
+  #COLETA
+#  controledecoleta:
+#    build:
+#      context: controledecoleta
+#      dockerfile: src/main/docker/Dockerfile
+#      args:
+#        JAR_FILE: target/app.jar
+#        UTIL_DIR: src/main/docker/
+#    ports:
+#      - "9081:8081"
+#    environment:
+#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+#      - URI_CONFIG_SERVER=http://configserver:8888
+#    networks:
+#      - network_pedido
 
   #FRETE
 #  controledefrete:
@@ -158,41 +142,41 @@ services:
 #      - URI_CONFIG_SERVER=http://configserver:8888
 #    networks:
 #      - network_pedido
-#
-#  #SAC
-#  controledesac:
-#    build:
-#      context: controledesac
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9087:8087"
-#    environment:
-#      - WAIT_FOR_IT=rabbitmq:5672 mongodb:27017 configserver:8888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      - URI_CONFIG_SERVER=http://configserver:8888
-#    networks:
-#      - network_pedido
-#
-#  #INTEGRADOR
-#  integrador:
-#    build:
-#      context: integrador
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9000:7000"
-#    environment:
-#      - WAIT_FOR_IT= configserver:8888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      - URI_CONFIG_SERVER=http://configserver:8888
-#    networks:
-#      - network_pedido
-#
+
+  #SAC
+  controledesac:
+    build:
+      context: controledesac
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9087:8087"
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672 mongodb:27017 configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
+  #INTEGRADOR
+  integrador:
+    build:
+      context: integrador
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9000:7000"
+    environment:
+      - WAIT_FOR_IT= configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
   #CONFIG SERVER
   configserver:
     build:
@@ -208,20 +192,20 @@ services:
     networks:
       - network_pedido
 
-#  #EUREKA SERVER
-#  eurekaserver:
-#    build:
-#      context: eurekaServer
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "8761:8761"
-#    environment:
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#    networks:
-#      - network_pedido
+  #EUREKA SERVER
+  eurekaserver:
+    build:
+      context: eurekaServer
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "8761:8761"
+    environment:
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+    networks:
+      - network_pedido
 
 
 networks:
