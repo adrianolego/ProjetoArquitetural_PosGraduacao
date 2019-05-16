@@ -24,9 +24,9 @@ services:
   #Redis
   redis:
     image: 'redis:latest'
-    ports:
-      - '26379:6379'
-    hostname: redis
+    networks:
+      - network_pedido
+
 
 
   #KEAYCLOAK
