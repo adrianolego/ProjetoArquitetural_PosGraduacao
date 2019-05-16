@@ -73,6 +73,12 @@ config:
     username: guest
     password: guest
 
+  #Redis
+  redis:
+    hostname: localhost
+    port: 6379
+    enabled: false
+
   #Eureka
   eureka:
     client:
@@ -81,11 +87,7 @@ config:
     instance:
      preferIpAddress: true
 
-  #Redis
-  redis:
-    hostname: localhost
-    port: 6379
-    enabled: false
+
 
 
 
