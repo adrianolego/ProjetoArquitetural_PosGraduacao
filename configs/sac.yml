@@ -51,12 +51,12 @@ config:
   #Redis
   redis:
     image: 'redis:latest'
-   environment:
+    environment:
       - ALLOW_EMPTY_PASSWORD=yes
-   ports:
+    ports:
      - '26379:6379'
-   hostname: localhost
-   enabled: true
+    hostname: localhost
+    enabled: true
 
 ---
 spring:
