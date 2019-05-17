@@ -58,10 +58,10 @@ eureka:
     preferIpAddress: true
 
 
-#  keycloak:
-#    auth-server-url: http://localhost:9090/auth/
-#    resource: controledecoleta
-#    realm: Keycloak
-#    public-client: true
+  keycloak:
+    auth-server-url: http://keycloak:9090/auth/
+    resource: controledecoleta
+    realm: Keycloak
+    public-client: true
 
 
