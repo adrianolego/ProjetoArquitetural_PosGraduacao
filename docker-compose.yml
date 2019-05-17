@@ -6,10 +6,10 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     ports:
-     - "16672:15672"
+      - "16672:15672"
     environment:
-     - RABBITMQ_DEFAULT_USER=guest
-     - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
     networks:
       - network_pedido
 
@@ -31,8 +31,10 @@ services:
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
-    expose:
-      - 9090
+    ports:
+      - "9090:9090"
+      - "9990:9990"
+      - "8080:8080"
 
   #COLETA
   controledecoleta:
@@ -203,4 +205,4 @@ services:
 
 
 networks:
-    network_pedido:
+  network_pedido:
