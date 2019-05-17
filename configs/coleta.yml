@@ -2,11 +2,16 @@
 server:
   port: 8081
 
-#  keycloak:
-#    auth-server-url: http://localhost:8080/auth/
-#    resource: controledecoleta
-#    realm: Keycloak
-#    public-client: true
+  keycloak:
+    auth-server-url: http://localhost:8080/auth
+    resource: coleta
+    realm: master
+    public-client: true
+
+    security-constraints[0]:
+      authRoles: user
+      securityColletions[0]:
+        pattners[0]: /pedido/*
 
 config:
   #RabbitMQ message
