@@ -18,8 +18,7 @@ public class CacheService {
 
     @CachePut(value = "encomenda",
             key = "#idEncomenda",
-            condition = "#root.target.getCacheEnabled()",
-            unless = "#result != null")
+            condition = "#root.target.getCacheEnabled()")
     public Encomenda atualizarCache(String idEncomenda) {
         return encomendaRepository.findByIdEncomenda(idEncomenda);
 

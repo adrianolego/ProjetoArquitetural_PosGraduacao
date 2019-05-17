@@ -83,3 +83,9 @@ docker run -d -p 9001:8080 jboss/keycloak
  docker rmi $(docker images -q -f "dangling=true")
 
  docker run -d --name keycloak_postgres postgres
+
+ Configuração para Debug
+
+ No docker compose acrescentar `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005` a linha ficará assim : `JAVA_OPTS=-Xmx256m -Xms128m -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Dspring.profiles.active=docker-compose`
+
+ Depois na IDE criar uma configuração remota usando a porta indicada na configuração acima
