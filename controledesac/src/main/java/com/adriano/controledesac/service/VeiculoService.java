@@ -6,6 +6,8 @@ import com.adriano.controledesac.model.PedidoEncomenda;
 import com.adriano.controledesac.repository.EncomendaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,12 @@ public class VeiculoService {
 
     @Autowired
     private PedidoEncomendaToEncomendaDocumentConverter converter;
+
+    @Autowired
+    private CacheService cacheService;
+
+    @Value("${config.redis.enabled}")
+    private Boolean cacheEnabled;
 
     public void atualizarVeiculo(PedidoEncomenda encomenda) {
 
@@ -41,8 +49,23 @@ public class VeiculoService {
 
             encomendaRepository.save(enc);
 
+            cacheService.atualizarCache(encomenda.getIdEncomenda());
+
         } else {
             log.info("Pedido não encontrado: {}", encomenda.getIdEncomenda());
         }
+    }
+
+    @Cacheable(value = "encomenda",
+            key = "#idEncomenda",
+            condition = "#root.target.getCacheEnabled()",
+            unless = "#result != null")
+    public Encomenda consultarEncomenda(String idEncomenda) {
+        return encomendaRepository.findByIdEncomenda(idEncomenda);
+    }
+
+
+    public Boolean getCacheEnabled() {
+        return cacheEnabled;
     }
 }
