@@ -13,12 +13,13 @@ eureka:
 spring:
   profiles: docker-compose
 
-config:
-  eureka:
-    client:
-      serviceUrl:
-        defaultZone: http://eurekaserver:8761/eureka
-    instance:
-      preferIpAddress: true
+
+#Eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka
+  instance:
+    preferIpAddress: true
 
 

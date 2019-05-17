@@ -147,7 +147,7 @@ services:
     ports:
       - "9087:8087"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 mongodb:27017 configserver:8888
+      - WAIT_FOR_IT=rabbitmq:5672 mongodb:27017 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
       - URI_CONFIG_SERVER=http://configserver:8888
     networks:
@@ -164,7 +164,7 @@ services:
     ports:
       - "9000:7000"
     environment:
-      - WAIT_FOR_IT= configserver:8888
+      - WAIT_FOR_IT= configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
       - URI_CONFIG_SERVER=http://configserver:8888
     networks:
