@@ -45,7 +45,7 @@ services:
     ports:
       - "9081:8081"
     environment:
-      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
       - URI_CONFIG_SERVER=http://configserver:8888
     networks:
@@ -101,24 +101,24 @@ services:
 #      - URI_CONFIG_SERVER=http://configserver:8888
 #    networks:
 #      - network_pedido
-#
-#  #LOGISTICA
-#  controledelogistica:
-#    build:
-#      context: controledelogistica
-#      dockerfile: src/main/docker/Dockerfile
-#      args:
-#        JAR_FILE: target/app.jar
-#        UTIL_DIR: src/main/docker/
-#    ports:
-#      - "9085:8085"
-#    environment:
-#      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
-#      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
-#      - URI_CONFIG_SERVER=http://configserver:8888
-#    networks:
-#      - network_pedido
-#
+
+  #LOGISTICA
+  controledelogistica:
+    build:
+      context: controledelogistica
+      dockerfile: src/main/docker/Dockerfile
+      args:
+        JAR_FILE: target/app.jar
+        UTIL_DIR: src/main/docker/
+    ports:
+      - "9085:8085"
+    environment:
+      - WAIT_FOR_IT=rabbitmq:5672 configserver:8888
+      - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
+      - URI_CONFIG_SERVER=http://configserver:8888
+    networks:
+      - network_pedido
+
 #  #EXPEDICAO
 #  controledeexpedicao:
 #    build:
