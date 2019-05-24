@@ -94,4 +94,4 @@ docker run -d -p 9001:8080 jboss/keycloak
 
  obter token:
 
- curl -X POST http://localhost:8080/auth/realms/logistica/protocol/openid-connect/token -d "grant_type=password&username=teste&password=teste&client_id=logistica"
+ curl -X POST http://localhost:9090/auth/realms/logistica/protocol/openid-connect/token -d "grant_type=password&username=teste&password=teste&client_id=logisticaauth"
