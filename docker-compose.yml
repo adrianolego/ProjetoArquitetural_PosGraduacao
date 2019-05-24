@@ -37,7 +37,8 @@ services:
     volumes:
       - ./realm-export.json:/tmp/realm-export.json
     ports:
-      - "9090:8080"
+      - "8080:8080"
+    command: ["-b", "0.0.0.0","-Dkeycloak.profile.feature.docker=enabled"]
 
   #COLETA
   controledecoleta:
