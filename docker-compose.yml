@@ -33,8 +33,6 @@ services:
       - KEYCLOAK_PASSWORD=admin
     ports:
       - "9090:9090"
-      - "9990:9990"
-      - "8080:8080"
 
   #COLETA
   controledecoleta:

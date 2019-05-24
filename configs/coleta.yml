@@ -3,11 +3,12 @@ server:
   port: 8081
 
 keycloak:
-  auth-server-url: http://localhost:8080/auth
-  resource: logistica
   realm: logistica
-  public-client: true
-
+  bearer-only: true
+  auth-server-url: http://localhost:8080/auth
+  ssl-required: external
+  resource: logistica
+  confidential-port: 0
 
 config:
   #RabbitMQ message
