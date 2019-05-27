@@ -220,11 +220,11 @@ Com o docker compose rodando podemos obter o token e iniciar a execução do sis
 
  -Executar um projeto: `maven:mvn spring-boot:run`. (Rodar as dependência como rabbitMQ, Redis, etc)
 
-## RabbitMQ: 
+## RabbitMQ:
 `docker run -d -p 16672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management`
 
 ## Comando do mongoDB
-- Mongo: `docker run -d --name mongodb -p 27017:27017 mongo` (Conectar no mongo dentro do container (`docker exec -it projetoarquitetural_mongodb_1 mongo` no compose ou `docker exec -it mongodb mongo rodando manualmente`))
+- Mongo: `docker run -d --name mongodb -p 27017:27017 mongo` (Conectar no mongo dentro do container (`docker exec -it projetoarquitetural_mongodb_1 mongo` no compose ou `docker exec -it mongodb mongo` rodando manualmente))
  - `show dbs` (Lista bases disponíveis)
  - `use controledelogistica` (base do projeto deve ser criada após primeiro uso)
  - `db.encomenda.find()` (lista documentos)
