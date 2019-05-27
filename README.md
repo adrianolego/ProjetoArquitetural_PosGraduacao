@@ -62,16 +62,15 @@ Necessário ter instalado docker e docker-compose.
 
 Necessário acessar o keycloak e criar um usuário dentro do realm `Logistica` para poder obter token de acesso seguindo os passos abaixo.
 
-- Depois de subir os módulos pelo docker compose (Acessar a pasta do projeto onde se encontra o arquivo `docker-compose.yml` e executar o comando `docker-compose up --build`).
+- Depois de subir os módulos pelo docker compose (Acessar a pasta do projeto onde se encontra o arquivo `docker-compose.yml` e executar o comando `mvn clean install -DskipTests; docker-compose up --build`).
 - Acessar o link `http://localhost:8080/auth/`.
 - Usuário e senha `admin`
 - Na lista seleciona `Users` depois clique em `Add User`.
 - Preencha o nome e clique em `Save`.
 - Na tela de `Details` navegue até a aba de `Credencials` preencha a senha e clique em temporary deixando `OFF` e depois `reset password` (Esse usuário e senha que será usado para obter o token de acesso).
-- Depois navegue até `Role Mappings` em `Realm-Roles` escolha em `Avalible Roles` selecione as permissões e clique em `Add Selected` (Adicionando permissões ao usuários)
-- Depois em `Client-Roles` escolha `Logistica` em `Avalible Roles` selecione as permissões e clique em `Add Selected` (Adicionando permissões ao Realm (Reino) onde o usuário vai acessar para obter op token). Em resumo esta parte da permissões de usuário e indica em qual reino ele faz parte para obter o acesso.
+- Depois em `Client-Roles` escolha `Logistica` em `Avalible Roles` selecione as permissões e clique em `Add Selected` (Adicionando permissões ao Realm (Reino) onde o usuário vai acessar para obter o token).
 
-Com o docker compose rodando podemos obter o token e iniciar a execução do sistema (Acessar a pasta do projeto onde se encontra o arquivo `docker-compose.yml` e executar o comando `docker-compose up --build`).
+Com o docker compose rodando podemos obter o token e iniciar a execução do sistema (Acessar a pasta do projeto onde se encontra o arquivo `docker-compose.yml` e executar o comando `mvn clean install -DskipTests;  docker-compose up --build`).
 
 #### Os seguintes endereços devem estar disponíveis:
 - Filas do rabbit: `http://localhost:16672/#/queues` - Usuário e senha `guest`.
@@ -212,6 +211,8 @@ Com o docker compose rodando podemos obter o token e iniciar a execução do sis
 - Encomenda Resource não autorizado: execute o comando novamente para obter o token pois o mesmo pode ter expirado, ao autorizar o acesso colocar Bearer + espaço + token.
 - Ao rodar comando para obter token o serviço não esta sendo encontrado: Confira o mapeamento feito no arquivo `hosts` conforme explicano no inicio deste documento.
 - Ao consultar o código de rastreio algum/ns objeto/s esta/ão nulo/s: Pode ter ocorrido algum problema na subida dos módulos consulte o Eureka Server e confira se todos subiram corretamente (http://localhost:8761/ deve contar os módulos: Coleta, Expedicao, Faturamento, Frete, Frota, Integrador, Logistica e Sac). Nas filas não pode ter mensagem em nenhuma fila, se tiver mensagem em alguma fila que termine com `.sendDLQQueue` porque algum erro ocorreu e a mensagem não pode ser lida, se a mensagem esta em alguma fica que termine com `sendQueue` é porque o módulo pode não estar rodando portanto a mensagem não foi consumida.
+- Alguma das aplicações não subiu: Verificar se as portas ultilizadas pelas aplicações esta em uso onde foram executadas causando conflito de portas.
+- Projeto não compilando ou ocorrendo erro na compilação (mvn clean install -DskipTests): verificar versão do java `java --version` precisa ser 1.8.
 
 
 
@@ -219,7 +220,8 @@ Com o docker compose rodando podemos obter o token e iniciar a execução do sis
 
  -Executar um projeto: `maven:mvn spring-boot:run`. (Rodar as dependência como rabbitMQ, Redis, etc)
 
-## Rabbit: `docker run -d -p 16672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management`
+## RabbitMQ: 
+`docker run -d -p 16672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management`
 
 ## Comando do mongoDB
 - Mongo: `docker run -d --name mongodb -p 27017:27017 mongo` (Conectar no mongo dentro do container (`docker exec -it projetoarquitetural_mongodb_1 mongo` no compose ou `docker exec -it mongodb mongo rodando manualmente`))
