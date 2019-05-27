@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b466c130-21bb-407d-a6b4-a0b51d683ee4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1765">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="465">
+              <caret line="154" selection-start-line="154" selection-end-line="154" />
             </state>
           </provider>
         </entry>
@@ -27,17 +29,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/coleta.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="390">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frete.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="785">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="-220">
+              <caret line="3" selection-start-line="3" selection-end-line="5" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -115,9 +117,9 @@
         <option value="$PROJECT_DIR$/logistica.yml" />
         <option value="$PROJECT_DIR$/frota.yml" />
         <option value="$PROJECT_DIR$/sac.yml" />
-        <option value="$PROJECT_DIR$/../docker-compose.yml" />
         <option value="$PROJECT_DIR$/coleta.yml" />
         <option value="$PROJECT_DIR$/frete.yml" />
+        <option value="$PROJECT_DIR$/../docker-compose.yml" />
       </list>
     </option>
   </component>
@@ -192,7 +194,7 @@
     <frame x="-3" y="0" width="1926" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2950907" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29829243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -234,8 +236,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/coleta.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frete.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-220">
+          <caret line="3" selection-start-line="3" selection-end-line="5" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -274,13 +283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1765">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/integrador.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -288,10 +290,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frete.yml">
+    <entry file="file://$PROJECT_DIR$/../docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="465">
+          <caret line="154" selection-start-line="154" selection-end-line="154" />
         </state>
       </provider>
     </entry>

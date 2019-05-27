@@ -35,7 +35,7 @@ services:
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/realm-export.json
     volumes:
-      - ./realm-export.json:/tmp/realm-export.json
+      - ./config-keycloak/realm-export.json:/tmp/realm-export.json
     ports:
       - "8080:8080"
     command: ["-b", "0.0.0.0","-Dkeycloak.profile.feature.docker=enabled"]
@@ -49,7 +49,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9081:8081"
+      - "8081:8081"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -66,7 +66,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9082:8082"
+      - "8082:8082"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -83,7 +83,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9083:8083"
+      - "8083:8083"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -100,7 +100,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9084:8084"
+      - "8084:8084"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -117,7 +117,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9085:8085"
+      - "8085:8085"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -134,7 +134,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9086:8086"
+      - "8086:8086"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -151,8 +151,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9087:8087"
-      - "10005:5005"
+      - "8087:8087"
     environment:
       - WAIT_FOR_IT=rabbitmq:5672 mongodb:27017 configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -169,7 +168,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9000:7000"
+      - "7000:7000"
     environment:
       - WAIT_FOR_IT= configserver:8888 eurekaserver:8761
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
@@ -186,7 +185,7 @@ services:
         JAR_FILE: target/app.jar
         UTIL_DIR: src/main/docker/
     ports:
-      - "9888:8888"
+      - "8888:8888"
     environment:
       - JAVA_OPTS=-Xmx256m -Xms128m -Dspring.profiles.active=docker-compose
     networks:
