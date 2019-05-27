@@ -35,7 +35,7 @@ services:
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/realm-export.json
     volumes:
-      - ./config-keycloak/realm-export.json:/tmp/realm-export.json
+      - ./configKeycloak/realm-export.json:/tmp/realm-export.json
     ports:
       - "8080:8080"
     command: ["-b", "0.0.0.0","-Dkeycloak.profile.feature.docker=enabled"]

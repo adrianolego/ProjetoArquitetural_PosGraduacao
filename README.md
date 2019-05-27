@@ -2,7 +2,7 @@
 
 ### Controle de logística
 
-O Projeto conta com 7 módulos desenvolvidos em Spring-boot aos quais interagem usando filas do RabbitMQ, as informações são persistidas por um único módulo em uma base não relacional provida pelo MongoDB, o módulo que realiza a persistência ultiliza uma tecnologia de cache provida pelo Redis para agilizar consultas e minimizar o custo de consultas a base de dados.
+O Projeto conta com 8 módulos desenvolvidos em Spring-boot aos quais interagem usando filas do RabbitMQ, as informações são persistidas por um único módulo em uma base não relacional provida pelo MongoDB, o módulo que realiza a persistência ultiliza uma tecnologia de cache provida pelo Redis para agilizar consultas e minimizar o custo de consultas a base de dados.
 Cada módulo recebe sua informação básica faz seu processamento e encaminha uma mensagem na fila para o próximo módulo e outro para o módulo de persistência funcionando assim separadamente e independentes, desde que a mensagem esteja na fila o módulo não depende do anterior ou posterior.
 
 
@@ -23,7 +23,7 @@ Cada módulo recebe sua informação básica faz seu processamento e encaminha u
 Módulo resposável pelo recebimento de pedidos de transporte, recebe as informações mínimas do objeto a ser transportado, faz o processamento, encaminha as informações nas filas do módulo de sac para persistência e para o módulo de frete.
 
 #### Controle de Frete:
-Módulo resposável pelo cálculo do valor de frete, este módulo faz o cálculo interno e um cálculo externo simulando uma integração com sistema de terceiros, esta comunicação é feito com o Integrador que responde a essas solicitações. Depois de terminado o processamento encaminha as informações nas filas do módulo de sac, outra para o módulo de faturamento e outra para o sistema de frotas.
+Módulo resposável pelo cálculo do valor de frete, este módulo faz o cálculo interno e um cálculo externo simulando uma integração com sistema de terceiros, esta comunicação é feita com o Integrador que responde a essas solicitações. Depois de terminado o processamento encaminha as informações nas filas do módulo de sac, outra para o módulo de faturamento e outra para o sistema de frotas.
 
 #### Controle de Faturamento:
 Módulo resposável pelo recebimento dos pedido de transporte e que irá gerar uma prestação de serviço e cobrança pelo mesmo, este módulo registra a entrada do pedido e faz os tramites necessários para o recebimento da prestação do serviço.
@@ -45,7 +45,7 @@ Módulo resposável por persistir todos os dados gerados pelos demais módulos p
 Sistema auxiliar criado para simular chamadas a sistemas externos garantindo uma forma de comunicação com outras aplicações.
 
 #### ConfigServer:
-Sistema auxiliar agrupa os arquivos de configurações em um único lugar para facilitar a manutenção. Quando um módulo for ser executado ele pede a esse módulo o arquivo de configuração que ele irá ultilizar.
+Sistema auxiliar que concentra e disponibiliza os arquivos de configurações em um único lugar para facilitar a manutenção. Quando um módulo for ser executado ele pede a esse módulo o arquivo de configuração que ele irá ultilizar.
 
 #### EurekaServer:
 Sistema auxiliar que registra todos os módulos que estiverem com seu funcionamento normal, se estiver em execução o módulo é registrado e esse registro servirá para que os módulos possam se localizar dentro do ambiente.
