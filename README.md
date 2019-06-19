@@ -239,5 +239,5 @@ Com o docker compose rodando podemos obter o token e iniciar a execução do sis
 
  Depois na IDE criar uma configuração remota usando a porta indicada na configuração acima.
  
-## Limpar imagens <none> no docker
+## Limpar imagens `<none>` no docker
   `docker rmi $(docker images -q -f "dangling=true")`
