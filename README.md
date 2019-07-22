@@ -68,7 +68,7 @@ Necessário acessar o keycloak e criar um usuário dentro do realm `Logistica` p
 - Na lista seleciona `Users` depois clique em `Add User`.
 - Preencha o nome e clique em `Save`.
 - Na tela de `Details` navegue até a aba de `Credencials` preencha a senha e clique em temporary deixando `OFF` e depois `reset password` (Esse usuário e senha que será usado para obter o token de acesso).
-- Depois em `Client-Roles` escolha `Logistica` em `Avalible Roles` selecione as permissões e clique em `Add Selected` (Adicionando permissões ao Realm (Reino) onde o usuário vai acessar para obter o token).
+- Depois em `Role Mappings` e no combo `Client-Roles` escolha `Logistica` em `Avalible Roles` selecione as permissões e clique em `Add Selected` (Adicionando permissões ao Realm (Reino) onde o usuário vai acessar para obter o token).
 
 Com o docker compose rodando podemos obter o token e iniciar a execução do sistema (Acessar a pasta do projeto onde se encontra o arquivo `docker-compose.yml` e executar o comando `mvn clean install -DskipTests;  docker-compose up --build`).
 
